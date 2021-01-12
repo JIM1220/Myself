@@ -1,1 +1,1 @@
-# Myself-
+# using by ownerself only
