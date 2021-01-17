@@ -102,7 +102,7 @@ if (process.env.HOTSOONADHEADER && process.env.HOTSOONADHEADER.indexOf('#') > -1
   } else {
    hotsoonadheader = process.env.HOTSOONADHEADER.split()
   };
-  if (process.env. HOTSOONADKEY&& process.env.HOTSOONADKEY.indexOf('#') > -1) {
+  if (process.env.HOTSOONADKEY && process.env.HOTSOONADKEY.indexOf('#') > -1) {
    hotsoonadkey = process.env.HOTSOONADKEY.split('#');
   }
   else if (process.env.HOTSOONADKEY && process.env.HOTSOONADKEY.split('\n').length > 0) {
@@ -121,7 +121,7 @@ if (process.env.HOTSOONREADHEADER && process.env.HOTSOONREADHEADER.indexOf('#') 
   } else {
    hotsoonreadheader = process.env.HOTSOONREADHEADER.split()
   };
-  if (process.env. HOTSOONREADKEY&& process.env.HOTSOONREADKEY.indexOf('#') > -1) {
+  if (process.env.HOTSOONREADKEY && process.env.HOTSOONREADKEY.indexOf('#') > -1) {
    hotsoonreadkey = process.env.HOTSOONREADKEY.split('#');
   }
   else if (process.env.HOTSOONREADKEY && process.env.HOTSOONREADKEY.split('\n').length > 0) {
