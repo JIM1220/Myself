@@ -417,7 +417,7 @@ return new Promise((resolve, reject) => {
       else{
           message += '⚠️异常:'+result.err_tips+'\n'+'慢点看，不要慌，一会恢复\n'
           //let other = '⚠️异常:'+result.err_tips+'请重新获取readkey\n'
-          $.msg(jsname,'',other)
+          //$.msg(jsname,'',other)
           //return showmsg()
       }
           resolve()
