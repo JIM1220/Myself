@@ -201,13 +201,13 @@ if (!hotsoonsignheaderArr[0]) {
       $.index = i + 1;
       console.log(`\n开始【火山视频极速版${$.index}】`)
       //await userinfo()
-      if (h == 0 && hour == 22) await sign_in();
-      if (h%40 == 0) await treasure_task();
-      if (h%2 == 0) await control();
-      await tasklist();
+      await tasklist()
       //await skill()
-      await watch_video(no);
-      if (h == 119 && hour == 18 ||h == 119 && hour == 19 ) await showmsg();
+      await watch_video(no)
+      if (h == 0 && hour == 22) await sign_in()
+      if (h%40 == 0) await treasure_task()
+      if (h%2 == 0) await control()
+      if (h == 119 && hour == 18 ||h == 119 && hour == 19 ) await showmsg()
   }
  }
       await $.wait(30000);
