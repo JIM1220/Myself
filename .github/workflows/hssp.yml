@@ -17,6 +17,8 @@ jobs:
         HOTSOONADKEY: ${{ secrets.HOTSOONADKEY }}
         HOTSOONREADHEADER: ${{ secrets.HOTSOONREADHEADER }}
         HOTSOONREADKEY: ${{ secrets.HOTSOONREADKEY }}
+        HOTSOONSPAMHEADER: ${{ secrets.HOTSOONSPAMHEADER }}
+        HOTSOONSPAMKEY: ${{ secrets.HOTSOONSPAMKEY }}
         TZ: Asia/shanghai
     steps:
       - name: Checkout
