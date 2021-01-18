@@ -391,7 +391,7 @@ return new Promise((resolve, reject) => {
   } 
 */
 //tasklist
-async function tasklist() {
+function tasklist() {
 return new Promise((resolve, reject) => {
   let tasklisturl ={
     url: `https://i.snssdk.com/luckycat/hotsoon/v1/task/page?&polaris_${hotsoonsignheader}`,
@@ -407,17 +407,17 @@ return new Promise((resolve, reject) => {
       var e = result.data.daily_tasks.find(item => item.task_id === 1005).completed
       var f = result.data.daily_tasks.find(item => item.task_id === 1009).completed
       var g = result.data.daily_tasks.find(item => item.task_id === 1010).completed
-      if(a) { no=2, await watch_video(no)}
-      if(b) { no=5, await watch_video(no)}
-      if(c) { no=10, await watch_video(no)}
-      if(d) { no=20, await watch_video(no)}
-      if(e) { no=30, await watch_video(no)}
-      if(f) { no=60, await watch_video(no)}
+      if(a) { no=2, watch_video(no)}
+      if(b) { no=5, watch_video(no)}
+      if(c) { no=10, watch_video(no)}
+      if(d) { no=20, watch_video(no)}
+      if(e) { no=30, watch_video(no)}
+      if(f) { no=60, watch_video(no)}
       if(g) {      
       $.log('视频任务完成')
       message += '视频任务完成\n'
       if(!a)
-      { no=1, await watch_video(no)}
+      { no=1, watch_video(no)}
      }
       resolve()
     })
