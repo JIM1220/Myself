@@ -242,10 +242,10 @@ if (!hotsoonsignheaderArr[0]) {
       if (h%4 == 0) await treasure_task()
       await control()
       for (let j = 0; j < 3; j++) {
-      await tasklist()
       await spam()
+      await tasklist()
       //await skill()
-      await watch_video(no)
+      //await watch_video(no)
       await $.wait(20000)
       }
       if (h == 119 && hour == 18 ||h == 119 && hour == 19 ) await showmsg()
@@ -407,17 +407,17 @@ return new Promise((resolve, reject) => {
       var e = result.data.daily_tasks.find(item => item.task_id === 1005).completed
       var f = result.data.daily_tasks.find(item => item.task_id === 1009).completed
       var g = result.data.daily_tasks.find(item => item.task_id === 1010).completed
-      if(a) no=2
-      if(b) no=5
-      if(c) no=10
-      if(d) no=20
-      if(e) no=30
-      if(f) no=60
+      if(a) { no=2, await watch_video(no)}
+      if(b) { no=5, await watch_video(no)}
+      if(c) { no=10, await watch_video(no)}
+      if(d) { no=20, await watch_video(no)}
+      if(e) { no=30, await watch_video(no)}
+      if(f) { no=60, await watch_video(no)}
       if(g) {      
       $.log('视频任务完成')
       message += '视频任务完成\n'
       if(!a)
-      no=1
+      { no=1, await watch_video(no)}
      }
       resolve()
     })
