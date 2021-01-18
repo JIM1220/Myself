@@ -391,7 +391,7 @@ return new Promise((resolve, reject) => {
   } 
 */
 //tasklist
-function tasklist() {
+async function tasklist() {
 return new Promise((resolve, reject) => {
   let tasklisturl ={
     url: `https://i.snssdk.com/luckycat/hotsoon/v1/task/page?&polaris_${hotsoonsignheader}`,
