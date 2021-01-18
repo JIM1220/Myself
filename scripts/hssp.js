@@ -187,6 +187,8 @@ if (!hotsoonsignheaderArr[0]) {
     return;
   }
    console.log(`------------- 共${hotsoonsignheaderArr.length}个账号----------------\n`)
+  for (let h = 0; h < 120; h++) {
+     console.log(`🚴‍♀️🚴‍♀️🚴‍♀️开始执行第${h+1}轮任务----------------🚴‍♀️🚴‍♀️🚴‍♀️\n`)
   for (let i = 0; i < hotsoonsignheaderArr.length; i++) {
     if (hotsoonsignheaderArr[i]) {
       message = ''
@@ -199,15 +201,17 @@ if (!hotsoonsignheaderArr[0]) {
       $.index = i + 1;
       console.log(`\n开始【火山视频极速版${$.index}】`)
       //await userinfo()
-      await sign_in()
-      await treasure_task()
-      await control()
+      if (h == 0 && hour == 22) await sign_in()
+      if (h%40 == 0) await treasure_task()
+      if (h%2 == 0) await control()
       await tasklist()
       //await skill()
       await watch_video(no)
-      await showmsg()
+      if (h == 119 && hour == 18 ||h == 119 && hour == 19 ) await showmsg()
   }
  }
+      await $.wait(30000);
+      }
 })()
     .catch((e) => $.logErr(e))
     .finally(() => $.done())
