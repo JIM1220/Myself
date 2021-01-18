@@ -53,7 +53,7 @@ let no = 1;
 let hotsoonreadheader = $.getdata('hotsoonreadheader')
 let hotsoonreadkey = $.getdata('hotsoonreadkey')
 let tz = ($.getval('tz') || '1');//0关闭通知，1默认开启
-const logs =1;//0为关闭日志，1为开启
+const logs =0;//0为关闭日志，1为开启
 var hour=''
 var minute=''
 
@@ -187,7 +187,7 @@ if (!hotsoonsignheaderArr[0]) {
     return;
   }
    console.log(`------------- 共${hotsoonsignheaderArr.length}个账号----------------\n`)
-  for (let h = 0; h < 120; h++) {
+  for (let h = 0; h < 12; h++) {
      console.log(`🚴‍♀️🚴‍♀️🚴‍♀️开始执行第${h+1}轮任务----------------🚴‍♀️🚴‍♀️🚴‍♀️\n`)
   for (let i = 0; i < hotsoonsignheaderArr.length; i++) {
     if (hotsoonsignheaderArr[i]) {
@@ -201,16 +201,19 @@ if (!hotsoonsignheaderArr[0]) {
       $.index = i + 1;
       console.log(`\n开始【火山视频极速版${$.index}】`)
       //await userinfo()
-      if (h == 0 && hour == 22) await sign_in()
-      if (h%40 == 0) await treasure_task()
-      if (h%2 == 0) await control()
+      if (h == 0 && hour == 22 || h == 0 && hour == 23) await sign_in()
+      if (h%4 == 0) await treasure_task()
+      await control()
+      for (let j = 0; j < 3; j++) {
       await tasklist()
       //await skill()
       await watch_video(no)
+      await $.wait(20000)
+      }
       if (h == 119 && hour == 18 ||h == 119 && hour == 19 ) await showmsg()
   }
  }
-      await $.wait(30000);
+      await $.wait(240000)
       }
 })()
     .catch((e) => $.logErr(e))
@@ -260,8 +263,10 @@ return new Promise((resolve, reject) => {
           message += '📣签到\n'
       if(result.err_no == 0) {
           message += result.err_tips+'\n'
+	  console.log(`【签到】${result.err_tips}；`)
       }else{
           message +='⚠️异常'+result.err_tips+'\n'
+	  console.log(`【签到】⚠️异常，${result.err_tips}；`)
            }
           resolve()
     })
@@ -280,8 +285,10 @@ return new Promise((resolve, reject) => {
       message += '📣随机宝箱\n'
       if(result.err_no == 0) {
            message += result.err_tips+result.data.tips+'\n'
+	   console.log(`【宝箱】${result.err_tips}，获得:${result.data.tips}；`)
        }else{
     	   message += '⚠️异常'+result.err_tips+'\n'
+	   console.log(`【宝箱】⚠️异常，${result.err_tips}；`)
        }
           resolve()
     })
@@ -311,8 +318,10 @@ return new Promise((resolve, reject) => {
      message += '📣广告收益\n'
      if(result.err_no == 0) {
           message += '🎉'+result.err_tips+"获得:"+result.data.amount+'\n'
+	  console.log(`【广告】🎉${result.err_tips}，获得:${result.data.amount}`)
       }else{
    	   message += '⚠️异常'+result.err_tips+'\n'
+	   console.log(`【广告】⚠️异常，${result.err_tips}；`)
       }
          resolve()
    })
@@ -413,13 +422,16 @@ return new Promise((resolve, reject) => {
        message += '📣看视频\n'
       if(result.err_no == 10012){
           message += '⚠️异常:'+no+'时段任务完成\n'
+	  console.log(`【视频】⚠️异常，${no}时段任务完成；`)
       }
       else if(result.err_no == 0) {
           message +='🎉'+result.err_tips+'获得:'+result.data.amount+"\n"
+	  console.log(`【视频】🎉${result.err_tips}，获得:${result.data.amount}；`)
            return showmsg()
         }
       else{
           message += '⚠️异常:'+result.err_tips+'\n'+'慢点看，不要慌，一会恢复\n'
+	  console.log(`【视频】⚠️异常，${result.err_tips}；`)
           //let other = '⚠️异常:'+result.err_tips+'请重新获取readkey\n'
           //$.msg(jsname,'',other)
           //return showmsg()
