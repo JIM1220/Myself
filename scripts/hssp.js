@@ -53,7 +53,7 @@ let no = 1;
 let hotsoonreadheader = $.getdata('hotsoonreadheader')
 let hotsoonreadkey = $.getdata('hotsoonreadkey')
 let tz = ($.getval('tz') || '1');//0关闭通知，1默认开启
-const logs =0;//0为关闭日志，1为开启
+const logs =1;//0为关闭日志，1为开启
 var hour=''
 var minute=''
 
@@ -201,12 +201,12 @@ if (!hotsoonsignheaderArr[0]) {
       $.index = i + 1;
       console.log(`\n开始【火山视频极速版${$.index}】`)
       //await userinfo()
-      await tasklist()
-      //await skill()
-      await watch_video(no)
       if (h == 0 && hour == 22) await sign_in()
       if (h%40 == 0) await treasure_task()
       if (h%2 == 0) await control()
+      await tasklist()
+      //await skill()
+      await watch_video(no)
       if (h == 119 && hour == 18 ||h == 119 && hour == 19 ) await showmsg()
   }
  }
