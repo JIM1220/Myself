@@ -44,6 +44,7 @@ $.idx = ($.idx = ($.getval("hotsooncount") || "1") - 1) > 0 ? `${$.idx + 1}` : "
 const hotsoonsignheaderArr = [],hotsoonsignkeyArr=[]
 const hotsoonadheaderArr = [],hotsoonadkeyArr=[]
 const hotsoonreadheaderArr = [],hotsoonreadkeyArr=[]
+const hotsoonspamheaderArr = [],hotsoonspamkeyArr=[]
 let hotsoonsignheader = $.getdata('hotsoonsignheader')
 let hotsoonsigncookie = $.getdata('hotsoonsigncookie')
 
@@ -129,6 +130,25 @@ if (process.env.HOTSOONREADHEADER && process.env.HOTSOONREADHEADER.indexOf('#') 
   } else  {
    hotsoonreadkey = process.env.HOTSOONREADKEY.split()
   };
+//Spam
+if (process.env.HOTSOONSPAMHEADER && process.env.HOTSOONSPAMHEADER.indexOf('#') > -1) {
+   hotsoonspamheader = process.env.HOTSOONSPAMHEADER.split('#');
+   console.log(`您选择的是用"#"隔开\n`)
+  }
+  else if (process.env.HOTSOONSPAMHEADER && process.env.HOTSOONSPAMHEADER.indexOf('\n') > -1) {
+   hotsoonspamheader = process.env.HOTSOONSPAMHEADER.split('\n');
+   console.log(`您选择的是用换行隔开\n`)
+  } else {
+   hotsoonspamheader = process.env.HOTSOONSPAMHEADER.split()
+  };
+  if (process.env.HOTSOONSPAMKEY && process.env.HOTSOONSPAMKEY.indexOf('#') > -1) {
+   hotsoonspamkey = process.env.HOTSOONSPAMKEY.split('#');
+  }
+  else if (process.env.HOTSOONSPAMKEY && process.env.HOTSOONSPAMKEY.split('\n').length > 0) {
+   hotsoonspamkey = process.env.HOTSOONSPAMKEY.split('\n');
+  } else  {
+   hotsoonspamkey = process.env.HOTSOONSPAMKEY.split()
+  };
 //sign
   Object.keys(hotsoonsignheader).forEach((item) => {
         if (hotsoonsignheader[item]) {
@@ -162,6 +182,17 @@ Object.keys(hotsoonreadheader).forEach((item) => {
           hotsoonreadkeyArr.push(hotsoonreadkey[item])
         }
     });
+//Spam
+Object.keys(hotsoonspamheader).forEach((item) => {
+        if (hotsoonspamheader[item]) {
+          hotsoonspamheaderArr.push(hotsoonspamheader[item])
+        }
+    });
+    Object.keys(hotsoonspamkey).forEach((item) => {
+        if (hotsoonspamkey[item]) {
+          hotsoonspamkeyArr.push(hotsoonspamkey[item])
+        }
+    });
     console.log(`============ 脚本执行-国际标准时间(UTC)：${new Date().toLocaleString()}  =============\n`)
     console.log(`============ 脚本执行-北京时间(UTC+8)：${new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleString()}  =============\n`)
  } else {
@@ -171,6 +202,8 @@ Object.keys(hotsoonreadheader).forEach((item) => {
     hotsoonadkeyArr.push($.getdata('hotsoonadkey'))
     hotsoonreadheaderArr.push($.getdata('hotsoonreadheader'))
     hotsoonreadkeyArr.push($.getdata('hotsoonreadkey'))
+    hotsoonspamheaderArr.push($.getdata('hotsoonspamheader'))
+    hotsoonspamkeyArr.push($.getdata('hotsoonspamkey'))
     let hotsooncount = ($.getval('hotsooncount') || '1');
   for (let i = 2; i <= hotsooncount; i++) {
     hotsoonsignheaderArr.push($.getdata(`hotsoonsignheader${i}`))
@@ -179,6 +212,8 @@ Object.keys(hotsoonreadheader).forEach((item) => {
     hotsoonadkeyArr.push($.getdata(`hotsoonadkey${i}`))
     hotsoonreadheaderArr.push($.getdata(`hotsoonreadheader${i}`))
     hotsoonreadkeyArr.push($.getdata(`hotsoonreadkey${i}`))
+    hotsoonspamheaderArr.push($.getdata('hotsoonspamheader${i}'))
+    hotsoonspamkeyArr.push($.getdata('hotsoonspamkey${i}'))
   }
 }
 !(async () => {
@@ -198,6 +233,8 @@ if (!hotsoonsignheaderArr[0]) {
       hotsoonadkey = hotsoonadkeyArr[i];
       hotsoonreadheader = hotsoonreadheaderArr[i];
       hotsoonreadkey = hotsoonreadkeyArr[i];
+      hotsoonspamheader = hotsoonspamheaderArr[i];
+      hotsoonspamkey = hotsoonspamkeyArr[i];
       $.index = i + 1;
       console.log(`\n开始【火山视频极速版${$.index}】`)
       //await userinfo()
@@ -207,6 +244,7 @@ if (!hotsoonsignheaderArr[0]) {
       for (let j = 0; j < 3; j++) {
       await tasklist()
       //await skill()
+      await spam()
       await watch_video(no)
       await $.wait(20000)
       }
@@ -407,6 +445,23 @@ return new Promise((resolve, reject) => {
    })
   } 
 */
+
+//Spam
+function spam() {
+return new Promise((resolve, reject) => {
+  let spamurl ={
+    url: `https://ib-hl.snssdk.com/luckycat/hotsoon/v1/spam/pre_check?${hotsoonspamheader}`,
+    headers: JSON.parse(hotsoonspamkey),
+    timeout: 60000,
+}
+   $.get(spamurl,(error, response, data) =>{
+     const result = JSON.parse(data)
+     console.log(`【Spam】${result.err_tips}；`)
+          resolve()
+    })
+   })
+  } 
+
 //看视频
 function watch_video(no) {
 return new Promise((resolve, reject) => {
