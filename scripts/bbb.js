@@ -105,12 +105,12 @@ if(CookieVal)$.setdata(CookieVal,'bbb_ck')
 
 function showmsg(){
   if ($.isNode()){
-     $.log(message)
+     $.log(notice)
 
        notify.sendNotify($.name,notice)
 
    }else{
-      $.log(message)
+      $.log(notice)
 
     $.msg($.name, '', notice)
 }
