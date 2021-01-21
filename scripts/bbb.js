@@ -31,6 +31,7 @@ hostname = bububao.duoshoutuan.com,
 const $ = new Env('步步寶')
 let notice = ''
 let bbb_ckArr = [], bbb_ck = "";
+const notify = $.isNode() ? require('./sendNotify') : '';
 
 if ($.isNode()) {
 
