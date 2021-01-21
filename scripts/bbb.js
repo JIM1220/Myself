@@ -73,6 +73,8 @@ if(CookieVal)$.setdata(CookieVal,'bbb_ck')
     console.log($.name, '【提示】请把CK填入Github 的 Secrets 中，请以回车隔开')
     return;
   }
+  
+    for (let i = 0; i < bbb_ckArr.length; i++) {
     if (bbb_ckArr[i]) {
       CookieVal = bbb_ckArr[i];
       $.msg($.name,"開始🎉🎉🎉")
@@ -91,6 +93,7 @@ if(CookieVal)$.setdata(CookieVal,'bbb_ck')
       await checkHomeJin()
       await showmsg()
       }  
+            }  
      console.log(`🏃‍♂️🏃‍♂️🏃‍♂️所有任务已完成🏃‍♂️🏃‍♂️🏃‍♂️`)      
 
 })()
