@@ -104,7 +104,7 @@ function showmsg(){
   if ($.isNode()){
      $.log(message)
 
-       await notify.sendNotify($.name,notice)
+       notify.sendNotify($.name,notice)
 
    }else{
       $.log(message)
