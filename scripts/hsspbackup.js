@@ -245,10 +245,10 @@ if (!hotsoonsignheaderArr[0]) {
       await tasklist()
       await spam()
       //await skill()
-      await watch_video(no)
+      await watch_video()
       await $.wait(20000)
       }
-      if (h == 119 && hour == 18 ||h == 119 && hour == 19 ) await showmsg()
+      if (h == 11 && hour == 18 ||h == 11 && hour == 19 ) await showmsg()
   }
  }
       await $.wait(240000)
@@ -463,6 +463,197 @@ return new Promise((resolve, reject) => {
   } 
 
 //看视频
+function watch_video() {
+return new Promise((resolve, reject) => {
+  let watch_videourl ={
+    url: `https://ib-hl.snssdk.com/luckycat/hotsoon/v1/task/done/daily_read_1m?${hotsoonreadheader}`,
+    headers: JSON.parse(hotsoonreadkey),
+    timeout: 60000,
+}
+   $.post(watch_videourl,async(error, response, data) =>{
+     const result = JSON.parse(data)
+       //$.log('hotsoon'+no) 
+       if(logs) $.log(data)
+       message += '📣看视频\n'
+      if(result.err_no == 0) {
+          message +='🎉'+result.err_tips+'获得:'+result.data.amount+"\n"
+	  console.log(`【视频】🎉${result.err_tips}，获得:${result.data.amount}；`)
+           return showmsg()
+        }
+      else{
+          message += '⚠️异常:'+result.err_tips+'\n'+'慢点看，不要慌，一会恢复\n'
+	  console.log(`【视频】⚠️异常，${result.err_tips}；`)
+          await watch_video2()
+      }
+          resolve()
+    })
+   })
+  } 
+
+function watch_video2() {
+return new Promise((resolve, reject) => {
+  let watch_videourl ={
+    url: `https://ib-hl.snssdk.com/luckycat/hotsoon/v1/task/done/daily_read_2m?${hotsoonreadheader}`,
+    headers: JSON.parse(hotsoonreadkey),
+    timeout: 60000,
+}
+   $.post(watch_videourl,async(error, response, data) =>{
+     const result = JSON.parse(data)
+       //$.log('hotsoon'+no) 
+       if(logs) $.log(data)
+       message += '📣看视频\n'
+      if(result.err_no == 0) {
+          message +='🎉'+result.err_tips+'获得:'+result.data.amount+"\n"
+	  console.log(`【视频】🎉${result.err_tips}，获得:${result.data.amount}；`)
+           return showmsg()
+        }
+      else{
+          message += '⚠️异常:'+result.err_tips+'\n'+'慢点看，不要慌，一会恢复\n'
+	  console.log(`【视频】⚠️异常，${result.err_tips}；`)
+          await watch_video5()
+      }
+          resolve()
+    })
+   })
+  } 
+
+function watch_video5() {
+return new Promise((resolve, reject) => {
+  let watch_videourl ={
+    url: `https://ib-hl.snssdk.com/luckycat/hotsoon/v1/task/done/daily_read_5m?${hotsoonreadheader}`,
+    headers: JSON.parse(hotsoonreadkey),
+    timeout: 60000,
+}
+   $.post(watch_videourl,async(error, response, data) =>{
+     const result = JSON.parse(data)
+       //$.log('hotsoon'+no) 
+       if(logs) $.log(data)
+       message += '📣看视频\n'
+      if(result.err_no == 0) {
+          message +='🎉'+result.err_tips+'获得:'+result.data.amount+"\n"
+	  console.log(`【视频】🎉${result.err_tips}，获得:${result.data.amount}；`)
+           return showmsg()
+        }
+      else{
+          message += '⚠️异常:'+result.err_tips+'\n'+'慢点看，不要慌，一会恢复\n'
+	  console.log(`【视频】⚠️异常，${result.err_tips}；`)
+          await watch_video10()
+      }
+          resolve()
+    })
+   })
+  } 
+
+function watch_video10() {
+return new Promise((resolve, reject) => {
+  let watch_videourl ={
+    url: `https://ib-hl.snssdk.com/luckycat/hotsoon/v1/task/done/daily_read_10m?${hotsoonreadheader}`,
+    headers: JSON.parse(hotsoonreadkey),
+    timeout: 60000,
+}
+   $.post(watch_videourl,async(error, response, data) =>{
+     const result = JSON.parse(data)
+       //$.log('hotsoon'+no) 
+       if(logs) $.log(data)
+       message += '📣看视频\n'
+      if(result.err_no == 0) {
+          message +='🎉'+result.err_tips+'获得:'+result.data.amount+"\n"
+	  console.log(`【视频】🎉${result.err_tips}，获得:${result.data.amount}；`)
+           return showmsg()
+        }
+      else{
+          message += '⚠️异常:'+result.err_tips+'\n'+'慢点看，不要慌，一会恢复\n'
+	  console.log(`【视频】⚠️异常，${result.err_tips}；`)
+          await watch_video20()
+      }
+          resolve()
+    })
+   })
+  } 
+
+function watch_video20() {
+return new Promise((resolve, reject) => {
+  let watch_videourl ={
+    url: `https://ib-hl.snssdk.com/luckycat/hotsoon/v1/task/done/daily_read_20m?${hotsoonreadheader}`,
+    headers: JSON.parse(hotsoonreadkey),
+    timeout: 60000,
+}
+   $.post(watch_videourl,async(error, response, data) =>{
+     const result = JSON.parse(data)
+       //$.log('hotsoon'+no) 
+       if(logs) $.log(data)
+       message += '📣看视频\n'
+      if(result.err_no == 0) {
+          message +='🎉'+result.err_tips+'获得:'+result.data.amount+"\n"
+	  console.log(`【视频】🎉${result.err_tips}，获得:${result.data.amount}；`)
+           return showmsg()
+        }
+      else{
+          message += '⚠️异常:'+result.err_tips+'\n'+'慢点看，不要慌，一会恢复\n'
+	  console.log(`【视频】⚠️异常，${result.err_tips}；`)
+          await watch_video30()
+      }
+          resolve()
+    })
+   })
+  } 
+
+function watch_video30() {
+return new Promise((resolve, reject) => {
+  let watch_videourl ={
+    url: `https://ib-hl.snssdk.com/luckycat/hotsoon/v1/task/done/daily_read_30m?${hotsoonreadheader}`,
+    headers: JSON.parse(hotsoonreadkey),
+    timeout: 60000,
+}
+   $.post(watch_videourl,async(error, response, data) =>{
+     const result = JSON.parse(data)
+       //$.log('hotsoon'+no) 
+       if(logs) $.log(data)
+       message += '📣看视频\n'
+      if(result.err_no == 0) {
+          message +='🎉'+result.err_tips+'获得:'+result.data.amount+"\n"
+	  console.log(`【视频】🎉${result.err_tips}，获得:${result.data.amount}；`)
+           return showmsg()
+        }
+      else{
+          message += '⚠️异常:'+result.err_tips+'\n'+'慢点看，不要慌，一会恢复\n'
+	  console.log(`【视频】⚠️异常，${result.err_tips}；`)
+          await watch_video60()
+      }
+          resolve()
+    })
+   })
+  } 
+
+function watch_video60() {
+return new Promise((resolve, reject) => {
+  let watch_videourl ={
+    url: `https://ib-hl.snssdk.com/luckycat/hotsoon/v1/task/done/daily_read_60m?${hotsoonreadheader}`,
+    headers: JSON.parse(hotsoonreadkey),
+    timeout: 60000,
+}
+   $.post(watch_videourl,async(error, response, data) =>{
+     const result = JSON.parse(data)
+       //$.log('hotsoon'+no) 
+       if(logs) $.log(data)
+       message += '📣看视频\n'
+      if(result.err_no == 0) {
+          message +='🎉'+result.err_tips+'获得:'+result.data.amount+"\n"
+	  console.log(`【视频】🎉${result.err_tips}，获得:${result.data.amount}；`)
+           return showmsg()
+        }
+      else{
+          message += '⚠️异常:'+result.err_tips+'\n'+'慢点看，不要慌，一会恢复\n'
+	  console.log(`【视频】⚠️异常，${result.err_tips}；`)
+	  console.log(`【视频】任务都完成了；`)
+      }
+          resolve()
+    })
+   })
+  } 
+
+
+/*
 function watch_video(no) {
 return new Promise((resolve, reject) => {
   let watch_videourl ={
@@ -495,12 +686,16 @@ return new Promise((resolve, reject) => {
     })
    })
   } 
-async function showmsg(){
+  */
+  
+  
+  
+function showmsg(){
 if(tz==1){
     if ($.isNode()){
      $.log(message)
     if ((hour == 12 && minute <= 20) || (hour == 23 && minute >= 40)) {
-       await notify.sendNotify($.name,message)
+       notify.sendNotify($.name,message)
      }
    }else{
       $.log(message)
