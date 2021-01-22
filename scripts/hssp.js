@@ -466,7 +466,7 @@ return new Promise((resolve, reject) => {
 function watch_video() {
 return new Promise((resolve, reject) => {
   let watch_videourl ={
-    url: `https://ib-hl.snssdk.com/luckycat/hotsoon/v1/task/done/daily_read_1m?${hotsoonreadheader}`,
+    url: `https://ib-hl.snssdk.com/luckycat/hotsoon/v1/task/done/daily_read_1m?version_code=7.6.1&app_name=live_stream_lite&vid=3BF31D71-0ACC-4DFE-AC0B-205ED622689A&device_id=39130523029&channel=App%20Store&new_nav=0&aid=1350&ab_version=2067446,1973119,2063843,2047849,2034347,692223,2034342,1788894,2050796,1479194,2064875,1258912,1502676,1521584,2054328,1751686,2032795,1569024,1974898,1568502,2002020,2061162,1802649,1618171,1340191,1538111,1747490,2044031,1801793,1917928,2027698,1993142,1856843,1944969,2046205,1978300,2014044,1745643,2056447,1972816,1572498,1317441,2025428,1830690,1698610,1193350,1683111,1974796,1019139,2000818,1992860,1244221,1032070,2053929,2014325,1776523,1432944,1540549,2034028,2054501,2003548,1880631,1477983,2045890,1479342,1409058,1837386,1625927,1810166,1568502&ab_group=1568502&screen_width=1125&client_request_id=4ed4546452d4bccc83fe7135b1cd4b00&openudid=469b6aa79671477b1518eaa76a952d8b2421077c&live_sdk_version=7.6.1&update_version_code=7611&os_api=18&ws_status=CONNECTED&ac=4G&mccmnc=46000&os_version=14.0.1&client_version_code=761&device_platform=iphone&iid=1072730292362699&device_type=iPhone10,3&idfa=D22A293C-FEBD-4AF9-B404-54CEB7C2536A`,
     headers: JSON.parse(hotsoonreadkey),
     timeout: 60000,
 }
@@ -493,7 +493,7 @@ return new Promise((resolve, reject) => {
 function watch_video2() {
 return new Promise((resolve, reject) => {
   let watch_videourl ={
-    url: `https://ib-hl.snssdk.com/luckycat/hotsoon/v1/task/done/daily_read_2m?${hotsoonreadheader}`,
+    url: `https://ib-hl.snssdk.com/luckycat/hotsoon/v1/task/done/daily_read_2m?version_code=7.6.1&app_name=live_stream_lite&vid=3BF31D71-0ACC-4DFE-AC0B-205ED622689A&device_id=39130523029&channel=App%20Store&new_nav=0&aid=1350&ab_version=2067446,1973119,2063843,2047849,2034347,692223,2034342,1788894,2050796,1479194,2064875,1258912,1502676,1521584,2054328,1751686,2032795,1569024,1974898,1568502,2002020,2061162,1802649,1618171,1340191,1538111,1747490,2044031,1801793,1917928,2027698,1993142,1856843,1944969,2046205,1978300,2014044,1745643,2056447,1972816,1572498,1317441,2025428,1830690,1698610,1193350,1683111,1974796,1019139,2000818,1992860,1244221,1032070,2053929,2014325,1776523,1432944,1540549,2034028,2054501,2003548,1880631,1477983,2045890,1479342,1409058,1837386,1625927,1810166,1568502&ab_group=1568502&screen_width=1125&client_request_id=0ed2ff510668128be5e474d5b3a8e1b2&openudid=469b6aa79671477b1518eaa76a952d8b2421077c&live_sdk_version=7.6.1&update_version_code=7611&os_api=18&ws_status=CONNECTED&ac=4G&mccmnc=46000&os_version=14.0.1&client_version_code=761&device_platform=iphone&iid=1072730292362699&device_type=iPhone10,3&idfa=D22A293C-FEBD-4AF9-B404-54CEB7C2536A`,
     headers: JSON.parse(hotsoonreadkey),
     timeout: 60000,
 }
@@ -520,7 +520,7 @@ return new Promise((resolve, reject) => {
 function watch_video5() {
 return new Promise((resolve, reject) => {
   let watch_videourl ={
-    url: `https://ib-hl.snssdk.com/luckycat/hotsoon/v1/task/done/daily_read_5m?${hotsoonreadheader}`,
+    url: `https://ib-hl.snssdk.com/luckycat/hotsoon/v1/task/done/daily_read_5m?version_code=7.6.1&app_name=live_stream_lite&vid=3BF31D71-0ACC-4DFE-AC0B-205ED622689A&device_id=39130523029&channel=App%20Store&new_nav=0&aid=1350&ab_version=2067446,1973119,2063843,2047849,2034347,692223,2034342,1788894,2050796,1479194,2064875,1258912,1502676,1521584,2054328,1751686,2032795,1569024,1974898,1568502,2002020,2061162,1802649,1618171,1340191,1538111,1747490,2044031,1801793,1917928,2027698,1993142,1856843,1944969,2046205,1978300,2014044,1745643,2056447,1972816,1572498,1317441,2025428,1830690,1698610,1193350,1683111,1974796,1019139,2000818,1992860,1244221,1032070,2053929,2014325,1776523,1432944,1540549,2034028,2054501,2003548,1880631,1477983,2045890,1479342,1409058,1837386,1625927,1810166,1568502&ab_group=1568502&screen_width=1125&client_request_id=9cc4b1d612a567390dfe0f14c3d05f7e&openudid=469b6aa79671477b1518eaa76a952d8b2421077c&live_sdk_version=7.6.1&update_version_code=7611&os_api=18&ws_status=CONNECTED&ac=4G&mccmnc=46000&os_version=14.0.1&client_version_code=761&device_platform=iphone&iid=1072730292362699&device_type=iPhone10,3&idfa=D22A293C-FEBD-4AF9-B404-54CEB7C2536A`,
     headers: JSON.parse(hotsoonreadkey),
     timeout: 60000,
 }
@@ -547,7 +547,7 @@ return new Promise((resolve, reject) => {
 function watch_video10() {
 return new Promise((resolve, reject) => {
   let watch_videourl ={
-    url: `https://ib-hl.snssdk.com/luckycat/hotsoon/v1/task/done/daily_read_10m?${hotsoonreadheader}`,
+    url: `https://ib-hl.snssdk.com/luckycat/hotsoon/v1/task/done/daily_read_10m?version_code=7.6.1&app_name=live_stream_lite&vid=3BF31D71-0ACC-4DFE-AC0B-205ED622689A&device_id=39130523029&channel=App%20Store&new_nav=0&aid=1350&ab_version=2067446,1973119,2063843,2047849,2034347,2034342,1788894,2050796,1479194,2064875,1258912,1502676,1521584,2033755,2054328,2003548,2032795,1432944,1978300,1568502,2002020,2061162,1802649,1618171,1340191,1538111,1747490,2044031,1801793,1698610,1917928,2027698,1993142,1856843,1944969,2046205,1974898,2045890,2014044,1745643,1972816,2056447,1572498,1317441,2025428,1830690,692223,1193350,1683111,1974796,1019139,2000818,1992860,1244221,1032070,2053929,2014325,1776523,1569024,1540549,2034028,2054501,1751686,1880631,1477983,2057408,1479342,1409058,1837386,1625927,1810166,1568502&ab_group=1568502&screen_width=1125&client_request_id=3b8df69b0a65df1fa2ab484342abcbf3&openudid=469b6aa79671477b1518eaa76a952d8b2421077c&live_sdk_version=7.6.1&update_version_code=7611&os_api=18&ws_status=CLOSED&ac=WIFI&mccmnc=46000&os_version=14.0.1&client_version_code=761&device_platform=iphone&iid=1072730292362699&device_type=iPhone10,3&idfa=D22A293C-FEBD-4AF9-B404-54CEB7C2536A`,
     headers: JSON.parse(hotsoonreadkey),
     timeout: 60000,
 }
@@ -574,7 +574,7 @@ return new Promise((resolve, reject) => {
 function watch_video20() {
 return new Promise((resolve, reject) => {
   let watch_videourl ={
-    url: `https://ib-hl.snssdk.com/luckycat/hotsoon/v1/task/done/daily_read_20m?${hotsoonreadheader}`,
+    url: `https://ib-hl.snssdk.com/luckycat/hotsoon/v1/task/done/daily_read_20m?version_code=7.6.1&app_name=live_stream_lite&vid=3BF31D71-0ACC-4DFE-AC0B-205ED622689A&device_id=39130523029&channel=App%20Store&new_nav=0&aid=1350&ab_version=2067446,1973119,2063843,1138752,2034347,2034342,1788894,2050796,1479194,1856843,2064875,1258912,1502676,1521584,2054328,2003548,2032795,1432944,1978300,1568502,2002020,2061162,1802649,1618171,1340191,1538111,1747490,2044031,1801793,1917928,2027698,1993142,1698610,1944969,2046205,1974898,2045890,2014044,1745643,1972816,2056447,1572498,1317441,2025428,1830690,692223,2047849,1683111,1974796,1019139,2000818,1992860,1244221,1032070,2053929,2014325,1776523,1569024,1540549,2034028,2054501,1751686,1880631,1477983,2057408,1479342,1409058,1837386,1625927,1810166,1568502&ab_group=1568502&screen_width=1125&client_request_id=ca420553e3f89d4c327ad6af5c946413&openudid=469b6aa79671477b1518eaa76a952d8b2421077c&live_sdk_version=7.6.1&update_version_code=7611&os_api=18&ws_status=CONNECTED&ac=WIFI&mccmnc=46000&os_version=14.0.1&client_version_code=761&device_platform=iphone&iid=1072730292362699&device_type=iPhone10,3&idfa=D22A293C-FEBD-4AF9-B404-54CEB7C2536A`,
     headers: JSON.parse(hotsoonreadkey),
     timeout: 60000,
 }
@@ -601,7 +601,7 @@ return new Promise((resolve, reject) => {
 function watch_video30() {
 return new Promise((resolve, reject) => {
   let watch_videourl ={
-    url: `https://ib-hl.snssdk.com/luckycat/hotsoon/v1/task/done/daily_read_30m?${hotsoonreadheader}`,
+    url: `https://ib-hl.snssdk.com/luckycat/hotsoon/v1/task/done/daily_read_30m?version_code=7.6.1&app_name=live_stream_lite&vid=3BF31D71-0ACC-4DFE-AC0B-205ED622689A&device_id=39130523029&channel=App%20Store&new_nav=0&aid=1350&ab_version=2067446,2128510,2008899,2063843,2034342,692223,2109094,2118946,2081419,2050796,1479194,2128094,1258912,1502676,1521584,2144580,2149047,2128601,2128582,2108816,2003548,2146033,1568502,2002020,2146744,1540549,2127084,1802649,1618171,2076907,1340191,1538111,1745643,1801793,2080540,2097532,1917928,2071181,2101003,2027698,1993142,2108887,1856843,2134420,1978300,2014044,2128539,1972816,1479342,2148543,1317441,1830690,1698610,2146716,1683111,2093932,1747490,1974796,2143590,2146912,2119789,1019139,2000818,1992860,1032070,2112679,1776523,1440152,1569024,2034028,2115702,2133733,2146761,1751686,1880631,1477983,2138394,2130115,1572498,1409058,1837386,1625927,1810166,1568502&ab_group=1568502&screen_width=1125&client_request_id=1ff36e19bf565b0b21e75bbc3ce4381d&openudid=469b6aa79671477b1518eaa76a952d8b2421077c&live_sdk_version=7.6.1&update_version_code=7611&os_api=18&ws_status=CONNECTED&ac=4G&mccmnc=46000&os_version=14.1&client_version_code=761&device_platform=iphone&iid=1072730292362699&device_type=iPhone10,3&idfa=D22A293C-FEBD-4AF9-B404-54CEB7C2536A`,
     headers: JSON.parse(hotsoonreadkey),
     timeout: 60000,
 }
@@ -628,7 +628,7 @@ return new Promise((resolve, reject) => {
 function watch_video60() {
 return new Promise((resolve, reject) => {
   let watch_videourl ={
-    url: `https://ib-hl.snssdk.com/luckycat/hotsoon/v1/task/done/daily_read_60m?${hotsoonreadheader}`,
+    url: `https://ib-hl.snssdk.com/luckycat/hotsoon/v1/task/done/daily_read_60m?version_code=7.6.1&app_name=live_stream_lite&vid=3BF31D71-0ACC-4DFE-AC0B-205ED622689A&device_id=39130523029&channel=App%20Store&new_nav=0&aid=1350&ab_version=1973119,2067446,2063843,2034347,1944969,1788894,1440128,2050796,1479194,2064875,1258912,1502676,1521584,2054328,2003548,2032795,1432944,1978300,1568502,2002020,2061162,1802649,1618171,1340191,1538111,1747490,2044031,1801793,1698610,1917928,2027698,1993142,1856843,2034342,2046205,1974898,2045890,2014044,1745643,1972816,2056447,1479342,1317441,2025428,1830690,692223,2047849,1683111,1974796,1019139,2000818,1992860,1244221,1032070,2053929,2014325,1776523,1569024,1540549,2034028,2054501,1751686,1880631,1477983,2057408,1572498,2065549,1409058,1837386,1625927,1810166,1568502&ab_group=1568502&screen_width=1125&client_request_id=0b38575b8ba034ff01d53fd1330cec47&openudid=469b6aa79671477b1518eaa76a952d8b2421077c&live_sdk_version=7.6.1&update_version_code=7611&os_api=18&ws_status=CLOSED&ac=WIFI&mccmnc=46000&os_version=14.0.1&client_version_code=761&device_platform=iphone&iid=1072730292362699&device_type=iPhone10,3&idfa=D22A293C-FEBD-4AF9-B404-54CEB7C2536A`,
     headers: JSON.parse(hotsoonreadkey),
     timeout: 60000,
 }
@@ -645,7 +645,6 @@ return new Promise((resolve, reject) => {
       else{
           message += '⚠️异常:'+result.err_tips+'\n'+'慢点看，不要慌，一会恢复\n'
 	  console.log(`【视频】⚠️异常，${result.err_tips}；`)
-	  console.log(`【视频】任务都完成了；`)
       }
           resolve()
     })
