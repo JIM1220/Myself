@@ -227,7 +227,7 @@ return new Promise((resolve, reject) => {
    $.post(donejinCallback,async(error, response, data) =>{
      const code = JSON.parse(data)
 $.log('\n🔔開始領取翻倍奖励\n')
-      if(redbag.code == 1) {
+      if(code.code == 1) {
           $.log('\n🎉翻倍奖励領取成功\n')
            }else{
           $.log('\n⚠️翻倍奖励領取失敗:'+code.msg+'\n')
