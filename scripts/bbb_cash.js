@@ -57,7 +57,7 @@ if(CookieVal)$.setdata(CookieVal,'bbb_ck')
       notice = '';
       $.msg($.name,"開始🎉🎉🎉")
       await userInfo()
-      //await cash()
+      await cash()
       /*
       for (let h = 0; h < 30; h++) {
       console.log(`🚴‍♀️开始执行第${h+1}次阅读🚴‍♀️\n`)    
@@ -78,7 +78,6 @@ if(CookieVal)$.setdata(CookieVal,'bbb_ck')
 })()
     .catch((e) => $.logErr(e))
     .finally(() => $.done())
-
 
 function showmsg(){
   if ($.isNode()){
