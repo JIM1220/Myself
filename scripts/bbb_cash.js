@@ -55,9 +55,20 @@ if(CookieVal)$.setdata(CookieVal,'bbb_ck')
     for (let i = 0; i < bbb_ckArr.length; i++) {
     if (bbb_ckArr[i]) {
       CookieVal = bbb_ckArr[i];
+      notice = '';
       $.msg($.name,"開始🎉🎉🎉")
       await userInfo()
       await cash()
+      for (let h = 0; h < 30; h++) {
+      console.log(`🚴‍♀️开始执行第${h+1}次阅读🚴‍♀️\n`)    
+      await news()
+            } 
+      for (let k = 0; k < 4; k++) {
+      console.log(`🚴‍♀️开始领取第${k+1}阶段步数奖励🚴‍♀️\n`)    
+      await donejin()
+            } 
+      await collsteps()
+      await userInfo()
       await showmsg()
       }  
             }  
@@ -114,9 +125,6 @@ return new Promise((resolve, reject) => {
   } 
 
 
-
-
-
 function cash() {
 return new Promise((resolve, reject) => {
   let timestamp=new Date().getTime();
@@ -128,9 +136,123 @@ return new Promise((resolve, reject) => {
    $.post(tixian,async(error, response, data) =>{
      const cash = JSON.parse(data)
       if(cash.code == 1) {
-          $.log('\n🎉0.3元'+cash.tip+'💰\n')
+          $.log('\n🎉提现:0.3元'+cash.tip+'💰\n')
          }else{
-          $.log('\n🎉'+cash.msg+'\n')
+          $.log('\n⚠️提现:0.3元'+cash.msg+'\n')
+         }
+          resolve()
+    })
+   })
+  } 
+
+//开始阅读新闻/观看视频
+function news() {
+return new Promise((resolve, reject) => {
+  let timestamp=new Date().getTime();
+  let news ={
+    url: `https://bububao.duoshoutuan.com/user/news`,
+    headers: JSON.parse(CookieVal),
+    body: `type_class=2&`,
+}
+   $.post(news,async(error, response, data) =>{
+$.log('\n🔔開始查询阅读ID\n')
+     const code = JSON.parse(data)
+      if(code.code == 1) {
+      newsStr = code.nonce_str
+$.log('\n🔔查詢阅读ID成功,等待30s後領取首頁紅包\n')
+          await $.wait(30000)
+          await donenews()
+           }
+          resolve()
+    })
+   })
+  } 
+
+//领取阅读新闻/观看视频奖励
+function donenews() {
+return new Promise((resolve, reject) => {
+  let timestamp=new Date().getTime();
+  let donenews ={
+    url: `https://bububao.duoshoutuan.com/you/donenews`,
+    headers: JSON.parse(CookieVal),
+    body: `nonce_str=${newsStr}&`,
+}
+   $.post(donenews,async(error, response, data) =>{
+     const read = JSON.parse(data)
+$.log('\n🔔開始領取阅读奖励\n')
+      if(read.code == 1) {
+          $.log('\n🎉阅读金幣:'+read.jinbi+'金幣\n')
+           }else{
+          $.log('\n⚠️阅读金幣領取失敗:'read.msg+'\n')
+           }
+          resolve()
+    })
+   })
+  } 
+
+//首页步数奖励
+function donejin() {
+return new Promise((resolve, reject) => {
+  let timestamp=new Date().getTime();
+  let donejin ={
+    url: `https://bububao.duoshoutuan.com/user/donejin`,
+    headers: JSON.parse(CookieVal),
+}
+   $.post(donejin,async(error, response, data) =>{
+$.log('\n🔔開始领取步数奖励&查詢翻倍奖励ID\n')
+     const code = JSON.parse(data)
+      if(code.code == 1) {
+$.log('\n🎉步数奖励金幣:'+code.jinbi+'\n')
+      doubelStr = code.nonce_str
+$.log('\n🔔查詢翻倍奖励ID成功,等待30s後領取翻倍奖励\n')
+          await $.wait(30000)
+          await donejinCallback()
+           }else{
+          $.log('\n⚠️步数奖励領取失敗:'+code.msg+'\n')
+           }
+          resolve()
+    })
+   })
+  } 
+
+//首页步数奖励翻倍
+function donejinCallback() {
+return new Promise((resolve, reject) => {
+  let timestamp=new Date().getTime();
+  let donejinCallback ={
+    url: `https://bububao.duoshoutuan.com/you/callback`,
+    headers: JSON.parse(CookieVal),
+    body: `nonce_str=${doubelStr}&tid=20&pos=1&`,
+}
+   $.post(donejinCallback,async(error, response, data) =>{
+     const code = JSON.parse(data)
+$.log('\n🔔開始領取翻倍奖励\n')
+      if(redbag.code == 1) {
+          $.log('\n🎉翻倍奖励領取成功\n')
+           }else{
+          $.log('\n⚠️翻倍奖励領取失敗:'+code.msg+'\n')
+           }
+          resolve()
+    })
+   })
+  } 
+
+
+//首页步数兑换
+function collsteps() {
+return new Promise((resolve, reject) => {
+  let timestamp=new Date().getTime();
+  let collsteps ={
+    url: `https://bububao.duoshoutuan.com/user/collsteps`,
+    headers: JSON.parse(CookieVal),
+    body:`duihuan_dialog=1&`
+}
+   $.post(collsteps,async(error, response, data) =>{
+     const steps = JSON.parse(data)
+      if(steps.code == 1) {
+          $.log('\n🎉兑换步数:'+steps.jinbi+'金幣\n')
+         }else{
+          $.log('\n⚠️兑换步数:'+steps.msg+'\n')
          }
           resolve()
     })
