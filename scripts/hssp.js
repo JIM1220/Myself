@@ -36,7 +36,6 @@ if ($.isNode()) {
    minute = (new Date()).getMinutes();
 }
 //CK运行
-
 let isGetCookie = typeof $request !== 'undefined'
 if (isGetCookie) {
    GetCookie();
@@ -436,25 +435,25 @@ return new Promise((resolve, reject) => {
 function watch_video() {
 return new Promise((resolve, reject) => {
   let watch_videourl ={
-    url: `https://ib-hl.snssdk.com/luckycat/hotsoon/v1/task/done/daily_read_1m?version_code=7.6.1&app_name=live_stream_lite&vid=3BF31D71-0ACC-4DFE-AC0B-205ED622689A&device_id=39130523029&channel=App%20Store&new_nav=0&aid=1350&ab_version=2067446,1973119,2063843,2047849,2034347,692223,2034342,1788894,2050796,1479194,2064875,1258912,1502676,1521584,2054328,1751686,2032795,1569024,1974898,1568502,2002020,2061162,1802649,1618171,1340191,1538111,1747490,2044031,1801793,1917928,2027698,1993142,1856843,1944969,2046205,1978300,2014044,1745643,2056447,1972816,1572498,1317441,2025428,1830690,1698610,1193350,1683111,1974796,1019139,2000818,1992860,1244221,1032070,2053929,2014325,1776523,1432944,1540549,2034028,2054501,2003548,1880631,1477983,2045890,1479342,1409058,1837386,1625927,1810166,1568502&ab_group=1568502&screen_width=1125&client_request_id=4ed4546452d4bccc83fe7135b1cd4b00&openudid=469b6aa79671477b1518eaa76a952d8b2421077c&live_sdk_version=7.6.1&update_version_code=7611&os_api=18&ws_status=CONNECTED&ac=4G&mccmnc=46000&os_version=14.0.1&client_version_code=761&device_platform=iphone&iid=1072730292362699&device_type=iPhone10,3&idfa=D22A293C-FEBD-4AF9-B404-54CEB7C2536A`,
+    url: `https://ib-hl.snssdk.com/luckycat/hotsoon/v1/task/done/daily_read_1m?version_code=7.6.2&app_name=live_stream_lite&vid=3BF31D71-0ACC-4DFE-AC0B-205ED622689A&device_id=39130523029&new_nav=0&channel=App%20Store&aid=1350&ab_group=1568502&screen_width=1125&client_request_id=2a17bf508d69c145ea95cd22172eb776&openudid=469b6aa79671477b1518eaa76a952d8b2421077c&live_sdk_version=7.6.2&update_version_code=7621&os_api=18&ws_status=CLOSED&ac=WIFI&mccmnc=46000&os_version=14.3&client_version_code=762&device_platform=iphone&iid=2093119174358051&device_type=iPhone10,3&idfa=D22A293C-FEBD-4AF9-B404-54CEB7C2536A`,
     headers: {
-    "x-tt-trace-id": "00-cdbaea6f0991c5c6595db395c0190546-cdbaea6f0991c5c6-01",
-    "Connection": "keep-alive",
-    "Accept-Encoding": "gzip, deflate",
-    "X-SS-Cookie": "d_ticket=69df7879ed85d8d6df25c097ddbdbab6df6d2; sessionid=6597e13dfd11227bf36fce1eca5827a1; sessionid_ss=6597e13dfd11227bf36fce1eca5827a1; sid_guard=6597e13dfd11227bf36fce1eca5827a1%7C1601088733%7C4666122%7CThu%2C+19-Nov-2020+03%3A00%3A55+GMT; sid_tt=6597e13dfd11227bf36fce1eca5827a1; uid_tt=5a244300bff6516ca7f2ba133a906097; uid_tt_ss=5a244300bff6516ca7f2ba133a906097; excgd=20200926; install_id=4318520537256407; ttreq=1$052e85b9cedc836a2a84563da629dea0b875b2c9; odin_tt=80b652ee435fac613ac096685fa5a27f63d63c2bdf58931ab6097a945caf9b1928b4f1613c69f46e0dafd1692266d6d34b69287fd04483c1dca11b7258070e5b",
-    "sdk-version": "1",
-    "Content-Type": "application/json; encoding=utf-8",
-    "x-Tt-Token": "006597e13dfd11227bf36fce1eca5827a120971eb94efab62b6da3e0acb7ac819355ec8b451d423b4f3475228e4808c44e16",
-    "X-SS-STUB": "D41D8CD98F00B204E9800998ECF8427E",
-    "X-Khronos": "1601179412",
-    "User-Agent": "HotsoonLite 7.6.1 rv:7611 (iPhone; iOS 14.0.1; zh_CN) Cronet",
-    "tt-request-time": "1601179412729",
-    "Cookie": "odin_tt=80b652ee435fac613ac096685fa5a27f63d63c2bdf58931ab6097a945caf9b1928b4f1613c69f46e0dafd1692266d6d34b69287fd04483c1dca11b7258070e5b; excgd=20200926; sid_guard=6597e13dfd11227bf36fce1eca5827a1%7C1601088733%7C4666122%7CThu%2C+19-Nov-2020+03%3A00%3A55+GMT; uid_tt=5a244300bff6516ca7f2ba133a906097; uid_tt_ss=5a244300bff6516ca7f2ba133a906097; sid_tt=6597e13dfd11227bf36fce1eca5827a1; sessionid=6597e13dfd11227bf36fce1eca5827a1; sessionid_ss=6597e13dfd11227bf36fce1eca5827a1; d_ticket=69df7879ed85d8d6df25c097ddbdbab6df6d2; install_id=4318520537256407; ttreq=1$052e85b9cedc836a2a84563da629dea0b875b2c9",
-    "Host": "ib-hl.snssdk.com",
-    "X-Gorgon": "8402a04c00007e025a5bdcad2701b51a19c7eeb0709052e0ae32",
     "Accept": "application/json",
-    "Content-Length": "0"
-},
+    "Accept-Encoding": "gzip, deflate",
+    "Connection": "keep-alive",
+    "Content-Length": "0",
+    "Content-Type": "application/json; encoding=utf-8",
+    "Cookie": "d_ticket=69df7879ed85d8d6df25c097ddbdbab6df6d2; sid_guard=6597e13dfd11227bf36fce1eca5827a1%7C1610947638%7C5182664%7CFri%2C+19-Mar-2021+05%3A05%3A02+GMT; uid_tt=5a244300bff6516ca7f2ba133a906097; uid_tt_ss=5a244300bff6516ca7f2ba133a906097; sid_tt=6597e13dfd11227bf36fce1eca5827a1; sessionid=6597e13dfd11227bf36fce1eca5827a1; sessionid_ss=6597e13dfd11227bf36fce1eca5827a1; excgd=20210118; install_id=4318520537256407; ttreq=1$052e85b9cedc836a2a84563da629dea0b875b2c9; odin_tt=c240a2982d7efac981f786dda29f2e860d0464bdde0617aa99ec4fae14209909f9386cf155204320445320cec170606d7a88aa06194436f4c05b8661588816a9",
+    "Host": "ib-hl.snssdk.com",
+    "User-Agent": "HotsoonLite 7.6.2 rv:7621 (iPhone; iOS 14.3; zh_CN) Cronet",
+    "X-Gorgon": "8402e0a00000b26ef0d826680e196b643c4256c0ecbad650b371",
+    "X-Khronos": "1611380542",
+    "X-SS-Cookie": "odin_tt=c240a2982d7efac981f786dda29f2e860d0464bdde0617aa99ec4fae14209909f9386cf155204320445320cec170606d7a88aa06194436f4c05b8661588816a9; excgd=20210118; sessionid=6597e13dfd11227bf36fce1eca5827a1; sessionid_ss=6597e13dfd11227bf36fce1eca5827a1; sid_guard=6597e13dfd11227bf36fce1eca5827a1%7C1610947638%7C5182664%7CFri%2C+19-Mar-2021+05%3A05%3A02+GMT; sid_tt=6597e13dfd11227bf36fce1eca5827a1; uid_tt=5a244300bff6516ca7f2ba133a906097; uid_tt_ss=5a244300bff6516ca7f2ba133a906097; d_ticket=69df7879ed85d8d6df25c097ddbdbab6df6d2; install_id=4318520537256407; ttreq=1$052e85b9cedc836a2a84563da629dea0b875b2c9",
+    "X-SS-STUB": "D41D8CD98F00B204E9800998ECF8427E",
+    "sdk-version": "1",
+    "tt-request-time": "1611380539996",
+    "x-Tt-Token": "006597e13dfd11227bf36fce1eca5827a104cf6909d16014b54a583434f5430ccfd80840071ebf8ba8eaf325881e5bdbd827fd7c15be827db6960166600060f0b4f6a114b8d54287de3b69788d84baedb28b3c3ffc68e66fb89289de428a4af85dab4-1.0.1",
+    "x-tt-trace-id": "00-2dc3c3d50991c5c65952fad958b20546-2dc3c3d50991c5c6-01"
+   },
     timeout: 60000,
 }
    $.post(watch_videourl,async(error, response, data) =>{
