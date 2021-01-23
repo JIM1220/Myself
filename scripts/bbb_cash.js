@@ -3,8 +3,6 @@
 
 */
 
-
-
 const $ = new Env('步步寶')
 let notice = ''
 let bbb_ckArr = [], bbb_ck = "";
@@ -45,6 +43,7 @@ if(CookieVal)$.setdata(CookieVal,'bbb_ck')
    }
 } 
 
+
 !(async () => {
 
   if (!bbb_ckArr[0]) {
@@ -58,11 +57,13 @@ if(CookieVal)$.setdata(CookieVal,'bbb_ck')
       notice = '';
       $.msg($.name,"開始🎉🎉🎉")
       await userInfo()
-      await cash()
+      //await cash()
+      /*
       for (let h = 0; h < 30; h++) {
       console.log(`🚴‍♀️开始执行第${h+1}次阅读🚴‍♀️\n`)    
       await news()
             } 
+      */
       for (let k = 0; k < 4; k++) {
       console.log(`🚴‍♀️开始领取第${k+1}阶段步数奖励🚴‍♀️\n`)    
       await donejin()
@@ -77,8 +78,6 @@ if(CookieVal)$.setdata(CookieVal,'bbb_ck')
 })()
     .catch((e) => $.logErr(e))
     .finally(() => $.done())
-
-
 
 
 function showmsg(){
@@ -159,7 +158,7 @@ $.log('\n🔔開始查询阅读ID\n')
      const code = JSON.parse(data)
       if(code.code == 1) {
       newsStr = code.nonce_str
-$.log('\n🔔查詢阅读ID成功,等待30s後領取首頁紅包\n')
+$.log('\n🔔查詢阅读ID成功${newsStr},等待30s後領取首頁紅包\n')
           await $.wait(30000)
           await donenews()
            }
@@ -180,6 +179,7 @@ return new Promise((resolve, reject) => {
    $.post(donenews,async(error, response, data) =>{
      const read = JSON.parse(data)
 $.log('\n🔔開始領取阅读奖励\n')
+     $.log('\n${donenews}\n')
       if(read.code == 1) {
           $.log('\n🎉阅读金幣:'+read.jinbi+'金幣\n')
            }else{
