@@ -56,19 +56,19 @@ if(CookieVal)$.setdata(CookieVal,'bbb_ck')
       notice = '';
       $.msg($.name,"開始🎉🎉🎉")
       await userInfo()
-      await cash()
+      //await cash()
       /*
       for (let h = 0; h < 30; h++) {
       console.log(`🚴‍♀️开始执行第${h+1}次阅读🚴‍♀️\n`)    
       await news()
             } 
-      */
+
       for (let k = 0; k < 4; k++) {
       console.log(`🚴‍♀️开始领取第${k+1}阶段步数奖励🚴‍♀️\n`)    
       await donejin()
-            } 
-      //await collsteps()
-      await userInfo()
+            }       */
+      await collsteps()
+      //await userInfo()
       await showmsg()
       }  
             }  
@@ -243,7 +243,7 @@ return new Promise((resolve, reject) => {
   let collsteps ={
     url: `https://bububao.duoshoutuan.com/user/collsteps`,
     headers: JSON.parse(CookieVal),
-    body:`duihuan_dialog=1&`
+    body:`duihuan_dialog=0&`
 }
    $.post(collsteps,async(error, response, data) =>{
      const steps = JSON.parse(data)
