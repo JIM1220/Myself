@@ -1,6 +1,5 @@
 /*
 20210121
-
 */
 
 const $ = new Env('步步寶')
@@ -68,7 +67,7 @@ if(CookieVal)$.setdata(CookieVal,'bbb_ck')
       console.log(`🚴‍♀️开始领取第${k+1}阶段步数奖励🚴‍♀️\n`)    
       await donejin()
             } 
-      await collsteps()
+      //await collsteps()
       await userInfo()
       await showmsg()
       }  
