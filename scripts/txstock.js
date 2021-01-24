@@ -91,72 +91,49 @@ if ($.isNode()) {
 if (process.env.TX_TASKHEADER && process.env.TX_TASKHEADER.indexOf('\n') > -1) {
   taskheader = process.env.TX_TASKHEADER.split('\n');
   console.log(`您选择的是用换行隔开\n`)
-  } 
-  else
-  {
+  }  else  {
   taskheader = process.env.TX_TASKHEADER.split()
   } ;
 
-   if (process.env.HOTSOONSPAMKEY && process.env.HOTSOONSPAMKEY.indexOf('#') > -1) {
-   hotsoonspamkey = process.env.HOTSOONSPAMKEY.split('#');
-  }
-  else if (process.env.HOTSOONSPAMKEY && process.env.HOTSOONSPAMKEY.split('\n').length > 0) {
-   hotsoonspamkey = process.env.HOTSOONSPAMKEY.split('\n');
-  } else  {
-   hotsoonspamkey = process.env.HOTSOONSPAMKEY.split()
-  };
- 
 if (process.env.TX_TASKKEY && process.env.TX_TASKKEY.indexOf('\n') > -1) {
   taskkey = process.env.TX_TASKKEY.split('\n');
   console.log(`您选择的是用换行隔开\n`)
-  } 
-  else
-  {
+  }  else  {
   taskkey = process.env.TX_TASKKEY.split()
   } ;
   
 if (process.env.TX_USERHEADER && process.env.TX_USERHEADER.indexOf('\n') > -1) {
   userheader = process.env.TX_USERHEADER.split('\n');
   console.log(`您选择的是用换行隔开\n`)
-  } 
-  else
-  {
+  }  else  {
   userheader = process.env.TX_USERHEADER.split()
   } ;
 
 if (process.env.TX_USERKEY && process.env.TX_USERKEY.indexOf('\n') > -1) {
   userkey = process.env.TX_USERKEY.split('\n');
   console.log(`您选择的是用换行隔开\n`)
-  } 
-  else
-  {
+  }  else  {
   userkey = process.env.TX_USERKEY.split()
   } ;
 
 if (process.env.TX_SIGNHEADER && process.env.TX_SIGNHEADER.indexOf('\n') > -1) {
   signheader = process.env.TX_SIGNHEADER.split('\n');
   console.log(`您选择的是用换行隔开\n`)
-  } 
-  else
-  {
+  }  else  {
   signheader = process.env.TX_SIGNHEADER.split()
   } ;
 
 if (process.env.TX_SIGNKEY && process.env.TX_SIGNKEY.indexOf('\n') > -1) {
   signkey = process.env.TX_SIGNKEY.split('\n');
   console.log(`您选择的是用换行隔开\n`)
-  } 
-  else
-  {
+  }  else  {
   signkey = process.env.TX_SIGNKEY.split()
   } ;
   
   if (process.env.TX_WXTASKKEY && process.env.TX_WXTASKKEY.indexOf('\n') > -1) {
   wxtaskkey = process.env.TX_WXTASKKEY.split('\n');
   console.log(`您选择的是用换行隔开\n`)
-  } 
-  else
-  {
+  }  else  {
   wxtaskkey = process.env.TX_WXTASKKEY.split()
   } ;
 
@@ -165,12 +142,6 @@ if (process.env.TX_SIGNKEY && process.env.TX_SIGNKEY.indexOf('\n') > -1) {
       userheaderArr.push(userheaderVal[item])
     }
   });
-
-Object.keys(hotsoonspamheader).forEach((item) => {
-        if (hotsoonspamheader[item]) {
-          hotsoonspamheaderArr.push(hotsoonspamheader[item])
-        }
-    });
 
   Object.keys(userkeyVal).forEach((item) => {
     if (userkeyVal[item]) {
