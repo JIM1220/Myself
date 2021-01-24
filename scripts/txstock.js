@@ -221,14 +221,15 @@ if (process.env.TX_SIGNKEY && process.env.TX_SIGNKEY.indexOf('\n') > -1) {
   wxtaskkeyVal = wxtaskkeyArr[i];
   console.log(`\n✅ 查询目前账户金币\n`)
   await userhome(); //金币查询
+/*
   console.log(`\n✅ 执行【签到】任务\n`)
   await signtask();
-  /*
+  
   if (!taskheaderArr[0]) {
     console.log($.name, '【提示】请先前往获取任务cookie')
     return;
   }
-  */
+ 
   console.log(`\n✅ 执行【App】日常任务\n`)
   await task1();
   await task2();
@@ -253,6 +254,7 @@ if (process.env.TX_SIGNKEY && process.env.TX_SIGNKEY.indexOf('\n') > -1) {
   await wxtask11();
   await cashorder(cash, money);
   await showmsg();
+ */
     }  
     }  
   console.log(`🏃‍♂️🏃‍♂️🏃‍♂️所有任务已完成🏃‍♂️🏃‍♂️🏃‍♂️`)    
