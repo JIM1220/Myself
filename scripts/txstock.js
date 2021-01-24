@@ -913,7 +913,7 @@ async function userhome() {
   return new Promise((resolve) => {
     let signurl = {
       url: `https://wzq.tenpay.com/cgi-bin/activity_usercenter.fcgi?channel=1&g_openid=${userheaderVal}`,
-      body: ``,
+      //body: ``,
       headers: {
         'Cookie': `${userkeyVal}`,
         'Accept': `*/*`,
