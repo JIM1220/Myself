@@ -1,0 +1,44 @@
+name: txstock
+
+on:
+  workflow_dispatch:
+  schedule:
+     - cron: '39 1 * * *'
+  watch:
+    types: started
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: github.event.repository.owner.id == github.event.sender.id
+    env:
+        TX_USERHEADER: ${{ secrets.TX_USERHEADER }}
+        TX_USERKEY: ${{ secrets.TX_USERKEY }}        
+        TX_SIGNHEADER: ${{ secrets.TX_SIGNHEADER }}
+        TX_SIGNKEY: ${{ secrets.TX_SIGNKEY }}        
+        TX_TASKHEADER: ${{ secrets.TX_TASKHEADER }}        
+        TX_TASKKEY: ${{ secrets.TX_TASKKEY }}        
+        TX_WXTASKKEY: ${{ secrets.TX_WXTASKKEY }}        
+        TZ: Asia/shanghai
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+        
+      - name: Use Node.js 12.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - name: npm install
+        run: |
+          npm install
+      - name: '运行 【txstock】'
+        if: env.TX_TASKHEADER
+        run: |
+          node scripts/txstock.js
+        env:
+          PUSH_KEY: ${{ secrets.PUSH_KEY }}
+          BARK_PUSH: ${{ secrets.BARK_PUSH }}
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_USER_ID: ${{ secrets.TG_USER_ID }}
+          BARK_SOUND: ${{ secrets.BARK_SOUND }}
+          DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
+          DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
