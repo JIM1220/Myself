@@ -243,7 +243,7 @@ return new Promise((resolve, reject) => {
   let collsteps ={
     url: `https://bububao.duoshoutuan.com/user/collsteps`,
     headers: JSON.parse(CookieVal),
-    body:`duihuan_dialog=0&`
+    body:`duihuan_dialog=1&`
 }
    $.post(collsteps,async(error, response, data) =>{
      const steps = JSON.parse(data)
