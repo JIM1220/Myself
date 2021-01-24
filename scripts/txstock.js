@@ -97,6 +97,15 @@ if (process.env.TX_TASKHEADER && process.env.TX_TASKHEADER.indexOf('\n') > -1) {
   taskheader = process.env.TX_TASKHEADER.split()
   } ;
 
+   if (process.env.HOTSOONSPAMKEY && process.env.HOTSOONSPAMKEY.indexOf('#') > -1) {
+   hotsoonspamkey = process.env.HOTSOONSPAMKEY.split('#');
+  }
+  else if (process.env.HOTSOONSPAMKEY && process.env.HOTSOONSPAMKEY.split('\n').length > 0) {
+   hotsoonspamkey = process.env.HOTSOONSPAMKEY.split('\n');
+  } else  {
+   hotsoonspamkey = process.env.HOTSOONSPAMKEY.split()
+  };
+ 
 if (process.env.TX_TASKKEY && process.env.TX_TASKKEY.indexOf('\n') > -1) {
   taskkey = process.env.TX_TASKKEY.split('\n');
   console.log(`您选择的是用换行隔开\n`)
@@ -156,6 +165,13 @@ if (process.env.TX_SIGNKEY && process.env.TX_SIGNKEY.indexOf('\n') > -1) {
       userheaderArr.push(userheaderVal[item])
     }
   });
+
+Object.keys(hotsoonspamheader).forEach((item) => {
+        if (hotsoonspamheader[item]) {
+          hotsoonspamheaderArr.push(hotsoonspamheader[item])
+        }
+    });
+
   Object.keys(userkeyVal).forEach((item) => {
     if (userkeyVal[item]) {
       userkeyArr.push(userkeyVal[item])
@@ -186,6 +202,7 @@ if (process.env.TX_SIGNKEY && process.env.TX_SIGNKEY.indexOf('\n') > -1) {
       wxtaskkeyArr.push(wxtaskkeyVal[item])
     }
   });
+  console.log(`============ 共${hotsoonspamheaderArr.length}个账号  =============\n`)
  console.log(`============ 共${taskheaderArr.length}个账号  =============\n`)
  console.log(`============ 脚本执行-国际标准时间(UTC)：${new Date().toLocaleString()}  =============\n`)
  console.log(`============ 脚本执行-北京时间(UTC+8)：${new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleString()}  =============\n`)
