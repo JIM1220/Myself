@@ -58,31 +58,38 @@ let tz = '';
 let cash = $.getval('cash') || 0; //0为不自动提现,1为自动提现1元,5为自动提现1元,
 
 const userheaderArr = [];
-let userheaderVal = "";
+//let userheaderVal = "";
+let userheader = $.getdata('userheader')
 let USERHEADER = [];
 
 const userkeyArr = [];
-let userkeyVal = "";
+//let userkeyVal = "";
+let userkey = $.getdata('userkey')
 let USERKEY = [];
 
 const signheaderArr = [];
-let signheaderVal = "";
+//let signheaderVal = "";
+let signheader = $.getdata('signheader')
 let SINGHEADER = [];
 
 const signkeyArr = [];
-let signkeyVal = "";
+//let signkeyVal = "";
+let signkey = $.getdata('signkey')
 let SINGKEY = [];
 
 const taskheaderArr = [];
-let taskheaderVal = "";
+//let taskheaderVal = "";
+let taskheader = $.getdata('taskheader')
 let TASKHEADER = [];
 
 const taskkeyArr = [];
-let taskkeyVal = "";
+//let taskkeyVal = "";
+let taskkey = $.getdata('taskkey')
 let TASKKEY = [];
 
 const wxtaskkeyArr = [];
-let wxtaskkeyVal = "";
+//let wxtaskkeyVal = "";
+let wxtaskkey = $.getdata('wxtaskkey')
 let WXTASKKEY = [];
 ////////////////////////////////////////////////////////////////////
 
