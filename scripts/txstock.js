@@ -173,7 +173,7 @@ if (process.env.TX_SIGNKEY && process.env.TX_SIGNKEY.indexOf('\n') > -1) {
       wxtaskkeyArr.push(wxtaskkeyVal[item])
     }
   });
-  console.log(`============ 共${hotsoonspamheaderArr.length}个账号  =============\n`)
+
  console.log(`============ 共${taskheaderArr.length}个账号  =============\n`)
  console.log(`============ 脚本执行-国际标准时间(UTC)：${new Date().toLocaleString()}  =============\n`)
  console.log(`============ 脚本执行-北京时间(UTC+8)：${new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleString()}  =============\n`)
