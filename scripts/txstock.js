@@ -58,38 +58,38 @@ let tz = '';
 let cash = $.getval('cash') || 0; //0为不自动提现,1为自动提现1元,5为自动提现1元,
 
 const userheaderArr = [];
-//let userheaderVal = "";
-let userheader = $.getdata('userheader')
+let userheaderVal = "";
+//let userheader = $.getdata('userheader')
 let USERHEADER = [];
 
 const userkeyArr = [];
-//let userkeyVal = "";
-let userkey = $.getdata('userkey')
+let userkeyVal = "";
+//let userkey = $.getdata('userkey')
 let USERKEY = [];
 
 const signheaderArr = [];
-//let signheaderVal = "";
-let signheader = $.getdata('signheader')
+let signheaderVal = "";
+//let signheader = $.getdata('signheader')
 let SINGHEADER = [];
 
 const signkeyArr = [];
-//let signkeyVal = "";
-let signkey = $.getdata('signkey')
+let signkeyVal = "";
+//let signkey = $.getdata('signkey')
 let SINGKEY = [];
 
 const taskheaderArr = [];
-//let taskheaderVal = "";
-let taskheader = $.getdata('taskheader')
+let taskheaderVal = "";
+//let taskheader = $.getdata('taskheader')
 let TASKHEADER = [];
 
 const taskkeyArr = [];
-//let taskkeyVal = "";
-let taskkey = $.getdata('taskkey')
+let taskkeyVal = "";
+//let taskkey = $.getdata('taskkey')
 let TASKKEY = [];
 
 const wxtaskkeyArr = [];
-//let wxtaskkeyVal = "";
-let wxtaskkey = $.getdata('wxtaskkey')
+let wxtaskkeyVal = "";
+//let wxtaskkey = $.getdata('wxtaskkey')
 let WXTASKKEY = [];
 ////////////////////////////////////////////////////////////////////
 
@@ -144,40 +144,40 @@ if (process.env.TX_SIGNKEY && process.env.TX_SIGNKEY.indexOf('\n') > -1) {
   wxtaskkey = process.env.TX_WXTASKKEY.split()
   } ;
 
-  Object.keys(userheaderVal).forEach((item) => {
-    if (userheaderVal[item]) {
-      userheaderArr.push(userheaderVal[item])
+  Object.keys(userheader).forEach((item) => {
+    if (userheader[item]) {
+      userheaderArr.push(userheader[item])
     }
   });
 
-  Object.keys(userkeyVal).forEach((item) => {
-    if (userkeyVal[item]) {
-      userkeyArr.push(userkeyVal[item])
+  Object.keys(userkey).forEach((item) => {
+    if (userkey[item]) {
+      userkeyArr.push(userkey[item])
     }
   });
-  Object.keys(signheaderVal).forEach((item) => {
-    if (signheaderVal[item]) {
-      signheaderArr.push(signheaderVal[item])
+  Object.keys(signheader).forEach((item) => {
+    if (signheader[item]) {
+      signheaderArr.push(signheader[item])
     }
   });
-  Object.keys(signkeyVal).forEach((item) => {
-    if (signkeyVal[item]) {
-      signkeyArr.push(signkeyVal[item])
+  Object.keys(signkey).forEach((item) => {
+    if (signkey[item]) {
+      signkeyArr.push(signkey[item])
     }
   });
-  Object.keys(taskheaderVal).forEach((item) => {
-    if (taskheaderVal[item]) {
-      taskheaderArr.push(taskheaderVal[item])
+  Object.keys(taskheader).forEach((item) => {
+    if (taskheader[item]) {
+      taskheaderArr.push(taskheader[item])
     }
   });
-  Object.keys(taskkeyVal).forEach((item) => {
-    if (taskkeyVal[item]) {
-      taskkeyArr.push(taskkeyVal[item])
+  Object.keys(taskkey).forEach((item) => {
+    if (taskkey[item]) {
+      taskkeyArr.push(taskkey[item])
     }
   });
-  Object.keys(wxtaskkeyVal).forEach((item) => {
-    if (wxtaskkeyVal[item]) {
-      wxtaskkeyArr.push(wxtaskkeyVal[item])
+  Object.keys(wxtaskkey).forEach((item) => {
+    if (wxtaskkey[item]) {
+      wxtaskkeyArr.push(wxtaskkey[item])
     }
   });
 
