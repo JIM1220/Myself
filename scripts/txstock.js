@@ -95,7 +95,7 @@ if (process.env.TX_TASKHEADER && process.env.TX_TASKHEADER.indexOf('\n') > -1) {
   else
   {
   taskheader = process.env.TX_TASKHEADER.split()
-  } 
+  } ;
 
 if (process.env.TX_TASKKEY && process.env.TX_TASKKEY.indexOf('\n') > -1) {
   taskkey = process.env.TX_TASKKEY.split('\n');
@@ -104,7 +104,7 @@ if (process.env.TX_TASKKEY && process.env.TX_TASKKEY.indexOf('\n') > -1) {
   else
   {
   taskkey = process.env.TX_TASKKEY.split()
-  } 
+  } ;
   
 if (process.env.TX_USERHEADER && process.env.TX_USERHEADER.indexOf('\n') > -1) {
   userheader = process.env.TX_USERHEADER.split('\n');
@@ -113,7 +113,7 @@ if (process.env.TX_USERHEADER && process.env.TX_USERHEADER.indexOf('\n') > -1) {
   else
   {
   userheader = process.env.TX_USERHEADER.split()
-  } 
+  } ;
 
 if (process.env.TX_USERKEY && process.env.TX_USERKEY.indexOf('\n') > -1) {
   userkey = process.env.TX_USERKEY.split('\n');
@@ -122,7 +122,7 @@ if (process.env.TX_USERKEY && process.env.TX_USERKEY.indexOf('\n') > -1) {
   else
   {
   userkey = process.env.TX_USERKEY.split()
-  } 
+  } ;
 
 if (process.env.TX_SIGNHEADER && process.env.TX_SIGNHEADER.indexOf('\n') > -1) {
   signheader = process.env.TX_SIGNHEADER.split('\n');
@@ -131,7 +131,7 @@ if (process.env.TX_SIGNHEADER && process.env.TX_SIGNHEADER.indexOf('\n') > -1) {
   else
   {
   signheader = process.env.TX_SIGNHEADER.split()
-  } 
+  } ;
 
 if (process.env.TX_SIGNKEY && process.env.TX_SIGNKEY.indexOf('\n') > -1) {
   signkey = process.env.TX_SIGNKEY.split('\n');
@@ -140,7 +140,7 @@ if (process.env.TX_SIGNKEY && process.env.TX_SIGNKEY.indexOf('\n') > -1) {
   else
   {
   signkey = process.env.TX_SIGNKEY.split()
-  } 
+  } ;
   
   if (process.env.TX_WXTASKKEY && process.env.TX_WXTASKKEY.indexOf('\n') > -1) {
   wxtaskkey = process.env.TX_WXTASKKEY.split('\n');
@@ -149,7 +149,7 @@ if (process.env.TX_SIGNKEY && process.env.TX_SIGNKEY.indexOf('\n') > -1) {
   else
   {
   wxtaskkey = process.env.TX_WXTASKKEY.split()
-  } 
+  } ;
 
   Object.keys(userheaderVal).forEach((item) => {
     if (userheaderVal[item]) {
