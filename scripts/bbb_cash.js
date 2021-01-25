@@ -56,7 +56,7 @@ if(CookieVal)$.setdata(CookieVal,'bbb_ck')
       notice = '';
       $.msg($.name,"開始🎉🎉🎉")
       await userInfo()
-      //await cash()
+      await cash()
       /*
       for (let h = 0; h < 30; h++) {
       console.log(`🚴‍♀️开始执行第${h+1}次阅读🚴‍♀️\n`)    
@@ -64,11 +64,13 @@ if(CookieVal)$.setdata(CookieVal,'bbb_ck')
             } 
       */
       await userHome()
+      await getStep()      
       for (let k = 0; k < 4; k++) {
       console.log(`🚴‍♀️开始领取第${k+1}阶段步数奖励🚴‍♀️\n`)    
       await donejin()
             }       
       await collsteps()
+      await collstepsbackup()
       await userInfo()
       await showmsg()
       }  
@@ -204,6 +206,23 @@ return new Promise((resolve, reject) => {
    })
   } 
 
+
+function getStep() {
+return new Promise((resolve, reject) => {
+  let timestamp=new Date().getTime();
+  let getStep ={
+    url: 'https://bububao.duoshoutuan.com/user/get_step7',
+    headers: JSON.parse(CookieVal),
+}
+   $.post(getStep,async(error, response, data) =>{
+     const getstep = JSON.parse(data)
+     //const todaysteps = getstep[0].steps
+     $.log('\n🎉今日步数:'+getstep[0].steps+'\n')
+          resolve()
+    })
+   })
+  } 
+
 //首页步数奖励
 function donejin() {
 return new Promise((resolve, reject) => {
@@ -254,6 +273,26 @@ $.log('\n🔔開始領取翻倍奖励\n')
 
 //首页步数兑换
 function collsteps() {
+return new Promise((resolve, reject) => {
+  let timestamp=new Date().getTime();
+  let collsteps ={
+    url: `https://bububao.duoshoutuan.com/user/collsteps`,
+    headers: JSON.parse(CookieVal),
+    body:`duihuan_dialog=0&`
+}
+   $.post(collsteps,async(error, response, data) =>{
+     const steps = JSON.parse(data)
+      if(steps.code == 1) {
+          $.log('\n🎉兑换步数:'+steps.jinbi+'金幣\n')
+         }else{
+          $.log('\n⚠️兑换步数:'+steps.msg+'\n')
+         }
+          resolve()
+    })
+   })
+  } 
+
+function collstepsbackup() {
 return new Promise((resolve, reject) => {
   let timestamp=new Date().getTime();
   let collsteps ={
