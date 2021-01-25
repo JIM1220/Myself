@@ -56,13 +56,14 @@ if(CookieVal)$.setdata(CookieVal,'bbb_ck')
       notice = '';
       $.msg($.name,"開始🎉🎉🎉")
       await userInfo()
-      await cash()
+      //await cash()
       /*
       for (let h = 0; h < 30; h++) {
       console.log(`🚴‍♀️开始执行第${h+1}次阅读🚴‍♀️\n`)    
       await news()
             } 
       */
+      await userHome()
       for (let k = 0; k < 4; k++) {
       console.log(`🚴‍♀️开始领取第${k+1}阶段步数奖励🚴‍♀️\n`)    
       await donejin()
@@ -183,6 +184,21 @@ $.log('\n🔔開始領取阅读奖励\n')
            }else{
           $.log('\n⚠️阅读金幣領取失敗:'+read.msg+'\n')
            }
+          resolve()
+    })
+   })
+  } 
+
+function userHome() {
+return new Promise((resolve, reject) => {
+  let timestamp=new Date().getTime();
+  let userHome ={
+    url: 'https://bububao.duoshoutuan.com/user/home',
+    headers: JSON.parse(CookieVal),
+}
+   $.post(userHome,async(error, response, data) =>{
+     const userhome = JSON.parse(data)
+     $.log('\n🎉步数奖励:'+userhome.steps_txt+'\n')
           resolve()
     })
    })
