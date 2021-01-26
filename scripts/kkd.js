@@ -115,6 +115,7 @@ if (!kkdcookieArr[0]) {
       $.index = i + 1;
       console.log(`\n开始【快看点${$.index}】`)
       await userinfo()
+      await sign()
       await control()
       await intervalAward()
       await lotteryTable()
@@ -217,6 +218,7 @@ return new Promise((resolve, reject) => {
    $.get(signurl,(error, response, data) =>{
      const result = JSON.parse(data)
       if(logs) $.log(data)
+        message += '📣签到\n'
       if(result.message == 'success') {
           message +='🎉'+result.data.title+','+result.data.subTitle+'\n'
   
