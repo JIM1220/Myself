@@ -200,6 +200,34 @@ return new Promise((resolve, reject) => {
     })
    })
   } 
+
+//签到
+function sign() {
+return new Promise((resolve, reject) => {
+  let signurl ={
+    url: `https://api.yuncheapp.cn/pearl-incentive/api/v1/task/signIn/get?${kkdheader}`,
+    headers: {
+              Cookie: kkdcookie,
+              'Connection': 'keep-alive',
+              'Content-Type': 'application/json',
+              'Host': 'api.yuncheapp.cn',
+              'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 12_4_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148'
+          }
+}
+   $.get(signurl,(error, response, data) =>{
+     const result = JSON.parse(data)
+      if(logs) $.log(data)
+      if(result.message == 'success') {
+          message +='🎉'+result.data.title+','+result.data.subTitle+'\n'
+  
+}     else{
+          message += '⚠️异常'+result.message
+}
+          resolve()
+    })
+   })
+  } 
+
 //大转盘
 function lotteryTable() {
 return new Promise((resolve, reject) => {
