@@ -206,7 +206,7 @@ return new Promise((resolve, reject) => {
 function sign() {
 return new Promise((resolve, reject) => {
   let signurl ={
-    url: `https://api.yuncheapp.cn/pearl-incentive/api/v1/task/signIn/get?${kkdheader}`,
+    url: `https://api.yuncheapp.cn/pearl-incentive/api/v1/task/signIn/get?did=C7E826DD-5EE6-4242-9756-70E2751B113A&kpn=pearl&ve=3.9.0&nt=4g&fr=iOS&lon=MTIwLjM2MDY3MA%3D%3D&kpf=IPHONE&os=14.3&oc=apple&mi=D22A293C-FEBD-4AF9-B404-54CEB7C2536A&adve=3.2.0&isp=460_00&sr=1125*2436&lat=MzEuNTQ1MDY2&ss=&dpbs=3sCt3iAAMjE4NDc3MTU5AQIQAIinM9cFFPd45BAAAAD6YxuA4ai4/iLrMolNAJry&egid=DFP5D0345A52C7D85CC1695850559469F050832AA74291190C7392A237B1582A&md=iPhone%20X&app=pearl&__clientSign2=PJD3Sl_09e4yMTg0NzcxNTg4YzgyNzhkY2NjZDVkYzRmZDgyNDdmNWE1YzgyNDdkMGI%3D`,
     headers: {
               Cookie: kkdcookie,
               'Connection': 'keep-alive',
@@ -223,7 +223,7 @@ return new Promise((resolve, reject) => {
           message +='🎉'+result.data.title+','+result.data.subTitle+'\n'
   
 }     else{
-          message += '⚠️异常'+result.message
+          message += '⚠️异常'+result.message+'\n'
 }
           resolve()
     })
