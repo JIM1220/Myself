@@ -124,6 +124,7 @@ if (!kkdcookieArr[0]) {
       await extra_getcoins()
       await giftRain()
       await giftRain_getcoins()
+      await yhsc()
       await showmsg()
   }
  }
@@ -403,6 +404,38 @@ return new Promise((resolve, reject) => {
     })
    })
   } 
+
+//银行视察
+function yhsc() {
+return new Promise((resolve, reject) => {
+  let yhscurl ={
+    url: `https://api.yuncheapp.cn/pearl-incentive/api/v1/bank/wakeup?${kkdheader}`,
+    headers: {
+              Cookie: kkdcookie,
+              'Connection': 'keep-alive',
+              'Content-Type': 'application/json',
+              'Host': 'api.yuncheapp.cn',
+              'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 12_4_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148'
+          }
+}
+   $.get(yhscurl,(error, response, data) =>{
+     const result = JSON.parse(data)
+      if(logs)  $.log(data)
+      message +='📣银行视察任务\n'
+      if(result.message == 'success') {
+        message += result.data.durationAvail+'\n'
+        }
+      else{
+        message +='⚠️异常:'+result.message+'\n'
+           }
+          resolve()
+    })
+   })
+  } 
+
+
+
+
 var Time = new Date(new Date().getTime() + 8 * 60 * 60 * 1000);
 async function showmsg(){
 if(tz==1){
