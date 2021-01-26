@@ -409,7 +409,7 @@ return new Promise((resolve, reject) => {
 function yhsc() {
 return new Promise((resolve, reject) => {
   let yhscurl ={
-    url: `https://api.yuncheapp.cn/pearl-incentive/api/v1/bank/wakeup?${kkdheader}`,
+    url: `https://api.yuncheapp.cn/pearl-incentive/api/v1/bank/wakeup?did=C7E826DD-5EE6-4242-9756-70E2751B113A&kpn=pearl&ve=3.9.0&nt=4g&fr=iOS&lon=MTIwLjM2MDY3MA%3D%3D&kpf=IPHONE&os=14.3&oc=apple&mi=D22A293C-FEBD-4AF9-B404-54CEB7C2536A&adve=3.2.0&isp=460_00&sr=1125*2436&lat=MzEuNTQ1MDY2&coins=0&ss=&dpbs=3sCt3iAAMjE4NTAwMzEzAQIQAIinM9cFFPd45BAAAAD6YxuA4ai4/iLrMolNAJry&egid=DFP1FCA8BBBFDF2FA1C468C4FB65060148409A188D7EE4B135ACB24F036BD9E5&md=iPhone%20X&app=pearl&__clientSign2=g_FZQl_wjhIyMTg1MDA0MDI4YzgwOGEzODliYWQ0NTk5Yzk5NzRjOTZiYWM3Zjk2MGE%3D`,
     headers: {
               Cookie: kkdcookie,
               'Connection': 'keep-alive',
