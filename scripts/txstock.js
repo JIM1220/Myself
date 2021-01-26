@@ -5,19 +5,14 @@
  ┋┋ ╭╯╰╮╰┉╮┋ ┋┋ ┋┋┋┋┋┋  ┋ ╰╮
  ┋┋ ┋╭╮┋╭┉╯┋ ┋┋ ┋╰╯┋┋╰┉╮┋╭╮┋
  ╰╯ ╰╯╰╯╰┉┉╯ ╰╯ ╰┉┉╯╰┉┉╯╰╯╰╯
-
 //!!!:
 【BOXJS】：https://raw.githubusercontent.com/CenBoMin/GithubSync/main/cenbomin.box.json
-
 #运行脚本前请先下载app,登录。。。手动完成成长任务,有钱
 #8.8打卡任务也手动做,建议只打卡4个成功即可,第5个基本拿不到
 #微信小程序-腾讯自选股和app的日常任务是分开的,毛比较少,手动做吧！
 #点以下链接,到微信帮我助力(应该可以)
 https://zqact01.tenpay.com/activity/page/200814appInvite/#/new?stat_data=Ovy34p00pn019&invite_code=i02Fvx18dc&nick_name=%E9%99%88%E6%9F%8F%E9%8A%98&head_url=https%3A%2F%2Fthirdwx.qlogo.cn%2Fmmopen%2Fvi_32%2FQ0j4TwGTfTLWqFtqq3JGenAvqEnZhiazoeCicjicAZhEiaCib1LqSCHtC8sPLbG52YiajLZh8VRkY8bWu0uu24AKjgfA%2F132
-
-
 特别感谢烧烤哥,loon用户可以用这个专门的conf：https://raw.githubusercontent.com/CenBoMin/GithubSync/main/TXSTOCK/txsloon_cookie.conf
-
 **** 重写引用 ****
 app：https://raw.githubusercontent.com/CenBoMin/GithubSync/main/TXSTOCK/txs_cookie.conf
 微信小程序：https://raw.githubusercontent.com/CenBoMin/GithubSync/main/TXSTOCK/txs_wxcookie.conf
@@ -31,21 +26,15 @@ userheader：点击左上头像-进入即获取
 userkey：点击左上头像-进入即获取
 signheader：禁用获取cookie重写,重新打开app,点击左上头像-进入,等待我的福利下面活动加载成功,启用获取cookie重写,然后再点击第一个猜涨跌活动的页面就能够获取到了。。。
 signkey：禁用获取cookie重写,重新打开app,点击左上头像-进入,等待我的福利下面活动加载成功,启用获取cookie重写,然后再点击第一个猜涨跌活动的页面就能够获取到了。。。
-
 ！！！！！微信和app重写有冲突,不能两个同时开
 ！！！！！必须先关闭app重写,在加入微信小程序重写https://raw.githubusercontent.com/CenBoMin/GithubSync/main/TXSTOCK/txs_wxcookie.conf,启用之后就可以去微信小程序做任务获取cookie
-
 wxtaskkey:进入微信小程序,做一个任务就可以获取,不行就在做下一个,社区或者分享型任务先试试
-
 ！！！！！获取完cookie,务必关闭重写引用
-
 #脚本一天只运行一次,本脚本虽然加了防呆机制,但是还是尽量避免运行多次
 #且用且珍惜,更新无限期。
-
 // 手动做:
 # 模拟炒股周赛奖励：星期天登录模拟炒股(微信/app)
 # 周一抢牛活动：周一登录抢牛活动页面（app）
-
 */
 const jsname = '腾讯自选股'
 const $ = Env(jsname)
@@ -240,12 +229,6 @@ if (process.env.TX_SIGNKEY && process.env.TX_SIGNKEY.indexOf('\n') > -1) {
   await wxtask9();
   await wxtask10();
   await wxtask11();
-  console.log(`\n✅ 执行【长牛来啦🐂】日常任务\n`)
-  await cowtask1();
-  await cowtask2();
-  await cowtask3();
-  await cowtask4();
-  await cowtask5();
   await cashorder(cash, money);
   await showmsg();
     }  
@@ -392,7 +375,6 @@ function getcash1(cashticket) {
     });
   });
 }
-
 function getcash5(cashticket) {
   return new Promise((resolve) => {
     let url = {
@@ -521,72 +503,6 @@ function guessred() {
 }
 
 //////////////////////////////////////////////////////////////////
-async function cowtask1() {
-  console.log(`开始验证【COW阅读一篇资讯】任务状态`)
-  await cowstatuid1()
-  if (cowstatuid1.done == 0) {
-    console.log(`开始申请票据...`)
-    await cowtaskticket(); //申请票据
-    console.log(`执行【COW阅读一篇资讯】任务`)
-    await cowtaskid1(cowticket);
-  } else {
-    console.log(`准备执行下一个任务...\n`)
-    tz += `【COW阅读一篇资讯】:已执行\n`
-  }
-}
-async function cowtask2() {
-  console.log(`开始验证【COW查看大盘行情】任务状态`)
-  await cowstatuid2()
-  if (cowstatuid2.done == 0) {
-    console.log(`开始申请票据...`)
-    await cowtaskticket(); //申请票据
-    console.log(`执行【COW查看大盘行情】任务`)
-    await cowtaskid2(cowticket);
-  } else {
-    console.log(`准备执行下一个任务...\n`)
-    tz += `【COW查看大盘行情】:已执行\n`
-  }
-}
-async function cowtask3() {
-  console.log(`开始验证【COW分享一篇资讯】任务状态`)
-  await cowstatuid3()
-  if (cowstatuid3.done == 0) {
-    console.log(`开始申请票据...`)
-    await cowtaskticket(); //申请票据
-    console.log(`执行【COW分享一篇资讯】任务`)
-    await cowtaskid3(cowticket);
-  } else {
-    console.log(`准备执行下一个任务...\n`)
-    tz += `【COW分享一篇资讯】:已执行\n`
-  }
-}
-async function cowtask4() {
-  console.log(`开始验证【COW分享股票行情】任务状态`)
-  await cowstatuid4()
-  if (cowstatuid4.done == 0) {
-    console.log(`开始申请票据...`)
-    await cowtaskticket(); //申请票据
-    console.log(`执行【COW分享股票行情】任务`)
-    await cowtaskid4(cowticket);
-  } else {
-    console.log(`准备执行下一个任务...\n`)
-    tz += `【COW分享股票行情】:已执行\n`
-  }
-}
-async function cowtask5() {
-  console.log(`开始验证【COW添加股票到自选】任务状态`)
-  await cowstatuid5()
-  if (cowstatuid5.done == 0) {
-    console.log(`开始申请票据...`)
-    await cowtaskticket(); //申请票据
-    console.log(`执行【COW添加股票到自选】任务`)
-    await cowtaskid5(cowticket);
-  } else {
-    console.log(`准备执行下一个任务...\n`)
-    tz += `【COW添加股票到自选】:已执行\n`
-  }
-}
-
 
 async function cashorder(cash, money) {
   console.log(`开始【自动提现】任务`)
@@ -605,9 +521,10 @@ async function cashorder(cash, money) {
     tz += `请到BOXJS设置,目前设置为0,不自动提现...\n`
   } else {
     console.log(`准备执行下一个任务...`)
-    tz += `【自动提现】:账户提现余额不足🤦‍♀️\n`
+    tz += `【自动提现】:已执行or账户提现余额不足\n`
   }
 }
+
 async function task1() {
   console.log(`开始验证【股票添加到自选】任务状态`)
   await statuid2()
@@ -876,6 +793,7 @@ async function wxtask10() {
     tz += `【WX浏览社区帖子】:已执行\n`
   }
 }
+
 async function wxtask11() {
   console.log(`开始验证【WX专属红包🧧】任务状态`)
   await wxstatuid10()
@@ -888,314 +806,6 @@ async function wxtask11() {
     console.log(`准备执行下一个任务...`)
     tz += `【WX专属红包🧧】:已执行\n`
   }
-}
-
-
-///////////////////新活动///////////////////////////////////////////////
-
-//票据申请
-function cowtaskticket() {
-  return new Promise((resolve, reject) => {
-    let testurl = {
-      url: `https://wzq.tenpay.com/cgi-bin/activity_task.fcgi?action=taskticket&channel=1&actid=1105&_rndtime=${rndtime}&_appName=ios${taskheaderVal}`,
-      //body: ``,
-      headers: {
-        'Cookie': `${taskkeyVal}`,
-        'Accept': `*/*`,
-        'Connection': `keep-alive`,
-        'Referer': `http://zixuanguapp.finance.qq.com`,
-        'Accept-Encoding': `gzip,deflate`,
-        'Host': `wzq.tenpay.com`,
-        'User-Agent': `QQStock/8.7.0 (iPhone; iOS 14.1; Scale/2.00)`,
-        'Accept-Language': `zh-Hans-CN;q=1, en-CN;q=0.9`
-      },
-    }
-    $.get(testurl, async (error, resp, data) => {
-      if (logs == 1) $.log(data)
-      let test2 = JSON.parse(data)
-      $.log(`本次验证时间🕐：` + time(rndtime));
-      $.log(`本次验证票据🎫：${test2.task_ticket}`);
-      cowticket = test2.task_ticket
-      //tz += `【现金余额】：¥ ${task.data.activity_money.money}元\n`
-
-      resolve()
-    })
-  })
-}
-//阅读一篇资讯+200牛气
-function cowtaskid1(cowticket) {
-  return new Promise((resolve, reject) => {
-    let testurl = {
-      url: `https://wzq.tenpay.com/cgi-bin/activity_task.fcgi?action=taskdone&channel=1&actid=1105&tid=5&id=1&task_ticket=${cowticket}&_appName=ios${taskheaderVal}`,
-      //body: ``,
-      headers: {
-        'Cookie': `${taskkeyVal}`,
-        'Accept': `*/*`,
-        'Connection': `keep-alive`,
-        'Referer': `http://zixuanguapp.finance.qq.com`,
-        'Accept-Encoding': `gzip,deflate`,
-        'Host': `wzq.tenpay.com`,
-        'User-Agent': `QQStock/8.7.0 (iPhone; iOS 14.1; Scale/2.00)`,
-        'Accept-Language': `zh-Hans-CN;q=1, en-CN;q=0.9`
-      },
-    }
-    $.get(testurl, async (error, resp, data) => {
-      if (logs == 1) $.log(data)
-      let task = JSON.parse(data)
-      $.log(`【COW阅读资讯】:获得 ${task.reward_desc}\n`);
-      tz += `【COW阅读资讯】:获得 ${task.reward_desc}\n`
-      await $.wait(10000); //等待10秒
-      resolve()
-    })
-  })
-}
-function cowstatuid1() {
-  return new Promise((resolve, reject) => {
-    let testurl = {
-      url: `https://wzq.tenpay.com/cgi-bin/activity_task.fcgi?action=taskstatus&channel=1&actid=1105&id=1&tid=5&_appName=ios${taskheaderVal}`,
-      //body: ``,
-      headers: {
-        'Cookie': `${taskkeyVal}`,
-        'Accept': `*/*`,
-        'Connection': `keep-alive`,
-        'Referer': `http://zixuanguapp.finance.qq.com`,
-        'Accept-Encoding': `gzip,deflate`,
-        'Host': `wzq.tenpay.com`,
-        'User-Agent': `QQStock/8.7.0 (iPhone; iOS 14.1; Scale/2.00)`,
-        'Accept-Language': `zh-Hans-CN;q=1, en-CN;q=0.9`
-      },
-    }
-    $.get(testurl, async (error, resp, data) => {
-      if (logs == 1) $.log(data)
-      cowstatuid1 = JSON.parse(data)
-      if (cowstatuid1.done == 1) {
-        $.log(`验证状态失败,任务已执行🚫`);
-      } else {
-        $.log(`验证状态成功,可执行任务🎉`);
-      }
-      resolve()
-    })
-  })
-}
-//查看大盘行情+200牛气
-function cowtaskid2(cowticket) {
-  return new Promise((resolve, reject) => {
-    let testurl = {
-      url: `https://wzq.tenpay.com/cgi-bin/activity_task.fcgi?action=taskdone&channel=1&actid=1105&tid=11&id=2&task_ticket=${cowticket}&_appName=ios${taskheaderVal}`,
-      //body: ``,
-      headers: {
-        'Cookie': `${taskkeyVal}`,
-        'Accept': `*/*`,
-        'Connection': `keep-alive`,
-        'Referer': `http://zixuanguapp.finance.qq.com`,
-        'Accept-Encoding': `gzip,deflate`,
-        'Host': `wzq.tenpay.com`,
-        'User-Agent': `QQStock/8.7.0 (iPhone; iOS 14.1; Scale/2.00)`,
-        'Accept-Language': `zh-Hans-CN;q=1, en-CN;q=0.9`
-      },
-    }
-    $.get(testurl, async (error, resp, data) => {
-      if (logs == 1) $.log(data)
-      let task = JSON.parse(data)
-      $.log(`【COW查看大盘行情】:获得 ${task.reward_desc}\n`);
-      tz += `【COW查看大盘行情】:获得 ${task.reward_desc}\n`
-      await $.wait(10000); //等待10秒
-      resolve()
-    })
-  })
-}
-function cowstatuid2() {
-  return new Promise((resolve, reject) => {
-    let testurl = {
-      url: `https://wzq.tenpay.com/cgi-bin/activity_task.fcgi?action=taskstatus&channel=1&actid=1105&id=2&tid=11&_appName=ios${taskheaderVal}`,
-      //body: ``,
-      headers: {
-        'Cookie': `${taskkeyVal}`,
-        'Accept': `*/*`,
-        'Connection': `keep-alive`,
-        'Referer': `http://zixuanguapp.finance.qq.com`,
-        'Accept-Encoding': `gzip,deflate`,
-        'Host': `wzq.tenpay.com`,
-        'User-Agent': `QQStock/8.7.0 (iPhone; iOS 14.1; Scale/2.00)`,
-        'Accept-Language': `zh-Hans-CN;q=1, en-CN;q=0.9`
-      },
-    }
-    $.get(testurl, async (error, resp, data) => {
-      if (logs == 1) $.log(data)
-      cowstatuid2 = JSON.parse(data)
-      if (cowstatuid2.done == 1) {
-        $.log(`验证状态失败,任务已执行🚫`);
-      } else {
-        $.log(`验证状态成功,可执行任务🎉`);
-      }
-      resolve()
-    })
-  })
-}
-//分享一篇资讯+300牛气
-function cowtaskid3(cowticket) {
-  return new Promise((resolve, reject) => {
-    let testurl = {
-      url: `https://wzq.tenpay.com/cgi-bin/activity_task.fcgi?action=taskdone&channel=1&actid=1105&tid=28&id=3&task_ticket=${cowticket}&_appName=ios${taskheaderVal}`,
-      //body: ``,
-      headers: {
-        'Cookie': `${taskkeyVal}`,
-        'Accept': `*/*`,
-        'Connection': `keep-alive`,
-        'Referer': `http://zixuanguapp.finance.qq.com`,
-        'Accept-Encoding': `gzip,deflate`,
-        'Host': `wzq.tenpay.com`,
-        'User-Agent': `QQStock/8.7.0 (iPhone; iOS 14.1; Scale/2.00)`,
-        'Accept-Language': `zh-Hans-CN;q=1, en-CN;q=0.9`
-      },
-    }
-    $.get(testurl, async (error, resp, data) => {
-      if (logs == 1) $.log(data)
-      let task = JSON.parse(data)
-      $.log(`【COW分享一篇资讯】:获得 ${task.reward_desc}\n`);
-      tz += `【COW分享一篇资讯】:获得 ${task.reward_desc}\n`
-      await $.wait(10000); //等待10秒
-      resolve()
-    })
-  })
-}
-function cowstatuid3() {
-  return new Promise((resolve, reject) => {
-    let testurl = {
-      url: `https://wzq.tenpay.com/cgi-bin/activity_task.fcgi?action=taskstatus&channel=1&actid=1105&id=3&tid=28&_appName=ios${taskheaderVal}`,
-      //body: ``,
-      headers: {
-        'Cookie': `${taskkeyVal}`,
-        'Accept': `*/*`,
-        'Connection': `keep-alive`,
-        'Referer': `http://zixuanguapp.finance.qq.com`,
-        'Accept-Encoding': `gzip,deflate`,
-        'Host': `wzq.tenpay.com`,
-        'User-Agent': `QQStock/8.7.0 (iPhone; iOS 14.1; Scale/2.00)`,
-        'Accept-Language': `zh-Hans-CN;q=1, en-CN;q=0.9`
-      },
-    }
-    $.get(testurl, async (error, resp, data) => {
-      if (logs == 1) $.log(data)
-      cowstatuid3 = JSON.parse(data)
-      if (cowstatuid3.done == 1) {
-        $.log(`验证状态失败,任务已执行🚫`);
-      } else {
-        $.log(`验证状态成功,可执行任务🎉`);
-      }
-      resolve()
-    })
-  })
-}
-//分享股票行情+300牛气
-function cowtaskid4(cowticket) {
-  return new Promise((resolve, reject) => {
-    let testurl = {
-      url: `https://wzq.tenpay.com/cgi-bin/activity_task.fcgi?action=taskdone&channel=1&actid=1105&tid=22&id=4&task_ticket=${cowticket}&_appName=ios${taskheaderVal}`,
-      //body: ``,
-      headers: {
-        'Cookie': `${taskkeyVal}`,
-        'Accept': `*/*`,
-        'Connection': `keep-alive`,
-        'Referer': `http://zixuanguapp.finance.qq.com`,
-        'Accept-Encoding': `gzip,deflate`,
-        'Host': `wzq.tenpay.com`,
-        'User-Agent': `QQStock/8.7.0 (iPhone; iOS 14.1; Scale/2.00)`,
-        'Accept-Language': `zh-Hans-CN;q=1, en-CN;q=0.9`
-      },
-    }
-    $.get(testurl, async (error, resp, data) => {
-      if (logs == 1) $.log(data)
-      let task = JSON.parse(data)
-      $.log(`【COW分享股票行情】:获得 ${task.reward_desc}\n`);
-      tz += `【COW分享股票行情】:获得 ${task.reward_desc}\n`
-      await $.wait(10000); //等待10秒
-      resolve()
-    })
-  })
-}
-function cowstatuid4() {
-  return new Promise((resolve, reject) => {
-    let testurl = {
-      url: `https://wzq.tenpay.com/cgi-bin/activity_task.fcgi?action=taskstatus&channel=1&actid=1105&id=4&tid=22&_appName=ios${taskheaderVal}`,
-      //body: ``,
-      headers: {
-        'Cookie': `${taskkeyVal}`,
-        'Accept': `*/*`,
-        'Connection': `keep-alive`,
-        'Referer': `http://zixuanguapp.finance.qq.com`,
-        'Accept-Encoding': `gzip,deflate`,
-        'Host': `wzq.tenpay.com`,
-        'User-Agent': `QQStock/8.7.0 (iPhone; iOS 14.1; Scale/2.00)`,
-        'Accept-Language': `zh-Hans-CN;q=1, en-CN;q=0.9`
-      },
-    }
-    $.get(testurl, async (error, resp, data) => {
-      if (logs == 1) $.log(data)
-      cowstatuid4 = JSON.parse(data)
-      if (cowstatuid4.done == 1) {
-        $.log(`验证状态失败,任务已执行🚫`);
-      } else {
-        $.log(`验证状态成功,可执行任务🎉`);
-      }
-      resolve()
-    })
-  })
-}
-//添加股票到自选+500牛气
-function cowtaskid5(cowticket) {
-  return new Promise((resolve, reject) => {
-    let testurl = {
-      url: `https://wzq.tenpay.com/cgi-bin/activity_task.fcgi?action=taskdone&channel=1&actid=1105&tid=2&id=5&task_ticket=${cowticket}&_appName=ios${taskheaderVal}`,
-      //body: ``,
-      headers: {
-        'Cookie': `${taskkeyVal}`,
-        'Accept': `*/*`,
-        'Connection': `keep-alive`,
-        'Referer': `http://zixuanguapp.finance.qq.com`,
-        'Accept-Encoding': `gzip,deflate`,
-        'Host': `wzq.tenpay.com`,
-        'User-Agent': `QQStock/8.7.0 (iPhone; iOS 14.1; Scale/2.00)`,
-        'Accept-Language': `zh-Hans-CN;q=1, en-CN;q=0.9`
-      },
-    }
-    $.get(testurl, async (error, resp, data) => {
-      if (logs == 1) $.log(data)
-      let task = JSON.parse(data)
-      $.log(`【COW股票到自选】:获得 ${task.reward_desc}\n`);
-      tz += `【COW股票到自选】:获得 ${task.reward_desc}\n`
-      await $.wait(10000); //等待10秒
-      resolve()
-    })
-  })
-}
-function cowstatuid5() {
-  return new Promise((resolve, reject) => {
-    let testurl = {
-      url: `https://wzq.tenpay.com/cgi-bin/activity_task.fcgi?action=taskstatus&channel=1&actid=1105&id=5&tid=2&_appName=ios${taskheaderVal}`,
-      //body: ``,
-      headers: {
-        'Cookie': `${taskkeyVal}`,
-        'Accept': `*/*`,
-        'Connection': `keep-alive`,
-        'Referer': `http://zixuanguapp.finance.qq.com`,
-        'Accept-Encoding': `gzip,deflate`,
-        'Host': `wzq.tenpay.com`,
-        'User-Agent': `QQStock/8.7.0 (iPhone; iOS 14.1; Scale/2.00)`,
-        'Accept-Language': `zh-Hans-CN;q=1, en-CN;q=0.9`
-      },
-    }
-    $.get(testurl, async (error, resp, data) => {
-      if (logs == 1) $.log(data)
-      cowstatuid5 = JSON.parse(data)
-      if (cowstatuid5.done == 1) {
-        $.log(`验证状态失败,任务已执行🚫`);
-      } else {
-        $.log(`验证状态成功,可执行任务🎉`);
-      }
-      resolve()
-    })
-  })
 }
 
 
@@ -1350,7 +960,7 @@ function statuid2() {
   return new Promise((resolve, reject) => {
     let testurl = {
       url: `https://wzq.tenpay.com/cgi-bin/activity_task.fcgi?action=taskstatus&channel=1&actid=1101&tid=2&id=2&_appName=ios${taskheaderVal}`,
-      body: ``,
+      //body: ``,
       headers: {
         'Cookie': `${taskkeyVal}`,
         'Accept': `*/*`,
@@ -1448,8 +1058,6 @@ function wxstatuid2() {
     })
   })
 }
-
-
 //阅读一篇资讯
 function taskid1(ticket) {
   return new Promise((resolve, reject) => {
@@ -2143,32 +1751,6 @@ function taskid3(ticket) {
     })
   })
 }
-function taskid3(ticket) {
-  return new Promise((resolve, reject) => {
-    let testurl = {
-      url: `https://zqact.tenpay.com/cgi-bin/activity_task.fcgi?action=taskdone&channel=1&actid=1101&tid=28&id=3&task_ticket=${ticket}&_appName=ios${taskheaderVal}`,
-      //body: ``,
-      headers: {
-        'Cookie': `${taskkeyVal}`,
-        'Accept': `*/*`,
-        'Connection': `keep-alive`,
-        'Referer': `http://zixuanguapp.finance.qq.com`,
-        'Accept-Encoding': `gzip,deflate`,
-        'Host': `wzq.tenpay.com`,
-        'User-Agent': `QQStock/8.7.0 (iPhone; iOS 14.1; Scale/2.00)`,
-        'Accept-Language': `zh-Hans-CN;q=1, en-CN;q=0.9`
-      },
-    }
-    $.get(testurl, async (error, resp, data) => {
-      if (logs == 1) $.log(data)
-      let task = JSON.parse(data)
-      $.log(`【猜涨跌】:获得 ${task.reward_desc}\n`);
-      tz += `【猜涨跌】:获得 ${task.reward_desc}\n`
-      await $.wait(10000); //等待10秒
-      resolve()
-    })
-  })
-}
 
 function statuid3() {
   return new Promise((resolve, reject) => {
@@ -2681,7 +2263,6 @@ function wxstatuid10() {
   })
 }
 //票据申请
-
 function taskticket() {
   return new Promise((resolve, reject) => {
     let testurl = {
@@ -2710,6 +2291,7 @@ function taskticket() {
     })
   })
 }
+
 function wxtaskticket() {
   return new Promise((resolve) => {
     let url = {
