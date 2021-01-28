@@ -44,7 +44,7 @@ const notify = $.isNode() ? require('./sendNotify') : '';
 let rndtime = Math.round(new Date().getTime()) //毫秒
 let signday = formatDateTime(new Date());
 let tz = '';
-let cash = $.getval('cash') || 0; //0为不自动提现,1为自动提现1元,5为自动提现1元,
+let cash = $.getval('cash') || 1; //0为不自动提现,1为自动提现1元,5为自动提现1元,
 
 const userheaderArr = [];
 let userheaderVal = "";
