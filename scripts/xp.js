@@ -54,7 +54,7 @@ if ($.isNode()) {
   } else {
    videoheader = process.env.VIDEOHEADER.split()
   };
-  if (process.env. VIDEOBODY && process.env.VIDEOBODY.indexOf('#') > -1) {
+ /* if (process.env. VIDEOBODY && process.env.VIDEOBODY.indexOf('#') > -1) {
    videobody = process.env.VIDEOBODY.split('#');
   }
   else if (process.env.VIDEOBODY && process.env.VIDEOBODY.split('\n').length > 0) {
@@ -69,14 +69,14 @@ if ($.isNode()) {
    goldbody = process.env.GOLDBODY.split('\n');
   } else  {
    goldbody = process.env.GOLDBODY.split()
-  };
+  };  */
 //video
   Object.keys(videoheader).forEach((item) => {
         if (videoheader[item]) {
           videoheaderArr.push(videoheader[item])
         }
     });
-    Object.keys(videobody).forEach((item) => {
+ /*   Object.keys(videobody).forEach((item) => {
         if (videobody[item]) {
           videobodyArr.push(videobody[item])
         }
@@ -85,7 +85,7 @@ if ($.isNode()) {
         if (goldbody[item]) {
           goldbodyArr.push(goldbody[item])
         }
-    });
+    });  */
     console.log(`============ 脚本执行-国际标准时间(UTC)：${new Date().toLocaleString()}  =============\n`)
     console.log(`============ 脚本执行-北京时间(UTC+8)：${new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleString()}  =============\n`)
  } else {
@@ -111,8 +111,8 @@ if (!videoheaderArr[0]) {
     if (videoheaderArr[i]) {
       message = ''
       videoheader = videoheaderArr[i];
-      videobody = videobodyArr[i];
-      goldbody = goldbodyArr[i];
+     // videobody = videobodyArr[i];
+    //  goldbody = goldbodyArr[i];
       account = Account[i];
       gold = (h+1)%7;
       money = h + 1;
