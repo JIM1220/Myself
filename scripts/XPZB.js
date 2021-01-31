@@ -295,7 +295,7 @@ let cookie_is_live = await user(i + 1);//用户名
 	  await hdid();//活动id
 	  await newcashlist();//提现查询
 	  await cashlist();//今日提现查询
-	  if (!cashcs.amount && CASH>=1 && $.coin.data.balance/100>=CASH && nowTimes.getHours() = 16) {
+	  if (!cashcs.amount && CASH>=1 && $.coin.data.balance/100>=CASH && nowTimes.getHours() == 16) {
 	  await withdraw();//提现
  }
   for (let h = 0; h < 10; h++) {
