@@ -115,6 +115,40 @@ if (process.env.PLAYURL && process.env.PLAYURL.indexOf('#') > -1) {
   } else {
    hsbody = process.env.PLAYBODY.split()
   };
+
+    Object.keys(hsurl).forEach((item) => {
+        if (hsurl[item]) {
+          hsurlArr.push(hsurl[item])
+        }
+    });
+    Object.keys(hsheader).forEach((item) => {
+        if (hsheader[item]) {
+          hsheaderArr.push(hsheader[item])
+        }
+    });
+    Object.keys(hsbody).forEach((item) => {
+        if (hsbody[item]) {
+          hsbodyArr.push(hsbody[item])
+        }
+    });
+
+    Object.keys(playurl).forEach((item) => {
+        if (playurl[item]) {
+          playurlArr.push(playurl[item])
+        }
+    });
+    Object.keys(playheader).forEach((item) => {
+        if (playheader[item]) {
+          playheaderArr.push(playheader[item])
+        }
+    });
+    Object.keys(playbody).forEach((item) => {
+        if (playbody[item]) {
+          playbodyArr.push(playbody[item])
+        }
+    });
+	
+	
     console.log(`============ 脚本执行-国际标准时间(UTC)：${new Date().toLocaleString()}  =============\n`)
     console.log(`============ 脚本执行-北京时间(UTC+8)：${new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleString()}  =============\n`)
  } else {
