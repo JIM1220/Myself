@@ -127,7 +127,7 @@ console.log(ddtime)
 
 if ($.isNode()) {
  // 没有设置 XP_CASH 则默认为 0 不提现
- CASH = process.env.XP_CASH || 1;
+ CASH = process.env.XP_CASH || 15;
  // 没有设置 XP_live 则默认为 0 不开启
  LIVE = process.env.XP_live || 60;
 } 
@@ -295,7 +295,7 @@ let cookie_is_live = await user(i + 1);//用户名
 	  await hdid();//活动id
 	  await newcashlist();//提现查询
 	  await cashlist();//今日提现查询
-	  if (!cashcs.amount && CASH>=1 && $.coin.data.balance/100>=CASH && nowTimes.getHours() == 16) {
+	  if (!cashcs.amount && CASH>=1 && $.coin.data.balance/100>=CASH && nowTimes.getHours() == 10) {
 	  await withdraw();//提现
  }
   for (let h = 0; h < 10; h++) {
@@ -306,6 +306,7 @@ if ($.sylist.resultCode && livecs<LIVE) {
 	  await lives();//看直播
            }		
 		}
+      if (nowTimes.getHours() >= 8 && nowTimes.getHours() <= 13) {
 	  await play();//播放	  
 	  let video_is_live = await video(i + 1);//视频
     if (!video_is_live) {
@@ -315,7 +316,8 @@ if ($.sylist.resultCode && livecs<LIVE) {
 	  await newvideo();//新人福利
  }	  
       await goldvideo();//金蛋视频
-     }	  
+      }	
+      }	  
 	  	  
      }
       
