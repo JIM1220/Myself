@@ -86,34 +86,34 @@ if ($.isNode()) {
    hsbody = process.env.HSBODY.split()
   };
 if (process.env.PLAYURL && process.env.PLAYURL.indexOf('#') > -1) {
-   hsurl = process.env.PLAYURL.split('#');
+   playurl = process.env.PLAYURL.split('#');
    console.log(`您选择的是用"#"隔开\n`)
   }
   else if (process.env.PLAYURL && process.env.PLAYURL.indexOf('\n') > -1) {
-   hsurl = process.env.PLAYURL.split('\n');
+   playurl = process.env.PLAYURL.split('\n');
    console.log(`您选择的是用换行隔开\n`)
   } else {
-   hsurl = process.env.PLAYURL.split()
+   playurl = process.env.PLAYURL.split()
   };
   if (process.env.PLAYHEADER && process.env.PLAYHEADER.indexOf('#') > -1) {
-   hsheader = process.env.PLAYHEADER.split('#');
+   playheader = process.env.PLAYHEADER.split('#');
    console.log(`您选择的是用"#"隔开\n`)
   }
   else if (process.env.PLAYHEADER && process.env.PLAYHEADER.indexOf('\n') > -1) {
-   hsheader = process.env.PLAYHEADER.split('\n');
+   playheader = process.env.PLAYHEADER.split('\n');
    console.log(`您选择的是用换行隔开\n`)
   } else {
-   hsheader = process.env.PLAYHEADER.split()
+   playheader = process.env.PLAYHEADER.split()
   };
   if (process.env.PLAYBODY && process.env.PLAYBODY.indexOf('#') > -1) {
-   hsbody = process.env.PLAYBODY.split('#');
+   playbody = process.env.PLAYBODY.split('#');
    console.log(`您选择的是用"#"隔开\n`)
   }
   else if (process.env.PLAYBODY && process.env.PLAYBODY.indexOf('\n') > -1) {
-   hsbody = process.env.PLAYBODY.split('\n');
+   playbody = process.env.PLAYBODY.split('\n');
    console.log(`您选择的是用换行隔开\n`)
   } else {
-   hsbody = process.env.PLAYBODY.split()
+   playbody = process.env.PLAYBODY.split()
   };
 
     Object.keys(hsurl).forEach((item) => {
