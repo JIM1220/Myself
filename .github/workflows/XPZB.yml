@@ -3,7 +3,7 @@ name: XPZB_tianfang
 on:
   workflow_dispatch:
   schedule:
-     - cron: '19 2-11 * * *'
+     - cron: '19 2-8 * * *'
   watch:
     types: started
 jobs:
@@ -26,7 +26,7 @@ jobs:
       - name: npm install
         run: |
           npm install
-      - name: '运行 【XPZB_yuexi】'
+      - name: '运行 【XPZB_tianfang】'
         if: env.XP_iboxpayHEADER
         run: |
           node scripts/XPZB.js
