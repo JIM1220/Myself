@@ -21,8 +21,8 @@ http-request https://api3-normal-c-\w+.huoshan.com/hotsoon/flame/task_done/? scr
 #surge
 抖音火山版 = type=http-request,pattern=^https://api3-normal-c-\w+.huoshan.com/hotsoon/flame/task_done/?,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/ZhiYi-N/Private-Script/master/Scripts/huoshan.js,script-update-interval=0
 */
-const dyhs = '抖音火山版'
-const $ = Env(dyhs)
+const zhiyi = '抖音火山版'
+const $ = Env(zhiyi)
 const notify = $.isNode() ?require('./sendNotify') : '';
 let status;
 status = (status = ($.getval("hsstatus") || "1") ) > 1 ? `${status}` : ""; // 账号扩展字符
