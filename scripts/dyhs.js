@@ -187,27 +187,31 @@ if (!hsheaderArr[0] && !hsbodyArr[0] && !hsurlArr[0]) {
       $.index = i + 1;
       console.log(`\n开始【抖音火山版${$.index}】`)
       //await ck()
+      await app_alert_check()
+      await device_register()
+      await userinfo()
       await gettoken()
       await sign_in()
       await ad()
       await hotsoonfeed()
-      //await play_video()
       await control()
+      await lottery_main()
+      await lottery() 
       await showmsg()
   }
  }
 })()
     .catch((e) => $.logErr(e))
     .finally(() => $.done())
-
-
+    
+    
 function GetCookie() {
 if($request&&$request.url.indexOf("task_done")>=0) {
    const hsurl = $request.url.split('?')[1]
    if(hsurl)     $.setdata(hsurl,`hsurl${status}`)
    $.log(`[${zhiyi}] 获取hsurl请求: 成功,hsurl: ${hsurl}`)
    $.msg(`hsurl${status}: 成功🎉`, ``)
-   const hsheader = $request.headers
+   const hsheader = JSON.stringify($request.headers)+''
     if(hsheader)    $.setdata(hsheader,`hsheader${status}`)
     $.log(`[${zhiyi}] 获取hsheader请求: 成功,hsheader: ${hsheader}`)
     $.msg(`hsheader${status}: 成功🎉`, ``)
@@ -223,8 +227,9 @@ if($request&&$request.url.indexOf("reaction/_play")>=0) {
    if(playurl)     $.setdata(playurl,`playurl${status}`)
    $.log(`[${zhiyi}] 获取playurl请求: 成功,playurl: ${playurl}`)
    $.msg(`playurl${status}: 成功🎉`, ``)
-   const playheader = $request.headers
-    if(playheader)    $.setdata(playheader,`playheader${status}`)
+   const playheader =JSON.stringify($request.headers)+''
+    if(playheader)    
+$.setdata(playheader,`playheader${status}`)
     $.log(`[${zhiyi}] 获取playheader请求: 成功,playheader: ${playheader}`)
     $.msg(`playheader${status}: 成功🎉`, ``)
    const playbody = $request.body
@@ -252,8 +257,100 @@ for(let i = 0;i <= 4;i++){
    //await video_rewards()
 }
 }
+//app_alert_check
+async function app_alert_check(){
+let new_time = Math.round(new Date().getTime()/1000).toString();
+	hsheader = hsheader.replace(/X-Khronos":"\d{10}/,`X-Khronos":"${new_time}`)
+let iid = hsurl.match(/iid=\d+/)
+let idfa = hsurl.match(/idfa=\d+-\d+-\w+-\w+-\w+/)
+let vid = hsurl.match(/vid=\w+-\w+-\w+-\w+-\w+/)
+let device_id = hsurl.match(/device_id=\d+/)
+let mccmnc = hsurl.match(/mccmnc=\d+/)+''
+let mcc_mnc = mccmnc.replace("mccmnc",'mcc_mnc')
+let aid = hsurl.match(/aid=\d+/)
+let check_url = 'https://ichannel.snssdk.com/service/2/app_alert_check/?'+iid+'&ac=WIFI&timezone=8&app_name=live_stream&channel=App%20Store&device_platform=iphone&'+idfa+'&'+vid+'&is_upgrade_user=0&app_verison_minor=10080507&version_code=10.8.5&'+device_id+'&os_version=13.3&'+aid+'&'+mcc_mnc
+ return new Promise((resolve) => {
+    let app_alert_check_url = {
+   		url: check_url,
+        headers: JSON.parse(hsheader)
+    	}
+   $.get(app_alert_check_url,async(error, response, data) =>{
+    try{
+        const result = JSON.parse(data)
+        if(logs)$.log(data)
+        message += '🔔模拟启动 '
+        console.log(result.message)
+        if(result.data.is_activated == 1){
+        console.log('当前状态:活跃\n')
+        message += '当前状态:活跃\n'
+        }
+        }catch(e) {
+          $.logErr(e, response);
+      } finally {
+        resolve();
+      } 
+    })
+   })
+  }  
+//false no function
+async function device_register(){
+let new_time = Math.round(new Date().getTime()/1000).toString();
+	hsheader = hsheader.replace(/X-Khronos":"\d{10}/,`X-Khronos":"${new_time}`)
+ return new Promise((resolve) => {
+    let device_register_url = {
+   		url: `https://log-lq.snssdk.com/service/2/device_register/?tt_data=a&${hsurl}`,
+        headers: JSON.parse(hsheader),
+        //body: `__hideErrorToast=1&task_name=check_in&token=${signtoken}`
+    	}
+   $.post(device_register_url,async(error, response, data) =>{
+    try{
+        //const result = JSON.parse(data)
+        if(logs)$.log(data)
+        message += '🔔服务注册 '
+        console.log('🎈'+'注册成功\n')
+        message += '🎈'+'注册成功\n'
+        }catch(e) {
+          $.logErr(e, response);
+      } finally {
+        resolve();
+      } 
+    })
+   })
+  }  
+//userinfo
+async function userinfo(){
+let new_time = Math.round(new Date().getTime()/1000).toString();
+	hsheader = hsheader.replace(/X-Khronos":"\d{10}/,`X-Khronos":"${new_time}`)
+ return new Promise((resolve) => {
+    let userinfo_url = {
+   		url: `https://api3-normal-c-lq.huoshan.com/hotsoon/flame/user_flame_info/?${hsurl}`,
+        headers: JSON.parse(hsheader)
+    	}
+   $.get(userinfo_url,async(error, response, data) =>{
+    try{
+        const result = JSON.parse(data)
+        if(logs) $.log(data)
+        message += '🔔用户信息 '
+        if(result.status_code == 0){
+        console.log('现有火苗：'+result.data.flame_left+'可兑换为：'+((result.data.flame_left/30000).toFixed(1))+'元 现有余额：'+result.data.can_with_draw_money+'元')
+        console.log('今日领取火苗'+result.data.td_flame_count)
+        message += '今日领取火苗'+result.data.td_flame_count+' 现有火苗'+result.data.flame_left+' 可兑换为'+((result.data.flame_left/30000).toFixed(1))+'元 现有余额'+result.data.can_with_draw_money+'元\n'
+        }else{
+        console.log('👀我也不知道\n')
+        message += '👀我也不知道\n'
+        }
+        }catch(e) {
+          $.logErr(e, response);
+      } finally {
+        resolve();
+      } 
+    })
+   })
+  }
 //gettoken
 async function gettoken(){
+let new_time = Math.round(new Date().getTime()/1000).toString();
+	hsheader = hsheader.replace(/X-Khronos":"\d{10}/,`X-Khronos":"${new_time}`)
  return new Promise((resolve) => {
     let gettoken_url = {
    		url: `https://api3-normal-c-lq.huoshan.com/hotsoon/janus/flame/management/panel/?${hsurl}`,
@@ -280,12 +377,14 @@ async function gettoken(){
           $.logErr(e, response);
       } finally {
         resolve();
-      }
+      } 
     })
    })
-  }
+  }  
 //sign_in
 async function sign_in(){
+let new_time = Math.round(new Date().getTime()/1000).toString();
+	hsheader = hsheader.replace(/X-Khronos":"\d{10}/,`X-Khronos":"${new_time}`)
  return new Promise((resolve) => {
     let sign_inurl = {
    		url: `https://api3-normal-c-lq.huoshan.com/hotsoon/flame/task_system/task_done/?${hsurl}`,
@@ -308,12 +407,14 @@ async function sign_in(){
           $.logErr(e, response);
       } finally {
         resolve();
-      }
+      } 
     })
    })
-  }
+  }  
 //ad
 async function ad(){
+let new_time = Math.round(new Date().getTime()/1000).toString();
+	hsheader = hsheader.replace(/X-Khronos":"\d{10}/,`X-Khronos":"${new_time}`)
  return new Promise((resolve) => {
     let ad_url = {
    		url: `https://api3-normal-c-lq.huoshan.com/hotsoon/flame/task_system/task_done/?${hsurl}`,
@@ -329,17 +430,17 @@ async function ad(){
         console.log('🎈成功，获得'+result.data.task_done_award.flame_amount+'\n')
         message += '🎈成功，获得'+result.data.task_done_award.flame_amount+'\n'
         }else{
-        console.log('👀失败'+result.data.prompts+'\n')
-        message += '👀失败'+result.data.prompts+'\n'
+        console.log('👀'+result.data.prompts+'\n')
+        message += '👀'+result.data.prompts+'\n'
         }
         }catch(e) {
           $.logErr(e, response);
       } finally {
         resolve();
-      }
+      } 
     })
    })
-  }
+  } 
 async function ck(){
   $.log('hsurl:'+hsurl)
   $.log('hsbody:'+hsbody)
@@ -348,11 +449,12 @@ async function ck(){
 }
 //hotsoonfeed
 async function hotsoonfeed(){
+let new_time = Math.round(new Date().getTime()/1000).toString();
+	playheader = playheader.replace(/X-Khronos":"\d{10}/,`X-Khronos":"${new_time}`)
  return new Promise((resolve) => {
     let hotsoonfeed_url = {
-        //url: 'https://api3-normal-c-lf.huoshan.com/hotsoon/feed/?type=video&action=refresh',
-   	url: 'https://api3-core-c-lq.huoshan.com/hotsoon/feed/?type=video&tab_id=5&js_sdk_version=1.93.0.1&client_request_id=b8c8d36e6f6a55834e0fdbc81bcaf835&minor_control_status=0&ac=WIFI&tab_mode=3&max_time=%3Cnull%3E&font_category=1&audio_value=6.25&diff_stream=1&splash_show_type=%3Cnull%3E&action=refresh&flow_type=%3Cnull%3E&feed_video_gap=%3Cnull%3E&req_from=feed_refresh&last_ad_items=%3Cnull%3E&custom_city_code=%3Cnull%3E&ad_user_agent=Mozilla%2F5.0%20%28iPhone%3B%20CPU%20iPhone%20OS%2014_4%20like%20Mac%20OS%20X%29%20AppleWebKit%2F605.1.15%20%28KHTML%2C%20like%20Gecko%29%20Mobile%2F15E148&refresh_for_cache=%3Cnull%3E&splash_ad_id=%3Cnull%3E&ad_extra=%3Cnull%3E&push_item_id=%3Cnull%3E&performance_scene=%3Cnull%3E&hb_info=%3Cnull%3E&custom_city=%3Cnull%3E&front_ids=%3Cnull%3E&scene=0&',
-    	headers: playheader,
+   		url: 'https://api3-normal-c-lf.huoshan.com/hotsoon/feed/?type=video&action=refresh',
+    	headers: JSON.parse(playheader),
     	}
    $.get(hotsoonfeed_url,async(error, response, data) =>{
     try{
@@ -368,17 +470,19 @@ async function hotsoonfeed(){
           $.logErr(e, response);
       } finally {
         resolve();
-      }
+      } 
     })
    })
-  }
+  } 
 //play_video
 async function play_video(){
+let new_time = Math.round(new Date().getTime()/1000).toString();
+	playheader = playheader.replace(/X-Khronos":"\d{10}/,`X-Khronos":"${new_time}`)
 let newplaybody = playbody.replace(/\d{19}/,`${item_id_inv}`)
  return new Promise((resolve) => {
     let play_video_url = {
      url: playurl,
-    	headers: playheader,
+    	headers: JSON.parse(playheader), 	
      body: newplaybody
 }
    $.post(play_video_url,async(error, response, data) =>{
@@ -398,15 +502,15 @@ let newplaybody = playbody.replace(/\d{19}/,`${item_id_inv}`)
           $.logErr(e, response);
       } finally {
         resolve();
-      }
+      } 
     })
    })
-  }
+  } 
 
 //video_rewards
 async function video_rewards(){
 	let new_time = Math.round(new Date().getTime()/1000).toString();
-	hsheader = hsheader.replace(/X-Khronos": "\d{10}/,`X-Khronos": "${new_time}`)
+	hsheader = hsheader.replace(/X-Khronos":"\d{10}/,`X-Khronos":"${new_time}`)
  return new Promise((resolve) => {
     let video_rewards_url = {
    		url: `https://api3-normal-c-lq.huoshan.com/hotsoon/flame/task_done/?${hsurl}`,
@@ -429,7 +533,7 @@ async function video_rewards(){
         let coins = result.data.flame_amount
         console.log(`🎈第${no}次获得火苗成功：`+coins+'\n')
         sum = sum + coins
-        note = `🔔视频播放成功${no}次，获取奖励${no}次,共获得火苗成功：${sum}\n`
+        note = `🔔看视频奖励 视频播放成功${no}次，获取奖励${no}次,共获得火苗成功：${sum}\n`
         }else{
         console.log('👀'+'我也不知道\n')
         //message += '👀'+"我也不知道\n"
@@ -438,7 +542,145 @@ async function video_rewards(){
           $.logErr(e, response);
       } finally {
         resolve();
-      }
+      } 
+    })
+   })
+}
+//lottery_main
+async function lottery_main(){
+let new_time = Math.round(new Date().getTime()/1000).toString();
+	hsheader = hsheader.replace(/X-Khronos":"\d{10}/,`X-Khronos":"${new_time}`)
+ return new Promise((resolve) => {
+    let lottery_main_url = {
+   		url: `https://api3-normal-c-lq.huoshan.com/hotsoon/commerce/lottery/main/?${hsurl}$activity_id=1`,
+        headers: JSON.parse(hsheader),
+    	}
+   $.get(lottery_main_url,async(error, response, data) =>{
+    try{
+        const result = JSON.parse(data)
+        if(logs)$.log(data)
+        if(result.status_code == 0){
+        console.log('🎈'+'加载转盘成功\n')
+        var task = result.data.tasks.find(item => item.task_id === 2);
+        console.log('增加抽奖次数'+task.task_current+'/'+task.task_total+'\n')
+        if(task.task_current < task.task_total){
+        add_lottery_count = 1;
+}
+        }else{
+        console.log('👀'+"我也不知道\n")
+        }
+        }catch(e) {
+          $.logErr(e, response);
+      } finally {
+        resolve();
+      } 
+    })
+   })
+  }
+//lottery
+async function lottery(){
+let new_time = Math.round(new Date().getTime()/1000).toString();
+	hsheader = hsheader.replace(/X-Khronos":"\d{10}/,`X-Khronos":"${new_time}`)
+ return new Promise((resolve) => {
+    let lottery_url = {
+   		url: `https://api3-normal-c-lq.huoshan.com/hotsoon/commerce/lottery/?${hsurl}$activity_id=1`,
+        headers: JSON.parse(hsheader),
+    	}
+   $.get(lottery_url,async(error, response, data) =>{
+    try{
+        const result = JSON.parse(data)
+        if(logs) $.log(data)
+        if(result.data.gift){
+        message += '🔔抽奖ing'
+        console.log('🎈'+'抽奖成功'+result.data.gift.name)
+        message += '🎈'+'抽奖成功'+result.data.gift.name
+        if(result.data.token){
+        if(result.data.button.title.indexOf('看视频领取奖励')){
+        console.log('正在领取奖励...\n')
+        }
+        if(result.data.button.title.indexOf('翻倍')){
+        console.log('正在领取翻倍奖励...\n')
+        double_token = result.data.token
+        await sleep(15000);
+        await task_ack()
+       }
+        }
+        }
+        else{
+        if(result.data.alert.indexOf('次数已用完') && add_lottery_count == 1){
+        console.log('抽奖次数已用完，正在看广告增加次数')
+        //message += '抽奖次数已用完，正在看广告增加次数'
+        await sleep(15000)
+        if(add = 1){
+        await add_lottery()
+   }
+       }
+        }
+        }catch(e) {
+          $.logErr(e, response);
+      } finally {
+        resolve();
+      } 
+    })
+   })
+  }
+//add_lottery
+async function add_lottery(){
+	let new_time = Math.round(new Date().getTime()/1000).toString();
+	hsheader = hsheader.replace(/X-Khronos":"\d{10}/,`X-Khronos":"${new_time}`)
+ return new Promise((resolve) => {
+    let add_lottery_url = {
+   		url: `https://api3-normal-c-lq.huoshan.com/hotsoon/commerce/task/ack/?${hsurl}`,
+    	headers: JSON.parse(hsheader),
+    	body: `task_done_cnt=1&task_id=2`
+    	}
+   $.post(add_lottery_url,async(error, response, data) =>{
+    try{
+        const result = JSON.parse(data)
+        if(logs)$.log(data)
+        if(result.status_code == 0){
+	   console.log('增加抽奖次数成功,再次请求抽奖\n')
+        if(add_lottery_count == 1){
+        await lottery()
+        }
+        }else{
+        console.log('👀'+'我也不知道\n')
+        //message += '👀'+"我也不知道\n"
+        }
+        }catch(e) {
+          $.logErr(e, response);
+      } finally {
+        resolve();
+      } 
+    })
+   })
+}
+//task_ack
+async function task_ack(){
+	let new_time = Math.round(new Date().getTime()/1000).toString();
+	hsheader = hsheader.replace(/X-Khronos":"\d{10}/,`X-Khronos":"${new_time}`)
+ return new Promise((resolve) => {
+    let task_ack_url = {
+   		url: `https://api3-normal-c-lq.huoshan.com/hotsoon/commerce/task/ack/?${hsurl}`,
+    	headers: JSON.parse(hsheader),
+    	body: `task_done_cnt=1&task_id=1002&token=${double_token}`
+    	}
+   $.post(task_ack_url,async(error, response, data) =>{
+    try{
+        const result = JSON.parse(data)
+        if(logs)$.log(data)
+        if(result.status_code == 0){
+	   console.log('获取奖励成功'+result.data.name)
+        //message += '获取奖励成功'+result.data.name
+        }else{
+        console.log('👀'+'我也不知道\n')
+        //message += '👀'+"我也不知道\n"
+        }
+        }catch(e) {
+          $.logErr(e, response);
+      } finally {
+        resolve();
+      } 
     })
    })
 }
@@ -470,7 +712,7 @@ if(tz==1){
    }else{
      $.log(message+note)
     //if ((hour == 12 && minute <= 20) || (hour == 23 && minute >= 40)) {
-       $.msg(dyhs,'',message+note)
+       $.msg(zhiyi,'',message+note)
 //}
 }
    }else{
