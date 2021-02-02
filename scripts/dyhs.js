@@ -253,7 +253,7 @@ for(let i = 0;i <= 4;i++){
    item_id_inv = item_id[i]
    $.log(item_id_inv)
    let x = Math.random()
-   let delay = x > 0.5? x*60000 : (x+0.5)*60000
+   let delay = x > 0.5? x*60000 : (x+0.5)*30000
    console.log('⏰本次延迟'+Math.round(delay/1000)+'秒')
    await sleep(delay)
    await play_video()
@@ -525,8 +525,8 @@ async function video_rewards(){
         const result = JSON.parse(data)
         if(logs)$.log(data)
         if(result.status_code == 0){
-	    let token = result.data.next_token.replace("%3D","=")
-	    let newhsbody = hsbody.replace(/WJ.*?(?==)./,`${token}`)
+	    let token = result.data.next_token.match(/WJ.*?(?==)/)+''.replace("%3D","=")
+	    let newhsbody = hsbody.replace(/WJ.*?(?==)/,`${token}`)
          let _hsbody = newhsbody.replace("%3D","=")
          hsbody = _hsbody
          $.setdata(_hsbody,`hsbody${status}`)
@@ -595,8 +595,8 @@ let new_time = Math.round(new Date().getTime()/1000).toString();
         if(logs) $.log(data)
         if(result.data.gift){
         message += '🔔抽奖ing'
-        console.log('🎈'+'抽奖成功'+result.data.gift.name)
-        message += '🎈'+'抽奖成功'+result.data.gift.name
+        console.log('🎈'+'抽奖成功'+result.data.gift.name+'\n')
+        message += '🎈'+'抽奖成功'+result.data.gift.name+'\n'
         if(result.data.token){
         if(result.data.button.title.indexOf('看视频领取奖励')){
         console.log('正在领取奖励...\n')
