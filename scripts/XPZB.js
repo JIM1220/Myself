@@ -300,7 +300,7 @@ let cookie_is_live = await user(i + 1);//用户名
  }
   for (let h = 0; h < 10; h++) {
      console.log(`🚴‍♀️🚴‍♀️🚴‍♀️开始执行第${h+1}轮视频&直播任务----------------🚴‍♀️🚴‍♀️🚴‍♀️\n`)	  
-      if (LIVE >=1 && nowTimes.getHours() >= 8 && nowTimes.getHours() <= 14) {
+      if (LIVE >=1 && nowTimes.getHours() >= 8 && nowTimes.getHours() <= 13) {
 	  await sylist();//收益列表
 if ($.sylist.resultCode && livecs<LIVE) {
 	  await lives();//看直播
