@@ -350,8 +350,8 @@ async function ck(){
 async function hotsoonfeed(){
  return new Promise((resolve) => {
     let hotsoonfeed_url = {
-        url: 'https://api3-normal-c-lf.huoshan.com/hotsoon/feed/?type=video&action=refresh',
-   	//url: 'https://api3-core-c-lq.huoshan.com/hotsoon/feed/?type=video&tab_id=5&js_sdk_version=1.93.0.1&client_request_id=b8c8d36e6f6a55834e0fdbc81bcaf835&minor_control_status=0&ac=WIFI&tab_mode=3&max_time=%3Cnull%3E&font_category=1&audio_value=6.25&diff_stream=1&splash_show_type=%3Cnull%3E&action=refresh&flow_type=%3Cnull%3E&feed_video_gap=%3Cnull%3E&req_from=feed_refresh&last_ad_items=%3Cnull%3E&custom_city_code=%3Cnull%3E&ad_user_agent=Mozilla%2F5.0%20%28iPhone%3B%20CPU%20iPhone%20OS%2014_4%20like%20Mac%20OS%20X%29%20AppleWebKit%2F605.1.15%20%28KHTML%2C%20like%20Gecko%29%20Mobile%2F15E148&refresh_for_cache=%3Cnull%3E&splash_ad_id=%3Cnull%3E&ad_extra=%3Cnull%3E&push_item_id=%3Cnull%3E&performance_scene=%3Cnull%3E&hb_info=%3Cnull%3E&custom_city=%3Cnull%3E&front_ids=%3Cnull%3E&scene=0&',
+        //url: 'https://api3-normal-c-lf.huoshan.com/hotsoon/feed/?type=video&action=refresh',
+   	url: 'https://api3-core-c-lq.huoshan.com/hotsoon/feed/?type=video&tab_id=5&js_sdk_version=1.93.0.1&client_request_id=b8c8d36e6f6a55834e0fdbc81bcaf835&minor_control_status=0&ac=WIFI&tab_mode=3&max_time=%3Cnull%3E&font_category=1&audio_value=6.25&diff_stream=1&splash_show_type=%3Cnull%3E&action=refresh&flow_type=%3Cnull%3E&feed_video_gap=%3Cnull%3E&req_from=feed_refresh&last_ad_items=%3Cnull%3E&custom_city_code=%3Cnull%3E&ad_user_agent=Mozilla%2F5.0%20%28iPhone%3B%20CPU%20iPhone%20OS%2014_4%20like%20Mac%20OS%20X%29%20AppleWebKit%2F605.1.15%20%28KHTML%2C%20like%20Gecko%29%20Mobile%2F15E148&refresh_for_cache=%3Cnull%3E&splash_ad_id=%3Cnull%3E&ad_extra=%3Cnull%3E&push_item_id=%3Cnull%3E&performance_scene=%3Cnull%3E&hb_info=%3Cnull%3E&custom_city=%3Cnull%3E&front_ids=%3Cnull%3E&scene=0&',
     	headers: playheader,
     	}
    $.get(hotsoonfeed_url,async(error, response, data) =>{
