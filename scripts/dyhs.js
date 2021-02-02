@@ -193,9 +193,9 @@ if (!hsheaderArr[0] && !hsbodyArr[0] && !hsurlArr[0]) {
       await gettoken()
       await sign_in()
       await ad()
-      await hotsoonfeed()
       for (let h = 0; i < 15; h++) {
       console.log(`🚴‍♀️🚴‍♀️🚴‍♀️开始执行第${h+1}轮视频任务----------------🚴‍♀️🚴‍♀️🚴‍♀️\n`)	
+      await hotsoonfeed()
       await control()
       }
       await lottery_main()
