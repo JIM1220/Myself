@@ -127,7 +127,7 @@ console.log(ddtime)
 
 if ($.isNode()) {
  // 没有设置 XP_CASH 则默认为 0 不提现
- CASH = process.env.XP_CASH || 15;
+ CASH = process.env.XP_CASH || 1;
  // 没有设置 XP_live 则默认为 0 不开启
  LIVE = process.env.XP_live || 60;
 } 
@@ -306,7 +306,7 @@ if ($.sylist.resultCode && livecs<LIVE) {
 	  await lives();//看直播
            }		
 		}
-      if (nowTimes.getHours() >= 8 && nowTimes.getHours() <= 13) {
+      if (nowTimes.getHours() >= 8 && nowTimes.getHours() <= 12) {
 	  await play();//播放	  
 	  let video_is_live = await video(i + 1);//视频
     if (!video_is_live) {
