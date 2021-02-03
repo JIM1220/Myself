@@ -306,7 +306,7 @@ if ($.sylist.resultCode && livecs<LIVE) {
 	  await lives();//看直播
            }		
 		}
-      if (nowTimes.getHours() >= 8 && nowTimes.getHours() <= 12) {
+      if (nowTimes.getHours() >= 8 && nowTimes.getHours() <= 11) {
 	  await play();//播放	  
 	  let video_is_live = await video(i + 1);//视频
     if (!video_is_live) {
