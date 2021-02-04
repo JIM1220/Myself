@@ -51,7 +51,7 @@ let HeaderArr = [], dkdvdHeader = "";
   for (let i = 0; i < ReadArr.length; i++) {
     if (ReadArr[i]) {
       articlebody = ReadArr[i];
-      articleheader = HeaderArr[i0;
+      articleheader = HeaderArr[0];
       $.index = i + 1;
       console.log(`-------------------------\n\n开始第${$.index}次阅读`)
     }
