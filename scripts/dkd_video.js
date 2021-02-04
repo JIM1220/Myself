@@ -76,7 +76,7 @@ function AutoRead() {
            let readres = JSON.parse(data);
              //console.log(data)
            if (readres.status_code == '200' && typeof readres.data.award === 'number') {
-              console.log(`\n本次阅读获得${readres.items.read_score}个青豆，请等待30s后执行下一次阅读\n`);
+              console.log(`\n本次阅读获得${readres.data.award}个金币，请等待30s后执行下一次阅读\n`);
               readscore += readres.data.award;
               await $.wait(30000);
             }
