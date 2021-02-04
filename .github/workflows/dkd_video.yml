@@ -12,7 +12,8 @@ jobs:
     if: github.event.repository.owner.id == github.event.sender.id
     env:
         DKD_VIDEO_BD: ${{ secrets.DKD_VIDEO_BD }}
-        DKD_VIDEO_HD: ${{ secrets.DKD_VIDEO_HD }}             
+        DKD_VIDEO_HD: ${{ secrets.DKD_VIDEO_HD }}     
+        DKD_SPHB_BD: ${{ secrets.DKD_SPHB_BD }}           
         TZ: Asia/shanghai
     steps:
       - name: Checkout
