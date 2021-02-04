@@ -314,8 +314,8 @@ async function all() {
             await $.wait(dd * 1000)
 
         }
-
-        if (LIVE != 61 && nowTimes.getHours() <= 23 && $.splimit.data.isUperLimit == false || tts() <= (Number(oldtime) + 48 * 60 * 60 * 1000)) {
+/*
+        if (LIVE != 61 && nowTimes.getHours() <= 18 && $.splimit.data.isUperLimit == false || tts() <= (Number(oldtime) + 48 * 60 * 60 * 1000)) {
             tt = CS * 30 - 29
             console.log(`📍本次视频运行需要${tt}秒` + '\n')
             await play(); //播放       
@@ -328,7 +328,7 @@ async function all() {
                 await goldvideo(); //金蛋视频
             }
         }
-
+*/
     }
 }
 //通知
