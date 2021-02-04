@@ -6,7 +6,9 @@
 const $ = new Env("【dkd_video_sam】")
 const notify = $.isNode() ? require('./sendNotify') : '';
 let ReadArr = [], dkdvdBody = "",readscore = 0;
-let HeaderArr = [], dkdvdHeader = "";
+let articleheader = process.env.DKD_VIDEO_HD;
+let sphbbd = process.env.DKD_SPHB_BD;
+//let HeaderArr = [], dkdvdHeader = "";
   if (process.env.DKD_VIDEO_BD && process.env.DKD_VIDEO_BD.indexOf('&') > -1) {
   dkdvdBody = process.env.DKD_VIDEO_BD.split('&');
   console.log(`您选择的是用"&"隔开\n`)
@@ -22,7 +24,7 @@ let HeaderArr = [], dkdvdHeader = "";
           ReadArr.push(dkdvdBody[item])
         }
     })
-    
+ /*   
   if (process.env.DKD_VIDEO_HD && process.env.DKD_VIDEO_HD.indexOf('&') > -1) {
   dkdvdHeader = process.env.DKD_VIDEO_HD.split('&');
   console.log(`您选择的是用"&"隔开\n`)
@@ -38,7 +40,7 @@ let HeaderArr = [], dkdvdHeader = "";
           HeaderArr.push(dkdvdHeader[item])
         }
     })
-     
+   */  
       console.log(`============ 共${ReadArr.length}个Body  =============\n`)
       console.log(`============ 脚本执行-国际标准时间(UTC)：${new Date().toLocaleString()}  =============\n`)
       console.log(`============ 脚本执行-北京时间(UTC+8)：${new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleString()}  =============\n`)
@@ -51,15 +53,15 @@ let HeaderArr = [], dkdvdHeader = "";
   for (let i = 0; i < ReadArr.length; i++) {
     if (ReadArr[i]) {
       articlebody = ReadArr[i];
-      articleheader = HeaderArr[0];
+      //articleheader = HeaderArr[0];
       $.index = i + 1;
-      console.log(`-------------------------\n\n开始第${$.index}次阅读`)
+      console.log(`-------------------------\n\n开始第${$.index}次视频`)
     }
       await AutoRead();
  }
  
-     console.log(`-------------------------\n\n共完成${$.index}次阅读，共计获得${readscore}个青豆，阅读请求全部结束`)
-     await notify.sendNotify($.name+'\n', `共完成${$.index}次阅读，共计获得${readscore}个青豆!`)
+     console.log(`-------------------------\n\n共完成${$.index}次视频，共计获得${readscore}个金币，视频请求全部结束`)
+     await notify.sendNotify($.name+'\n', `共完成${$.index}次视频，共计获得${readscore}个金币!`)
 })()
   .catch((e) => $.logErr(e))
   .finally(() => $.done())
@@ -76,12 +78,40 @@ function AutoRead() {
            let readres = JSON.parse(data);
              //console.log(data)
            if (readres.status_code == '200' && typeof readres.data.award === 'number') {
-              console.log(`\n本次阅读获得${readres.data.award}个金币，请等待30s后执行下一次阅读\n`);
+              console.log(`\n本次视频获得${readres.data.award}个金币，请等待30s后执行下一个视频\n`);
               readscore += readres.data.award;
-              await $.wait(30000);
+              await $.wait(32000);
+             if (readres.data.red_time == '0') {
+             await sphb()
+             }
             }
             else {
-              console.log(`\n本次阅读结果：${readres.message}\n`)
+              console.log(`\n本次视频结果：${readres.message}\n`)
+              await $.wait(30000);
+            }
+          resolve()
+        })
+    })
+}
+
+function sphb() {
+    return new Promise((resolve, reject) => {
+       let url = {
+            url: `http://dkd-api.dysdk.com/video/red_getaward`,
+            headers: JSON.parse(articleheader),
+            body: sphbbd
+        };
+        $.post(url, async(error, response, data) => {
+           let readres = JSON.parse(data);
+             //console.log(data)
+           if (readres.status_code == '200' && typeof readres.data.award === 'number') {
+              console.log(`\n本次红包获得${readres.data.award}个金币，请等待30s后继续\n`);
+              readscore += readres.data.award;
+              await $.wait(32000);
+            }
+            else {
+              console.log(`\n本次开红包结果：${readres.message}\n`)
+              await $.wait(30000);
             }
           resolve()
         })
