@@ -68,7 +68,7 @@ if (process.env.BF_BD && process.env.BF_BD.split('\n').length > 0) {
         }
     });
     Object.keys(bfbody).forEach((item) => {
-        if (gbfbody[item]) {
+        if (bfbody[item]) {
           bfbodyArr.push(bfbody[item])
         }
     });  
