@@ -63,6 +63,7 @@ hostname = dkd-api.dysdk.com
 */
 const $ = new Env('多看点');
 const dkdurlArr = [],dkdhdArr=[],dkdbodyArr=[]
+const dkdtxurlArr = [],dkdtxhdArr=[],dkdtxbodyArr=[]
 let dkdurl = $.getdata('dkdurl')
 let dkdhd = $.getdata('dkdhd')
 let dkdbody = $.getdata('dkdbody')
@@ -88,6 +89,22 @@ if (process.env.DKD_BD && process.env.DKD_BD.split('\n').length > 0) {
   } else  {
    dkdbody = process.env.DKD_BD.split()
   };  
+/* if (process.env.DKD_TX_URL && process.env.DKD_TX_URL.indexOf('\n') > -1) {
+   dkdtxurl = process.env.DKD_TX_URL.split('\n');
+   console.log(`您选择的是用换行隔开\n`)
+  } else {
+   dkdtxurl = process.env.DKD_TX_URL.split()
+  }; */
+if (process.env.DKD_TX_HD && process.env.DKD_TX_HD.split('\n').length > 0) {
+   dkdtxhd = process.env.DKD_TX_HD.split('\n');
+  } else  {
+   dkdtxhd = process.env.DKD_TX_HD.split()
+  };
+if (process.env.DKD_TX_BD && process.env.DKD_TX_BD.split('\n').length > 0) {
+   dkdtxbody = process.env.DKD_TX_BD.split('\n');
+  } else  {
+   dkdtxbody = process.env.DKD_TX_BD.split()
+  };  
 //video
 /*  Object.keys(dkdurl).forEach((item) => {
         if (dkdurl[item]) {
@@ -104,17 +121,40 @@ if (process.env.DKD_BD && process.env.DKD_BD.split('\n').length > 0) {
           dkdbodyArr.push(dkdbody[item])
         }
     });  
+
+/*  Object.keys(dkdtxurl).forEach((item) => {
+        if (dkdtxurl[item]) {
+          dkdtxurlArr.push(dkdtxurl[item])
+        }
+    }); */
+   Object.keys(dkdtxhd).forEach((item) => {
+        if (dkdtxhd[item]) {
+          dkdtxhdArr.push(dkdtxhd[item])
+        }
+    });
+    Object.keys(dkdtxbody).forEach((item) => {
+        if (dkdtxbody[item]) {
+          dkdtxbodyArr.push(dkdtxbody[item])
+        }
+    });  
+
     console.log(`============ 脚本执行-国际标准时间(UTC)：${new Date().toLocaleString()}  =============\n`)
     console.log(`============ 脚本执行-北京时间(UTC+8)：${new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleString()}  =============\n`)
  } else {
     dkdurlArr.push($.getdata('dkdurl'))
     dkdhdArr.push($.getdata('dkdhd'))
     dkdbodyArr.push($.getdata('dkdbody'))
+    dkdtxurlArr.push($.getdata('dkdtxurl'))
+    dkdtxhdArr.push($.getdata('dkdtxhd'))
+    dkdtxbodyArr.push($.getdata('dkdtxbody'))
     let accountcount = ($.getval('accountcount') || '1');
  for (let i = 2; i <= accountcount; i++) {
     dkdurlArr.push($.getdata(`dkdurl${i}`))
-    bdkdhdArr.push($.getdata(`dkdhd${i}`))
+    dkdhdArr.push($.getdata(`dkdhd${i}`))
     dkdbodyArr.push($.getdata(`dkdbody${i}`))
+    dkdtxurlArr.push($.getdata(`dkdtxurl${i}`))
+    dkdtxhdArr.push($.getdata(`dkdtxhd${i}`))
+    dkdtxbodyArr.push($.getdata(`dkdtxbody${i}`))
   }
 }
 
@@ -132,6 +172,9 @@ if (!dkdhdArr[0]) {
      // dkdurl = dkdurlArr[i];
       dkdhd = dkdhdArr[i];
       dkdbody = dkdbodyArr[i];
+     // dkdtxurl = dkdtxurlArr[i];
+      dkdtxhd = dkdtxhdArr[i];
+      dkdtxbody = dkdtxbodyArr[i];
     await dkdqd()
   }
   }
@@ -197,7 +240,7 @@ function dkdgg(timeout = 0) {
 let url = {
         url : 'http://dkd-api.dysdk.com/task/get_ad_award',
         headers : JSON.parse(dkdhd),
-        body : 'adType=2&' + dkdbody+'&type=2',}
+        body : 'adType=2&' + dkdbody+'&type=2'}
       $.post(url, async (err, resp, data) => {
         try {
            //$.log(dkdbody)
@@ -221,7 +264,7 @@ function dkdbx(timeout = 0) {
 let url = {
         url : 'http://dkd-api.dysdk.com/red/box_award',
         headers : JSON.parse(dkdhd),
-        body : dkdbody,}
+        body : dkdbody}
       $.post(url, async (err, resp, data) => {
         try {
            //$.log(dkdbody)
@@ -245,7 +288,7 @@ function dkdbxfb(timeout = 0) {
 let url = {
         url : 'http://dkd-api.dysdk.com/red/box_extra',
         headers : JSON.parse(dkdhd),
-        body : 'adType=2&'+dkdbody,}
+        body : 'adType=2&'+dkdbody}
       $.post(url, async (err, resp, data) => {
         try {
            //$.log(dkdbody)
@@ -269,7 +312,7 @@ function dkdcj(timeout = 0) {
 let url = {
         url : 'http://dkd-api.dysdk.com/lotto/start',
         headers : JSON.parse(dkdhd),
-        body : 'adType=2&'+dkdbody,}
+        body : 'adType=2&'+dkdbody}
       $.post(url, async (err, resp, data) => {
         try {
            //$.log(dkdbody)
@@ -293,7 +336,7 @@ function dkdfx(timeout = 0) {
 let url = {
         url : 'http://dkd-api.dysdk.com/task/get_award',
         headers : JSON.parse(dkdhd),
-        body : 'id=52&'+dkdbody,}
+        body : 'id=52&'+dkdbody}
       $.post(url, async (err, resp, data) => {
         try {
            //$.log(dkdbody)
@@ -317,7 +360,7 @@ if(result.status_code == 10020){
   let url = {
           url : 'http://dkd-api.dysdk.com/task/get_award',
           headers : JSON.parse(dkdhd),
-          body : 'id=51&'+dkdbody,}
+          body : 'id=51&'+dkdbody}
         $.post(url, async (err, resp, data) => {
           try {
              //$.log(dkdbody)
@@ -342,8 +385,8 @@ let sx = dkdtxhd.match(/headerInfo":"\w+/)+''
 let url = {
         url : 'http://dkd-api.dysdk.com/lotto/index?'+dkdbody+'&headerInfo='+sx.replace('headerInfo":"',""),
         //headers : JSON.parse($.getdata('dkdtxhd')),
-        headers : JSON.parse(dkdhd),
-        body : dkdtxbody,}
+        headers : JSON.parse(dkdtxhd),
+        body : dkdtxbody}
       $.post(url, async (err, resp, data) => {
         try {
          //$.log(str.replace('headerInfo":"',""))
@@ -367,7 +410,7 @@ if(result.status_code == 10020){
   let url = {
           url : 'http://dkd-api.dysdk.com/inviter/bind',
           headers : JSON.parse(dkdhd),
-          body : 'code=13152063&'+dkdbody,}
+          body : 'code=13152063&'+dkdbody}
         $.post(url, async (err, resp, data) => {
           try {
              //$.log(dkdbody)
@@ -387,7 +430,7 @@ if(result.status_code == 10020){
   let url = {
           url : 'http://dkd-api.dysdk.com/comment/video_like?'+dkdbody+'&type=1&video_id=8263',
           headers : JSON.parse(dkdhd),
-          body : '',}
+          body : ''}
         $.post(url, async (err, resp, data) => {
           try {
             
@@ -409,7 +452,7 @@ let str = dkdtxhd.match(/headerInfo":"\w+/)+''
 let url = {
         url : 'http://dkd-api.dysdk.com/money/withdraw_do?'+dkdbody+'&headerInfo='+str.replace('headerInfo":"',""),
         headers : JSON.parse($.getdata('dkdtxhd')),
-        body : dkdtxbody,}
+        body : dkdtxbody}
       $.post(url, async (err, resp, data) => {
         try {
          //$.log(str.replace('headerInfo":"',""))
@@ -441,7 +484,7 @@ function dkdqd(timeout = 0) {
 let url = {
         url : 'http://dkd-api.dysdk.com/task/sign',
         headers : JSON.parse(dkdhd),
-        body : 'adType=2&' + dkdbody,}
+        body : 'adType=2&' + dkdbody}
       $.post(url, async (err, resp, data) => {
         try {
            //$.log(dkdbody)
@@ -482,7 +525,7 @@ function dkdxx(timeout = 0) {
 let url = {
         url : 'http://dkd-api.dysdk.com/user/index',
         headers : JSON.parse(dkdhd),
-        body : dkdbody,}
+        body : dkdbody}
       $.post(url, async (err, resp, data) => {
         try {
            //$.log(dkdbody)
