@@ -342,7 +342,7 @@ let sx = dkdtxhd.match(/headerInfo":"\w+/)+''
 let url = {
         url : 'http://dkd-api.dysdk.com/lotto/index?'+dkdbody+'&headerInfo='+sx.replace('headerInfo":"',""),
         //headers : JSON.parse($.getdata('dkdtxhd')),
-        headers : JSON.parse(dkdhd)),
+        headers : JSON.parse(dkdhd),
         body : dkdtxbody,}
       $.post(url, async (err, resp, data) => {
         try {
@@ -481,7 +481,7 @@ function dkdxx(timeout = 0) {
   return new Promise((resolve) => {
 let url = {
         url : 'http://dkd-api.dysdk.com/user/index',
-        headers : JSON.parse($.getdata('dkdhd')),
+        headers : JSON.parse(dkdhd),
         body : dkdbody,}
       $.post(url, async (err, resp, data) => {
         try {
