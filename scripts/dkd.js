@@ -433,11 +433,11 @@ if(result.status_code == 10020){
 //多看点签到
 function dkdqd(timeout = 0) {
   return new Promise((resolve) => {
-    setTimeout( ()=>{
+  /*  setTimeout( ()=>{
       if (typeof $.getdata('dkdurl') === "undefined") {
         $.msg($.name,"",'请先获取多看点Cookie!😓',)
         return
-      }
+      }*/
 let url = {
         url : 'http://dkd-api.dysdk.com/task/sign',
         headers : JSON.parse(dkdhd),
@@ -473,7 +473,7 @@ await dkdz()
         }
       })
     },timeout)
-  })
+  //})
 }
 
 //多看点用户信息     
