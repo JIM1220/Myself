@@ -92,12 +92,14 @@ if (!bfhdArr[0]) {
     return;
   }
    console.log(`------------- 共${bfhdArr.length}个账号----------------\n`)
+  for (let i = 0; i < bfhdArr.length; i++) {
     if (bfhdArr[i]) {
       message = ''
      // bfurl = bfurlArr[i];
       bfhd = bfhdArr[i];
       bfbody = bfbodyArr[i];
     await bfqd()
+}
 }
 })()
   .catch((e) => $.logErr(e))
