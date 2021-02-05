@@ -14,6 +14,9 @@ jobs:
        #DKD_URL: ${{ secrets.DKD_URL }}
         DKD_HD: ${{ secrets.DKD_HD }}
         DKD_BD: ${{ secrets.DKD_BD }}
+       #DKD_TX_URL: ${{ secrets.DKD_TX_URL }}
+        DKD_TX_HD: ${{ secrets.DKD_TX_HD }}
+        DKD_TX_BD: ${{ secrets.DKD_TX_BD }}
         TZ: Asia/shanghai
     steps:
       - name: Checkout
