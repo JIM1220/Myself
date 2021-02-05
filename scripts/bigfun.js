@@ -40,12 +40,12 @@ let bfbody = $.getdata('bfbody')
 
 if ($.isNode()) {
 //video
- if (process.env.BF_URL && process.env.BF_URL.indexOf('\n') > -1) {
+/* if (process.env.BF_URL && process.env.BF_URL.indexOf('\n') > -1) {
    bfurl = process.env.BF_URL.split('\n');
    console.log(`您选择的是用换行隔开\n`)
   } else {
    bfurl = process.env.BF_URL.split()
-  };
+  }; */
 if (process.env.BF_HD && process.env.BF_HD.split('\n').length > 0) {
    bfhd = process.env.BF_HD.split('\n');
   } else  {
@@ -57,11 +57,11 @@ if (process.env.BF_BD && process.env.BF_BD.split('\n').length > 0) {
    bfbody = process.env.BF_BD.split()
   };  
 //video
-  Object.keys(bfurl).forEach((item) => {
+/*  Object.keys(bfurl).forEach((item) => {
         if (bfurl[item]) {
           bfurlArr.push(vbfurl[item])
         }
-    });
+    }); */
    Object.keys(bfhd).forEach((item) => {
         if (bfhd[item]) {
           bfhdArr.push(bfhd[item])
@@ -94,7 +94,7 @@ if (!bfhdArr[0]) {
    console.log(`------------- 共${bfhdArr.length}个账号----------------\n`)
     if (bfhdArr[i]) {
       message = ''
-      bfurl = bfurlArr[i];
+     // bfurl = bfurlArr[i];
       bfhd = bfhdArr[i];
       bfbody = bfbodyArr[i];
     await bfqd()
