@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event.repository.owner.id == github.event.sender.id
     env:
-        BF_URL: ${{ secrets.BF_URL }}
+       #BF_URL: ${{ secrets.BF_URL }}
         BF_HD: ${{ secrets.BF_HD }}
         BF_BD: ${{ secrets.BF_BD }}
         TZ: Asia/shanghai
