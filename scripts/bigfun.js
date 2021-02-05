@@ -133,7 +133,7 @@ function bfqd(timeout = 0) {
       
 let url = {
         url : 'https://api.bigfun.cn/webview/iphone?',
-        headers : JSON.parse($.getdata('bfhd')),
+        headers : JSON.parse(bfhd),
         body : bfbody
 }
       $.post(url, async (err, resp, data) => {
