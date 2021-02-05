@@ -81,7 +81,7 @@ function AutoRead() {
               console.log(`\n本次视频获得${readres.data.award}个金币，请等待30s后执行下一个视频\n`);
               readscore += readres.data.award;
               await $.wait(32000);
-             if (readres.data.status ＜ 4 && readres.data.red_time == '0') {
+             if (readres.data.status ＜ '4' && readres.data.red_time == '0') {
              await sphb()
              }
             }
