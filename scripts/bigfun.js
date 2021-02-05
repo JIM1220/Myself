@@ -33,15 +33,72 @@ hostname = api.bigfun.cn
 */
 const $ = new Env('bigfun签到');
 const openurl = { "open-url" : "bigfun://" }
+const bfurlArr = [],bfhdArr=[],bfbodyArr=[]
 let bfurl = $.getdata('bfurl')
 let bfhd = $.getdata('bfhd')
 let bfbody = $.getdata('bfbody')
-!(async () => {
-  if (typeof $request !== "undefined") {
-    await bfck()
+
+if ($.isNode()) {
+//video
+ if (process.env.BF_URL && process.env.BF_URL.indexOf('\n') > -1) {
+   bfurl = process.env.BF_URL.split('\n');
+   console.log(`您选择的是用换行隔开\n`)
   } else {
-    await bfqd()
+   bfurl = process.env.BF_URL.split()
+  };
+if (process.env.BF_HD && process.env.BF_HD.split('\n').length > 0) {
+   bfhd = process.env.BF_HD.split('\n');
+  } else  {
+   bfhd = process.env.BF_HD.split()
+  };
+if (process.env.BF_BD && process.env.BF_BD.split('\n').length > 0) {
+   bfbody = process.env.BF_BD.split('\n');
+  } else  {
+   bfbody = process.env.BF_BD.split()
+  };  
+//video
+  Object.keys(bfurl).forEach((item) => {
+        if (bfurl[item]) {
+          bfurlArr.push(vbfurl[item])
+        }
+    });
+   Object.keys(bfhd).forEach((item) => {
+        if (bfhd[item]) {
+          bfhdArr.push(bfhd[item])
+        }
+    });
+    Object.keys(bfbody).forEach((item) => {
+        if (gbfbody[item]) {
+          bfbodyArr.push(bfbody[item])
+        }
+    });  
+    console.log(`============ 脚本执行-国际标准时间(UTC)：${new Date().toLocaleString()}  =============\n`)
+    console.log(`============ 脚本执行-北京时间(UTC+8)：${new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleString()}  =============\n`)
+ } else {
+    bfurlArr.push($.getdata('bfurl'))
+    bfhdArr.push($.getdata('bfhd'))
+    bfbodyArr.push($.getdata('bfbody'))
+    let accountcount = ($.getval('accountcount') || '1');
+ for (let i = 2; i <= accountcount; i++) {
+    bfurlArr.push($.getdata(`bfurl${i}`))
+    bfhdArr.push($.getdata(`bfhd${i}`))
+    bfbodyArr.push($.getdata(`bfbody${i}`))
   }
+}
+
+!(async () => {
+if (!bfhdArr[0]) {
+    $.msg($.name, '【提示】请先获取Bigfun一cookie')
+    return;
+  }
+   console.log(`------------- 共${bfhdArr.length}个账号----------------\n`)
+    if (bfhdArr[i]) {
+      message = ''
+      bfurl = bfurlArr[i];
+      bfhd = bfhdArr[i];
+      bfbody = bfbodyArr[i];
+    await bfqd()
+}
 })()
   .catch((e) => $.logErr(e))
   .finally(() => $.done())
@@ -68,16 +125,17 @@ $.log(bfbody)
 
 function bfqd(timeout = 0) {
   return new Promise((resolve) => {
-    setTimeout( ()=>{
+  /*  setTimeout( ()=>{
       if (typeof $.getdata('bfurl') === "undefined") {
         $.msg($.name,"",'请先启用获取Cookie脚本！点击本通知可跳转到bigfun!', openurl)
         return
-      }
+      } */
       
 let url = {
         url : 'https://api.bigfun.cn/webview/iphone?',
         headers : JSON.parse($.getdata('bfhd')),
-        body : bfbody,}
+        body : bfbody
+}
       $.post(url, async (err, resp, data) => {
         try {
            //$.log(bfbody)
