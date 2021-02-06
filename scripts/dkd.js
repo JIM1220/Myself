@@ -175,8 +175,7 @@ if (!dkdhdArr[0]) {
      // dkdtxurl = dkdtxurlArr[i];
       dkdtxhd = dkdtxhdArr[i];
       dkdtxbody = dkdtxbodyArr[i];
-    await dkdqd()
-await dkdxssd()
+await dkdqd()
 await dkdgg()
 await dkdggreward()
 await dkdbx()
@@ -185,6 +184,7 @@ await dkdsxzp()
 await dkdcj()
 await dkdfx()
 await dkdxs()
+await dkdxssd()
 await dkdxx()
 await dkdz()
 //await dkdyq()
