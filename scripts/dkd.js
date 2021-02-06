@@ -176,6 +176,19 @@ if (!dkdhdArr[0]) {
       dkdtxhd = dkdtxhdArr[i];
       dkdtxbody = dkdtxbodyArr[i];
     await dkdqd()
+await dkdxssd()
+await dkdgg()
+await dkdggreward()
+await dkdbx()
+await dkdbxfb()
+await dkdsxzp()
+await dkdcj()
+await dkdfx()
+await dkdxs()
+await dkdxx()
+await dkdz()
+//await dkdyq()
+//await dkdtx() 
   }
   }
 })()
@@ -258,6 +271,32 @@ if(result.status_code == 10020){
     },timeout)
   })
 }
+
+//多看点广告任务完成领奖     
+function dkdggreward(timeout = 0) {
+  return new Promise((resolve) => {
+let url = {
+        url : 'http://dkd-api.dysdk.com/task/get_ad_award',
+        headers : JSON.parse(dkdhd),
+        body : 'adType=2&' + dkdbody+'type=1&overLimit'}
+      $.post(url, async (err, resp, data) => {
+        try {
+           //$.log(dkdbody)
+    const result = JSON.parse(data)
+        if(result.status_code == 200){
+        console.log('广告任务回执:成功🌝 '+result.data.award)
+}
+if(result.status_code == 10020){
+        console.log('广告任务回执:失败🚫 '+result.message)}
+        } catch (e) {
+          //$.logErr(e, resp);
+        } finally {
+          resolve()
+        }
+    },timeout)
+  })
+}
+
 //多看点视频宝箱     
 function dkdbx(timeout = 0) {
   return new Promise((resolve) => {
@@ -496,18 +535,7 @@ if(result.status_code == 10020){
         console.log('签到回执:失败🚫 '+result.message)
 
 }
-await dkdxssd()
-await dkdgg()
-await dkdbx()
-await dkdbxfb()
-await dkdsxzp()
-await dkdcj()
-await dkdfx()
-await dkdxs()
-await dkdxx()
-await dkdz()
-//await dkdyq()
-//await dkdtx() 
+
 
         } catch (e) {
           //$.logErr(e, resp);
