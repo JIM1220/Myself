@@ -186,7 +186,7 @@ return new Promise((resolve, reject) => {
               'Host': 'api.yuncheapp.cn',
               'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 12_4_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148'
           },
-     body:{"permissionOK":true,"pushOpened":false,"signInCalendar":false,"installedKs":false,"useNewWelfare":1}
+     body:'{"permissionOK":true,"pushOpened":false,"signInCalendar":false,"installedKs":false,"useNewWelfare":1}'
 }
    $.post(userinfourl,(error, response, data) =>{
      const result = JSON.parse(data)
@@ -242,7 +242,7 @@ return new Promise((resolve, reject) => {
               'Host': 'api.yuncheapp.cn',
               'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 12_4_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148'
           },
-     body:{}
+     body:'{}'
 }
 
    $.post(lotteryTableurl,(error, response, data) =>{
