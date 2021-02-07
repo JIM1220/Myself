@@ -117,6 +117,7 @@ if (!kkdcookieArr[0]) {
       await userinfo()
       await sign()
       //await control()
+      await yhsc()
       await intervalAward()
       await lotteryTable()
       await lotteryTable_getcoins()
@@ -125,7 +126,6 @@ if (!kkdcookieArr[0]) {
       await extra_getcoins()
       await giftRain()
       await giftRain_getcoins()
-      await yhsc()
       await showmsg()
   }
  }
@@ -282,6 +282,7 @@ return new Promise((resolve, reject) => {
    $.post(lotteryTable_getcoinsurl,(error, response, data) =>{
      const result = JSON.parse(data)
       if(logs)  $.log(data)
+      if(logs)  $.log("大转盘双倍"+lTadlist)
       if(result.message == 'success') {
         message += +result.data.coins+'金币\n'
         }
@@ -365,6 +366,7 @@ return new Promise((resolve, reject) => {
    $.post(giftRain_getcoinsurl,(error, response, data) =>{
      const result = JSON.parse(data)
       if(logs)  $.log(data)
+      if(logs)  $.log("红包雨奖励"+gRadlist)
       if(result.message == 'success') {
         message += result.data.coins+'金币\n'
         }
@@ -423,6 +425,7 @@ return new Promise((resolve, reject) => {
    $.post(giftRain_getcoinsurl,(error, response, data) =>{
      const result = JSON.parse(data)
       if(logs)  $.log(data)
+      if(logs)  $.log("金币悬赏奖励"+eXadlist)
       message +='📣金币悬赏任务\n'
       if(result.message == 'success') {
         message += result.data.toast+'\n'
