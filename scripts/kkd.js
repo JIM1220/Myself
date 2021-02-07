@@ -276,7 +276,7 @@ return new Promise((resolve, reject) => {
               'Host': 'api.yuncheapp.cn',
               'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 12_4_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148'
           },
-     body:`{"adLlsid":"${lTadlist}","adPositionType":"LOTTERYTABLE_INCENTIVE","adRet":true,"pageId":13002,"subPageId":13002001}`
+     body:`{"adLlsid":lTadlist,"adPositionType":"LOTTERYTABLE_INCENTIVE","adRet":true,"pageId":13002,"subPageId":13002001}`
 }
 
    $.post(lotteryTable_getcoinsurl,(error, response, data) =>{
