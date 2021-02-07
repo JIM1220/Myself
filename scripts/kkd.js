@@ -37,7 +37,7 @@ const kkdbodyArr=[]
 let kkdheader = $.getdata('kkdheader')
 let kkdcookie = $.getdata('kkdcookie')
 let kkdbody = $.getdata('kkdbody')
-const logs = true //日志
+const logs =  //日志
 const invite = 1; //邀请码1为邀请
 let tz = ($.getval('tz') || '1');//通知
 const invited = '';
@@ -164,7 +164,7 @@ return new Promise((resolve, reject) => {
               'Connection': 'keep-alive',
               'Content-Type': 'application/json',
               'Host': 'api.yuncheapp.cn',
-              'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 12_4_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148'
+              'User-Agent': 'Artemis/3.13.0 (iPhone; iOS 14.4; Scale/3.00)'
           },
      body:'{"code": "JFN4M3"}'
 }
@@ -184,7 +184,7 @@ return new Promise((resolve, reject) => {
               'Connection': 'keep-alive',
               'Content-Type': 'application/json',
               'Host': 'api.yuncheapp.cn',
-              'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 12_4_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148'
+              'User-Agent': 'Artemis/3.13.0 (iPhone; iOS 14.4; Scale/3.00)'
           },
      body:'{"permissionOK":true,"pushOpened":false,"signInCalendar":false,"installedKs":false,"useNewWelfare":1}'
 }
@@ -212,7 +212,7 @@ return new Promise((resolve, reject) => {
               'Connection': 'keep-alive',
               'Content-Type': 'application/json',
               'Host': 'api.yuncheapp.cn',
-              'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 12_4_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148'
+              'User-Agent': 'Artemis/3.13.0 (iPhone; iOS 14.4; Scale/3.00)'
           }
 }
    $.get(signurl,(error, response, data) =>{
@@ -240,7 +240,7 @@ return new Promise((resolve, reject) => {
               'Connection': 'keep-alive',
               'Content-Type': 'application/json',
               'Host': 'api.yuncheapp.cn',
-              'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 12_4_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148'
+              'User-Agent': 'Artemis/3.13.0 (iPhone; iOS 14.4; Scale/3.00)'
           },
      body:'{}'
 }
@@ -274,9 +274,9 @@ return new Promise((resolve, reject) => {
               'Connection': 'keep-alive',
               'Content-Type': 'application/json',
               'Host': 'api.yuncheapp.cn',
-              'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 12_4_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148'
+              'User-Agent': 'Artemis/3.13.0 (iPhone; iOS 14.4; Scale/3.00)'
           },
-     body:`{"adLlsid":${lTadlist},"adPositionType":"LOTTERYTABLE_INCENTIVE","adRet":true,"pageId":13002,"subPageId":13002001}`
+     body:`{"adLlsid":"${lTadlist}","adPositionType":"LOTTERYTABLE_INCENTIVE","adRet":true,"pageId":13002,"subPageId":13002001}`
 }
 
    $.post(lotteryTable_getcoinsurl,(error, response, data) =>{
@@ -303,7 +303,7 @@ return new Promise((resolve, reject) => {
               'Connection': 'keep-alive',
               'Content-Type': 'application/json',
               'Host': 'api.yuncheapp.cn',
-              'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 12_4_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148'
+              'User-Agent': 'Artemis/3.13.0 (iPhone; iOS 14.4; Scale/3.00)'
           }
 }
    $.post(intervalAwardurl,(error, response, data) =>{
@@ -330,7 +330,7 @@ return new Promise((resolve, reject) => {
               'Connection': 'keep-alive',
               'Content-Type': 'application/json',
               'Host': 'api.yuncheapp.cn',
-              'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 12_4_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148'
+              'User-Agent': 'Artemis/3.13.0 (iPhone; iOS 14.4; Scale/3.00)'
           },
     body:'{"coins":53}'
 }
@@ -359,7 +359,7 @@ return new Promise((resolve, reject) => {
               'Connection': 'keep-alive',
               'Content-Type': 'application/json',
               'Host': 'api.yuncheapp.cn',
-              'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 12_4_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148'
+              'User-Agent': 'Artemis/3.13.0 (iPhone; iOS 14.4; Scale/3.00)'
           },
     body:`{"adLlsid":"${gRadlist}","adPositionType":"GIFTRAIN_INCENTIVE","adRet":true,"pageId":13002,"subPageId":13002003}`
 }
@@ -387,7 +387,7 @@ return new Promise((resolve, reject) => {
               'Connection': 'keep-alive',
               'Content-Type': 'application/json',
               'Host': 'api.yuncheapp.cn',
-              'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 12_4_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148'
+              'User-Agent': 'Artemis/3.13.0 (iPhone; iOS 14.4; Scale/3.00)'
           },
      body:'{}'
 }
@@ -418,7 +418,7 @@ return new Promise((resolve, reject) => {
               'Connection': 'keep-alive',
               'Content-Type': 'application/json',
               'Host': 'api.yuncheapp.cn',
-              'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 12_4_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148'
+              'User-Agent': 'Artemis/3.13.0 (iPhone; iOS 14.4; Scale/3.00)'
           },
    body:`{"adLlsid":"${eXadlist}","adPositionType":"COIN_REWARD_INCENTIVE","adRet":true,"pageId":13002,"subPageId":100011026}`
 }
@@ -448,7 +448,7 @@ return new Promise((resolve, reject) => {
               'Connection': 'keep-alive',
               'Content-Type': 'application/json',
               'Host': 'api.yuncheapp.cn',
-              'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 12_4_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148'
+              'User-Agent': 'Artemis/3.13.0 (iPhone; iOS 14.4; Scale/3.00)'
           }
 }
    $.get(yhscurl,(error, response, data) =>{
