@@ -41,9 +41,9 @@ const logs = true //日志
 const invite = 1; //邀请码1为邀请
 let tz = ($.getval('tz') || '1');//通知
 const invited = '';
-let lTadlist = '15884282854261489762';
-let gRadlist = '15884282854261489762';
-let eXadlist = '15884282854261489762';
+let lTadlist = '722370327811634632';
+let gRadlist = '722370327811634632';
+let eXadlist = '722370327811634632';
 var message='';
 
 if ($.isNode()) {
