@@ -296,7 +296,8 @@ return new Promise((resolve, reject) => {
 function intervalAward() {
 return new Promise((resolve, reject) => {
   let intervalAwardurl ={
-    url: `https://api.yuncheapp.cn/pearl-incentive/api/v1/task/intervalAward/receive?${kkdheader}`,
+    //url: `https://api.yuncheapp.cn/pearl-incentive/api/v1/task/intervalAward/receive?${kkdheader}`,
+    url: `https://api.yuncheapp.cn/pearl-incentive/api/v1/task/intervalAward/receive?__clientSign2=XlJ-3WAembYzMTg0Njk0MzY4YzViYzg3ZjI4NzE1ZTAzY2JhZDZhMzNjMGRlY2VlMzk%3D&kkd_current_caid=63991c974f5c46b69d38134b8d03832b&did=79A76088-C104-4D45-9C4F-721EE65AEB57&kpn=pearl&ve=3.13.0&nt=WIFI&fr=iOS&lon=MTIwLjM2MDY3MA%3D%3D&kkd_caid_version=&kpf=IPHONE&os=14.4&oc=apple&mi=D22A293C-FEBD-4AF9-B404-54CEB7C2536A&isp=460_00&sr=1125*2436&lat=MzEuNTQ1MDY2&ss=&dpbs=3sCt3iAAMzE4NDY5NDU3AQIQAIinM9cIsaW3TBAAAAC1e4eqFnhrRLWwUK%2BwfrGN&kkd_last_caid=348735bccaa8126123ea257b25a9f751&md=iPhone%20X&app=pearl&egid=DFP6760E155E09552D277BBCDFCF78AB22DC1BDB56D7F5284E3783F8B4CFFA62`,
     headers: {
               Cookie: kkdcookie,
               'Connection': 'keep-alive',
