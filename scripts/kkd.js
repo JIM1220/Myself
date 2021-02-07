@@ -118,14 +118,14 @@ if (!kkdcookieArr[0]) {
       await sign()
       //await control()
       await intervalAward()
-      /*await lotteryTable()
+      await lotteryTable()
       await lotteryTable_getcoins()
       //广告来源大转盘
       await lotteryTable1()
       await extra_getcoins()
       await giftRain()
       await giftRain_getcoins()
-      await yhsc()*/
+      await yhsc()
       await showmsg()
   }
  }
@@ -179,14 +179,13 @@ function userinfo() {
 return new Promise((resolve, reject) => {
   let userinfourl ={
     url: `https://api.yuncheapp.cn/pearl-incentive/api/v1/user/tabV2?${kkdheader}`,
-    headers:JSON.parse(kkdcookie),
-    /* headers: {
+    headers: {
               Cookie: kkdcookie,
               'Connection': 'keep-alive',
               'Content-Type': 'application/json',
               'Host': 'api.yuncheapp.cn',
               'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 12_4_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148'
-          },*/
+          },
      body:'{"permissionOK":true,"pushOpened":false,"signInCalendar":false,"installedKs":false,"useNewWelfare":1}'
 }
    $.post(userinfourl,(error, response, data) =>{
@@ -208,14 +207,13 @@ function sign() {
 return new Promise((resolve, reject) => {
   let signurl ={
     url: `https://api.yuncheapp.cn/pearl-incentive/api/v1/task/signIn/get?did=C7E826DD-5EE6-4242-9756-70E2751B113A&kpn=pearl&ve=3.9.0&nt=4g&fr=iOS&lon=MTIwLjM2MDY3MA%3D%3D&kpf=IPHONE&os=14.3&oc=apple&mi=D22A293C-FEBD-4AF9-B404-54CEB7C2536A&adve=3.2.0&isp=460_00&sr=1125*2436&lat=MzEuNTQ1MDY2&ss=&dpbs=3sCt3iAAMjE4NDc3MTU5AQIQAIinM9cFFPd45BAAAAD6YxuA4ai4/iLrMolNAJry&egid=DFP5D0345A52C7D85CC1695850559469F050832AA74291190C7392A237B1582A&md=iPhone%20X&app=pearl&__clientSign2=PJD3Sl_09e4yMTg0NzcxNTg4YzgyNzhkY2NjZDVkYzRmZDgyNDdmNWE1YzgyNDdkMGI%3D`,
-    headers:JSON.parse(kkdcookie)    
-    /* headers: {
+    headers: {
               Cookie: kkdcookie,
               'Connection': 'keep-alive',
               'Content-Type': 'application/json',
               'Host': 'api.yuncheapp.cn',
               'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 12_4_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148'
-          }*/
+          }
 }
    $.get(signurl,(error, response, data) =>{
      const result = JSON.parse(data)
@@ -236,7 +234,7 @@ return new Promise((resolve, reject) => {
 function lotteryTable() {
 return new Promise((resolve, reject) => {
   let lotteryTableurl ={
-    url: `https://api.yuncheapp.cn/pearl-incentive/api/v1/lotteryTable/drawV2?${kkdheader}`,
+    url: `https://api.yuncheapp.cn/pearl-incentive/api/v1/lotteryTable/drawV2?__clientSign2=41KLvGAeoW8zMTg0NzAwNTQ4YzUzY2I1OTk5YzQ3ZmNmNGQzMmY3NWRiNTMwMTA1MmU%3D&kkd_current_caid=63991c974f5c46b69d38134b8d03832b&did=79A76088-C104-4D45-9C4F-721EE65AEB57&kpn=pearl&ve=3.13.0&nt=WIFI&fr=iOS&lon=MTIwLjM2MDY3MA%3D%3D&kkd_caid_version=&kpf=IPHONE&os=14.4&oc=apple&mi=D22A293C-FEBD-4AF9-B404-54CEB7C2536A&isp=460_00&sr=1125*2436&_body=894361bd777b8ca59217e5bf59e9015b2e75070650d184c3b7f0e8c0aed75ae7&lat=MzEuNTQ1MDY2&ss=&dpbs=3sCt3iAAMzE4NDcwMDYzAQIQAIinM9cIsaW3TBAAAAC1e4eqFnhrRLWwUK%2BwfrGN&kkd_last_caid=348735bccaa8126123ea257b25a9f751&md=iPhone%20X&app=pearl&egid=DFP7D00D64BD9E8086A52646C5A5D7ED93391D7EE64D85C0B0635356D74EB527`,
     headers: {
               Cookie: kkdcookie,
               'Connection': 'keep-alive',
@@ -270,7 +268,7 @@ function lotteryTable_getcoins() {
 //$.log('111111'+lTadlist)
 return new Promise((resolve, reject) => {
   let lotteryTable_getcoinsurl ={
-    url: `https://api.yuncheapp.cn/pearl-incentive/api/v1/ad/finish?${kkdheader}`,
+    url: `https://api.yuncheapp.cn/pearl-incentive/api/v1/ad/finishV2?__clientSign2=Fd8lpWAeoZczMTg0NzAwNTM4YzVkNjNkYmJjNzM4ZDhkZjkxYTA5MjA2MTBiYTNjOWI%3D&kkd_current_caid=63991c974f5c46b69d38134b8d03832b&did=79A76088-C104-4D45-9C4F-721EE65AEB57&kpn=pearl&ve=3.13.0&nt=WIFI&fr=iOS&lon=MTIwLjM2MDY3MA%3D%3D&kkd_caid_version=&kpf=IPHONE&os=14.4&oc=apple&mi=D22A293C-FEBD-4AF9-B404-54CEB7C2536A&isp=460_00&sr=1125*2436&_body=e3aba43f0c482b248b5dd088b1466fd63d3f718b79cd0d71aa7bc1cc29729f5d&lat=MzEuNTQ1MDY2&ss=&dpbs=3sCt3iAAMzE4NDcwMDYzAQIQAIinM9cIsaW3TBAAAAC1e4eqFnhrRLWwUK%2BwfrGN&kkd_last_caid=348735bccaa8126123ea257b25a9f751&md=iPhone%20X&app=pearl&egid=DFP7D00D64BD9E8086A52646C5A5D7ED93391D7EE64D85C0B0635356D74EB527`,
      headers: {
               Cookie: kkdcookie,
               'Connection': 'keep-alive',
@@ -278,7 +276,7 @@ return new Promise((resolve, reject) => {
               'Host': 'api.yuncheapp.cn',
               'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 12_4_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148'
           },
-     body:`{"adPositionType":"LOTTERYTABLE_INCENTIVE","insertCnt":0,"adCodeId":"1300213002001","serverEcpm":0,"ttl":0,"requestCnt":0,"adProvider":"KS_NEW","adRet":true,"resultExpire":0,"keyString":"1300213002001KS_NEW","endAd":false,"requestStartTime":0,"adBizType":"LOTTERY_TABLE","renderType":0,"adToken":"","adLlsid":"${lTadlist}","isPreload":false,"adAward":0}`
+     body:`{"adLlsid":"${lTadlist}","adPositionType":"LOTTERYTABLE_INCENTIVE","adRet":true,"pageId":13002,"subPageId":13002001}`
 }
 
    $.post(lotteryTable_getcoinsurl,(error, response, data) =>{
@@ -298,16 +296,14 @@ return new Promise((resolve, reject) => {
 function intervalAward() {
 return new Promise((resolve, reject) => {
   let intervalAwardurl ={
-    url: `https://api.yuncheapp.cn/pearl-incentive/api/v1/task/intervalAward/receive?${kkdheader}`,
-    //url: `https://api.yuncheapp.cn/pearl-incentive/api/v1/task/intervalAward/receive?__clientSign2=XlJ-3WAembYzMTg0Njk0MzY4YzViYzg3ZjI4NzE1ZTAzY2JhZDZhMzNjMGRlY2VlMzk%3D&kkd_current_caid=63991c974f5c46b69d38134b8d03832b&did=79A76088-C104-4D45-9C4F-721EE65AEB57&kpn=pearl&ve=3.13.0&nt=WIFI&fr=iOS&lon=MTIwLjM2MDY3MA%3D%3D&kkd_caid_version=&kpf=IPHONE&os=14.4&oc=apple&mi=D22A293C-FEBD-4AF9-B404-54CEB7C2536A&isp=460_00&sr=1125*2436&lat=MzEuNTQ1MDY2&ss=&dpbs=3sCt3iAAMzE4NDY5NDU3AQIQAIinM9cIsaW3TBAAAAC1e4eqFnhrRLWwUK%2BwfrGN&kkd_last_caid=348735bccaa8126123ea257b25a9f751&md=iPhone%20X&app=pearl&egid=DFP6760E155E09552D277BBCDFCF78AB22DC1BDB56D7F5284E3783F8B4CFFA62`,
-    headers:JSON.parse(kkdcookie)
-    /*headers: {
+    url: `https://api.yuncheapp.cn/pearl-incentive/api/v1/task/intervalAward/receive?__clientSign2=XlJ-3WAembYzMTg0Njk0MzY4YzViYzg3ZjI4NzE1ZTAzY2JhZDZhMzNjMGRlY2VlMzk%3D&kkd_current_caid=63991c974f5c46b69d38134b8d03832b&did=79A76088-C104-4D45-9C4F-721EE65AEB57&kpn=pearl&ve=3.13.0&nt=WIFI&fr=iOS&lon=MTIwLjM2MDY3MA%3D%3D&kkd_caid_version=&kpf=IPHONE&os=14.4&oc=apple&mi=D22A293C-FEBD-4AF9-B404-54CEB7C2536A&isp=460_00&sr=1125*2436&lat=MzEuNTQ1MDY2&ss=&dpbs=3sCt3iAAMzE4NDY5NDU3AQIQAIinM9cIsaW3TBAAAAC1e4eqFnhrRLWwUK%2BwfrGN&kkd_last_caid=348735bccaa8126123ea257b25a9f751&md=iPhone%20X&app=pearl&egid=DFP6760E155E09552D277BBCDFCF78AB22DC1BDB56D7F5284E3783F8B4CFFA62`,
+    headers: {
               Cookie: kkdcookie,
               'Connection': 'keep-alive',
               'Content-Type': 'application/json',
               'Host': 'api.yuncheapp.cn',
               'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 12_4_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148'
-          }*/
+          }
 }
    $.post(intervalAwardurl,(error, response, data) =>{
      const result = JSON.parse(data)
@@ -327,7 +323,7 @@ return new Promise((resolve, reject) => {
 function giftRain() {
 return new Promise((resolve, reject) => {
   let giftRainurl ={
-    url: `https://api.yuncheapp.cn/pearl-incentive/api/v1/giftRain/receive?${kkdheader}`,
+    url: `https://api.yuncheapp.cn/pearl-incentive/api/v1/giftRain/receive?__clientSign2=T7-MhWAfjTgzMTg0NzU0OTA4YzVmNTk3ZjMyYTk1Y2ZmZmE2N2NlNDc5NTdmYzFhOWM%3D&kkd_current_caid=63991c974f5c46b69d38134b8d03832b&did=79A76088-C104-4D45-9C4F-721EE65AEB57&kpn=pearl&ve=3.13.0&nt=4g&fr=iOS&lon=MTIwLjQxOTIyOA%3D%3D&kkd_caid_version=&kpf=IPHONE&os=14.4&oc=apple&mi=D22A293C-FEBD-4AF9-B404-54CEB7C2536A&isp=460_00&sr=1125*2436&_body=4cf9824ad06fda0ca2a3dbfd0432157305e8a1f684daf8dc20628795e88a20eb&lat=MzEuNTEwMjU2&ss=&dpbs=3sCt3iAAMzE4NDc1NDkzAQIQAIinM9cIsaW3TBAAAAC1e4eqFnhrRLWwUK%2BwfrGN&kkd_last_caid=348735bccaa8126123ea257b25a9f751&md=iPhone%20X&app=pearl&egid=DFP7D00D64BD9E8086A52646C5A5D7ED93391D7EE64D85C0B0635356D74EB527`,
     headers: {
               Cookie: kkdcookie,
               'Connection': 'keep-alive',
@@ -335,7 +331,7 @@ return new Promise((resolve, reject) => {
               'Host': 'api.yuncheapp.cn',
               'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 12_4_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148'
           },
-    body:'{"coins":40}'
+    body:'{"coins":53}'
 }
 
    $.post(giftRainurl,(error, response, data) =>{
@@ -356,7 +352,7 @@ return new Promise((resolve, reject) => {
 function giftRain_getcoins() {
 return new Promise((resolve, reject) => {
   let giftRain_getcoinsurl ={
-    url: `https://api.yuncheapp.cn/pearl-incentive/api/v1/ad/finish?${kkdheader}`,
+    url: `https://api.yuncheapp.cn/pearl-incentive/api/v1/ad/finishV2?__clientSign2=2cGhAWAfjV0zMTg0NzU0ODY4YzVlNzE1YmY5OTZhYjMwNzMxZmRjODZiNjYzMTVhM2U%3D&kkd_current_caid=63991c974f5c46b69d38134b8d03832b&did=79A76088-C104-4D45-9C4F-721EE65AEB57&kpn=pearl&ve=3.13.0&nt=4g&fr=iOS&lon=MTIwLjQxOTIyOA%3D%3D&kkd_caid_version=&kpf=IPHONE&os=14.4&oc=apple&mi=D22A293C-FEBD-4AF9-B404-54CEB7C2536A&isp=460_00&sr=1125*2436&_body=7884f3cbaa97bf1062d4e3be6bada75e6fb3587d67ca6db5fc96d13ec0161ee2&lat=MzEuNTEwMjU2&ss=&dpbs=3sCt3iAAMzE4NDc1NDkzAQIQAIinM9cIsaW3TBAAAAC1e4eqFnhrRLWwUK%2BwfrGN&kkd_last_caid=348735bccaa8126123ea257b25a9f751&md=iPhone%20X&app=pearl&egid=DFP7D00D64BD9E8086A52646C5A5D7ED93391D7EE64D85C0B0635356D74EB527`,
     headers: {
               Cookie: kkdcookie,
               'Connection': 'keep-alive',
@@ -364,7 +360,7 @@ return new Promise((resolve, reject) => {
               'Host': 'api.yuncheapp.cn',
               'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 12_4_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148'
           },
-   body:`{"adPositionType":"GIFTRAIN_INCENTIVE","insertCnt":0,"adCodeId":"1300213002003","serverEcpm":0,"ttl":0,"requestCnt":0,"adProvider":"KS_NEW","adRet":true,"resultExpire":0,"keyString":"1300213002003KS_NEW","endAd":false,"requestStartTime":0,"renderType":0,"adToken":"","adLlsid":"${gRadlist}","isPreload":false,"adAward":0}`
+    body:`{"adLlsid":"${gRadlist}","adPositionType":"GIFTRAIN_INCENTIVE","adRet":true,"pageId":13002,"subPageId":13002003}`
 }
    $.post(giftRain_getcoinsurl,(error, response, data) =>{
      const result = JSON.parse(data)
@@ -383,7 +379,7 @@ return new Promise((resolve, reject) => {
 function lotteryTable1() {
 return new Promise((resolve, reject) => {
   let lotteryTableurl ={
-    url: `https://api.yuncheapp.cn/pearl-incentive/api/v1/lotteryTable/drawV2?${kkdheader}`,
+    url: `https://api.yuncheapp.cn/pearl-incentive/api/v1/lotteryTable/drawV2?__clientSign2=41KLvGAeoW8zMTg0NzAwNTQ4YzUzY2I1OTk5YzQ3ZmNmNGQzMmY3NWRiNTMwMTA1MmU%3D&kkd_current_caid=63991c974f5c46b69d38134b8d03832b&did=79A76088-C104-4D45-9C4F-721EE65AEB57&kpn=pearl&ve=3.13.0&nt=WIFI&fr=iOS&lon=MTIwLjM2MDY3MA%3D%3D&kkd_caid_version=&kpf=IPHONE&os=14.4&oc=apple&mi=D22A293C-FEBD-4AF9-B404-54CEB7C2536A&isp=460_00&sr=1125*2436&_body=894361bd777b8ca59217e5bf59e9015b2e75070650d184c3b7f0e8c0aed75ae7&lat=MzEuNTQ1MDY2&ss=&dpbs=3sCt3iAAMzE4NDcwMDYzAQIQAIinM9cIsaW3TBAAAAC1e4eqFnhrRLWwUK%2BwfrGN&kkd_last_caid=348735bccaa8126123ea257b25a9f751&md=iPhone%20X&app=pearl&egid=DFP7D00D64BD9E8086A52646C5A5D7ED93391D7EE64D85C0B0635356D74EB527`,
     headers: {
               Cookie: kkdcookie,
               'Connection': 'keep-alive',
@@ -414,7 +410,7 @@ return new Promise((resolve, reject) => {
 function extra_getcoins() {
 return new Promise((resolve, reject) => {
   let giftRain_getcoinsurl ={
-    url: `https://api.yuncheapp.cn/pearl-incentive/api/v1/ad/finish?${kkdheader}`,
+    url: `https://api.yuncheapp.cn/pearl-incentive/api/v1/ad/finishV2?__clientSign2=_anJMWAfkHkzMTg0NzYyMjY4YzVjODk3MWMwYTExYTU5ZDNhNjA2ZDM0MjNiN2Q3OTA%3D&kkd_current_caid=63991c974f5c46b69d38134b8d03832b&did=79A76088-C104-4D45-9C4F-721EE65AEB57&kpn=pearl&ve=3.13.0&nt=4g&fr=iOS&lon=MTIwLjQxOTIyOA%3D%3D&kkd_caid_version=&kpf=IPHONE&os=14.4&oc=apple&mi=D22A293C-FEBD-4AF9-B404-54CEB7C2536A&isp=460_00&sr=1125*2436&_body=ebbceb95ccaf3749b36a0b2ad78926c364f6582cae62c873bcd93e2ff150e60b&lat=MzEuNTEwMjU2&ss=&dpbs=3sCt3iAAMzE4NDc1NDkzAQIQAIinM9cIsaW3TBAAAAC1e4eqFnhrRLWwUK%2BwfrGN&kkd_last_caid=348735bccaa8126123ea257b25a9f751&md=iPhone%20X&app=pearl&egid=DFP7D00D64BD9E8086A52646C5A5D7ED93391D7EE64D85C0B0635356D74EB527`,
     headers: {
               Cookie: kkdcookie,
               'Connection': 'keep-alive',
@@ -422,7 +418,7 @@ return new Promise((resolve, reject) => {
               'Host': 'api.yuncheapp.cn',
               'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 12_4_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148'
           },
-   body:`{"adRet":true,"adCodeId":"1300213002001","adProvider":"KS_NEW","adLlsid":"${eXadlist}","adToken":"","adPositionType":"COIN_REWARD_INCENTIVE","adBizType":"COIN_REWARD"}`
+   body:`{"adLlsid":"${eXadlist}","adPositionType":"COIN_REWARD_INCENTIVE","adRet":true,"pageId":13002,"subPageId":100011026}`
 }
    $.post(giftRain_getcoinsurl,(error, response, data) =>{
      const result = JSON.parse(data)
