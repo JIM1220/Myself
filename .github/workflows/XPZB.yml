@@ -3,7 +3,7 @@ name: XPZB_tianfang
 on:
   workflow_dispatch:
   schedule:
-     - cron: '58 0-14 * * *'
+     - cron: '59 0-14 * * *'
   watch:
     types: started
 jobs:
