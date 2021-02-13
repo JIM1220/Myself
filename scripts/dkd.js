@@ -229,7 +229,7 @@ function dkdgg(timeout = 0) {
   return new Promise((resolve) => {
 let url = {
         url : 'http://dkd-api.dysdk.com/task/get_ad_award',
-        headers : JSON.parse($.getdata('dkdhd')),
+        headers : JSON.parse(dkdhd),
         body : 'adType=2&' + dkdbody+'&type=2',}
       $.post(url, async (err, resp, data) => {
         try {
@@ -253,7 +253,7 @@ function dkdbx(timeout = 0) {
   return new Promise((resolve) => {
 let url = {
         url : 'http://dkd-api.dysdk.com/red/box_award',
-        headers : JSON.parse($.getdata('dkdhd')),
+        headers : JSON.parse(dkdhd),
         body : dkdbody,}
       $.post(url, async (err, resp, data) => {
         try {
@@ -277,7 +277,7 @@ function dkdbxfb(timeout = 0) {
   return new Promise((resolve) => {
 let url = {
         url : 'http://dkd-api.dysdk.com/red/box_extra',
-        headers : JSON.parse($.getdata('dkdhd')),
+        headers : JSON.parse(dkdhd),
         body : 'adType=2&'+dkdbody,}
       $.post(url, async (err, resp, data) => {
         try {
@@ -301,7 +301,7 @@ function dkdcj(timeout = 0) {
   return new Promise((resolve) => {
 let url = {
         url : 'http://dkd-api.dysdk.com/lotto/start',
-        headers : JSON.parse($.getdata('dkdhd')),
+        headers : JSON.parse(dkdhd),
         body : 'adType=2&'+dkdbody,}
       $.post(url, async (err, resp, data) => {
         try {
@@ -325,7 +325,7 @@ function dkdfx(timeout = 0) {
   return new Promise((resolve) => {
 let url = {
         url : 'http://dkd-api.dysdk.com/task/get_award',
-        headers : JSON.parse($.getdata('dkdhd')),
+        headers : JSON.parse(dkdhd),
         body : 'id=52&'+dkdbody,}
       $.post(url, async (err, resp, data) => {
         try {
@@ -349,7 +349,7 @@ if(result.status_code == 10020){
     return new Promise((resolve) => {
   let url = {
           url : 'http://dkd-api.dysdk.com/task/get_award',
-          headers : JSON.parse($.getdata('dkdhd')),
+          headers : JSON.parse(dkdhd),
           body : 'id=51&'+dkdbody,}
         $.post(url, async (err, resp, data) => {
           try {
@@ -374,7 +374,7 @@ if(result.status_code == 10020){
     return new Promise((resolve) => {
   let url = {
           url : 'http://dkd-api.dysdk.com/task/get_ad_award',
-          headers : JSON.parse($.getdata('dkdhd')),
+          headers : JSON.parse(dkdhd),
           body : 'adType=2&'+dkdbody+'&type=1&overLimit',}
         $.post(url, async (err, resp, data) => {
           try {
@@ -400,7 +400,7 @@ function dkdsxzp(timeout = 0) {
 let sx = dkdtxhd.match(/headerInfo":"\w+/)+''
 let url = {
         url : 'http://dkd-api.dysdk.com/lotto/index?'+dkdbody+'&headerInfo='+sx.replace('headerInfo":"',""),
-        headers : JSON.parse($.getdata('dkdhd')),
+        headers : JSON.parse(dkdhd),
         body : '',}
       $.post(url, async (err, resp, data) => {
         try {
@@ -426,7 +426,7 @@ function dkdsdjl(timeout = 0) {
 
 let url = {
         url : 'http://dkd-api.dysdk.com/video/extra_get',
-        headers : JSON.parse($.getdata('dkdhd')),
+        headers : JSON.parse(dkdhd),
         body : dkdbody,}
       $.post(url, async (err, resp, data) => {
         try {
@@ -450,7 +450,7 @@ if(result.status_code == 10020){
     return new Promise((resolve) => {
   let url = {
           url : 'http://dkd-api.dysdk.com/inviter/bind',
-          headers : JSON.parse($.getdata('dkdhd')),
+          headers : JSON.parse(dkdhd),
           body : 'code=13152063&'+dkdbody,}
         $.post(url, async (err, resp, data) => {
           try {
@@ -469,7 +469,7 @@ function dkddjs(timeout = 0) {
     return new Promise((resolve) => {
   let url = {
           url : 'http://dkd-api.dysdk.com/video/extra_time',
-          headers : JSON.parse($.getdata('dkdhd')),
+          headers : JSON.parse(dkdhd),
           body : dkdbody,}
         $.post(url, async (err, resp, data) => {
           try {
@@ -487,7 +487,7 @@ function dkddjs(timeout = 0) {
     return new Promise((resolve) => {
   let url = {
           url : 'http://dkd-api.dysdk.com/comment/video_like?'+dkdbody+'&type=1&video_id=8263',
-          headers : JSON.parse($.getdata('dkdhd')),
+          headers : JSON.parse(dkdhd),
           body : '',}
         $.post(url, async (err, resp, data) => {
           try {
@@ -509,7 +509,7 @@ function dkdtx(timeout = 0) {
 let str = dkdtxhd.match(/headerInfo":"\w+/)+''
 let url = {
         url : 'http://dkd-api.dysdk.com/money/withdraw_do?'+dkdbody+'&headerInfo='+str.replace('headerInfo":"',""),
-        headers : JSON.parse($.getdata('dkdtxhd')),
+        headers : JSON.parse(dkdhd),
         body : dkdtxbody,}
       $.post(url, async (err, resp, data) => {
         try {
@@ -536,7 +536,7 @@ function dkdqd(timeout = 0) {
   return new Promise((resolve) => {
 let url = {
         url : 'http://dkd-api.dysdk.com/task/sign',
-        headers : JSON.parse($.getdata('dkdhd')),
+        headers : JSON.parse(dkdhd),
         body : 'adType=2&' + dkdbody,}
       $.post(url, async (err, resp, data) => {
         try {
@@ -564,7 +564,7 @@ function dkdxx(timeout = 0) {
   return new Promise((resolve) => {
 let url = {
         url : 'http://dkd-api.dysdk.com/user/index',
-        headers : JSON.parse($.getdata('dkdhd')),
+        headers : JSON.parse(dkdhd),
         body : dkdbody,}
       $.post(url, async (err, resp, data) => {
         try {
