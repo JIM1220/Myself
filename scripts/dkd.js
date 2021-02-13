@@ -177,18 +177,20 @@ if (!dkdhdArr[0]) {
       dkdtxbody = dkdtxbodyArr[i];
 await dkdqd()
 await dkdgg()
-await dkdggreward()
+await dkdsc()
 await dkdbx()
 await dkdbxfb()
 await dkdsxzp()
 await dkdcj()
 await dkdfx()
 await dkdxs()
-await dkdxssd()
+await dkddjs()
+await dkdsdjl()
 await dkdxx()
 await dkdz()
 //await dkdyq()
 //await dkdtx() 
+
   }
   }
 })()
@@ -222,38 +224,13 @@ $.log(dkdtxbody)
   }
 
 
-//多看点小说时段奖励     
-function dkdxssd(timeout = 0) {
-  return new Promise((resolve) => {
-let url = {
-        url : 'http://dkd-api.dysdk.com/video/extra_get',
-        headers : JSON.parse(dkdhd),
-        body : dkdbody}
-      $.post(url, async (err, resp, data) => {
-        try {
-           //$.log(dkdbody)
-    const result = JSON.parse(data)
-        if(result.status_code == 200){
-        console.log('小说时段回执:成功🌝 '+result.data.award)
-}
-if(result.status_code == 10020){
-        console.log('小说时段回执:失败🚫 '+result.message)}
-        } catch (e) {
-          //$.logErr(e, resp);
-        } finally {
-          resolve()
-        }
-    },timeout)
-  })
-}
-
 //多看点广告视频     
 function dkdgg(timeout = 0) {
   return new Promise((resolve) => {
 let url = {
         url : 'http://dkd-api.dysdk.com/task/get_ad_award',
-        headers : JSON.parse(dkdhd),
-        body : 'adType=2&' + dkdbody+'&type=2'}
+        headers : JSON.parse($.getdata('dkdhd')),
+        body : 'adType=2&' + dkdbody+'&type=2',}
       $.post(url, async (err, resp, data) => {
         try {
            //$.log(dkdbody)
@@ -271,39 +248,13 @@ if(result.status_code == 10020){
     },timeout)
   })
 }
-
-//多看点广告任务完成领奖     
-function dkdggreward(timeout = 0) {
-  return new Promise((resolve) => {
-let url = {
-        url : 'http://dkd-api.dysdk.com/task/get_ad_award',
-        headers : JSON.parse(dkdhd),
-        body : 'adType=2&' + dkdbody+'&type=1&overLimit'}
-      $.post(url, async (err, resp, data) => {
-        try {
-           //$.log(dkdbody)
-    const result = JSON.parse(data)
-        if(result.status_code == 200){
-        console.log('广告任务回执:成功🌝 '+result.data.award)
-}
-if(result.status_code == 10020){
-        console.log('广告任务回执:失败🚫 '+result.message)}
-        } catch (e) {
-          //$.logErr(e, resp);
-        } finally {
-          resolve()
-        }
-    },timeout)
-  })
-}
-
 //多看点视频宝箱     
 function dkdbx(timeout = 0) {
   return new Promise((resolve) => {
 let url = {
         url : 'http://dkd-api.dysdk.com/red/box_award',
-        headers : JSON.parse(dkdhd),
-        body : dkdbody}
+        headers : JSON.parse($.getdata('dkdhd')),
+        body : dkdbody,}
       $.post(url, async (err, resp, data) => {
         try {
            //$.log(dkdbody)
@@ -326,8 +277,8 @@ function dkdbxfb(timeout = 0) {
   return new Promise((resolve) => {
 let url = {
         url : 'http://dkd-api.dysdk.com/red/box_extra',
-        headers : JSON.parse(dkdhd),
-        body : 'adType=2&'+dkdbody}
+        headers : JSON.parse($.getdata('dkdhd')),
+        body : 'adType=2&'+dkdbody,}
       $.post(url, async (err, resp, data) => {
         try {
            //$.log(dkdbody)
@@ -350,8 +301,8 @@ function dkdcj(timeout = 0) {
   return new Promise((resolve) => {
 let url = {
         url : 'http://dkd-api.dysdk.com/lotto/start',
-        headers : JSON.parse(dkdhd),
-        body : 'adType=2&'+dkdbody}
+        headers : JSON.parse($.getdata('dkdhd')),
+        body : 'adType=2&'+dkdbody,}
       $.post(url, async (err, resp, data) => {
         try {
            //$.log(dkdbody)
@@ -374,8 +325,8 @@ function dkdfx(timeout = 0) {
   return new Promise((resolve) => {
 let url = {
         url : 'http://dkd-api.dysdk.com/task/get_award',
-        headers : JSON.parse(dkdhd),
-        body : 'id=52&'+dkdbody}
+        headers : JSON.parse($.getdata('dkdhd')),
+        body : 'id=52&'+dkdbody,}
       $.post(url, async (err, resp, data) => {
         try {
            //$.log(dkdbody)
@@ -398,8 +349,8 @@ if(result.status_code == 10020){
     return new Promise((resolve) => {
   let url = {
           url : 'http://dkd-api.dysdk.com/task/get_award',
-          headers : JSON.parse(dkdhd),
-          body : 'id=51&'+dkdbody}
+          headers : JSON.parse($.getdata('dkdhd')),
+          body : 'id=51&'+dkdbody,}
         $.post(url, async (err, resp, data) => {
           try {
              //$.log(dkdbody)
@@ -417,15 +368,40 @@ if(result.status_code == 10020){
       },timeout)
     })
   }
+
+  //多看点视频时长
+  function dkdsc(timeout = 0) {
+    return new Promise((resolve) => {
+  let url = {
+          url : 'http://dkd-api.dysdk.com/task/get_ad_award',
+          headers : JSON.parse($.getdata('dkdhd')),
+          body : 'adType=2&'+dkdbody+'&type=1&overLimit',}
+        $.post(url, async (err, resp, data) => {
+          try {
+             //$.log(dkdbody)
+      const result = JSON.parse(data)
+          if(result.status_code == 200){
+          console.log('时长任务回执:成功🌝 '+result.data.award)
+  }
+  if(result.status_code == 10020){
+          console.log('时长任务回执:失败🚫 '+result.message)}
+          } catch (e) {
+            //$.logErr(e, resp);
+          } finally {
+            resolve()
+          }
+      },timeout)
+    })
+  }
+//+'&headerInfo='+sx.replace('headerInfo":"',"")
   //多看点刷新转盘
 function dkdsxzp(timeout = 0) {
   return new Promise((resolve) => {
 let sx = dkdtxhd.match(/headerInfo":"\w+/)+''
 let url = {
         url : 'http://dkd-api.dysdk.com/lotto/index?'+dkdbody+'&headerInfo='+sx.replace('headerInfo":"',""),
-        //headers : JSON.parse($.getdata('dkdtxhd')),
-        headers : JSON.parse(dkdtxhd),
-        body : dkdtxbody}
+        headers : JSON.parse($.getdata('dkdhd')),
+        body : '',}
       $.post(url, async (err, resp, data) => {
         try {
          //$.log(str.replace('headerInfo":"',""))
@@ -443,13 +419,39 @@ if(result.status_code == 10020){
     },timeout)
   })
 }
+
+ //多看点小说时段奖励
+function dkdsdjl(timeout = 0) {
+  return new Promise((resolve) => {
+
+let url = {
+        url : 'http://dkd-api.dysdk.com/video/extra_get',
+        headers : JSON.parse($.getdata('dkdhd')),
+        body : dkdbody,}
+      $.post(url, async (err, resp, data) => {
+        try {
+         //$.log(str.replace('headerInfo":"',""))
+    const result = JSON.parse(data)
+        if(result.status_code == 200){
+        console.log('开始领取小说时段奖励，回执:成功🌝    '+result.data.award)
+}
+if(result.status_code == 10020){
+        console.log('开始领取小说时段奖励，回执:失败🚫 '+result.message)}
+        } catch (e) {
+          //$.logErr(e, resp);
+        } finally {
+          resolve()
+        }
+    },timeout)
+  })
+}
   //多看点
   function dkdyq(timeout = 0) {
     return new Promise((resolve) => {
   let url = {
           url : 'http://dkd-api.dysdk.com/inviter/bind',
-          headers : JSON.parse(dkdhd),
-          body : 'code=13152063&'+dkdbody}
+          headers : JSON.parse($.getdata('dkdhd')),
+          body : 'code=13152063&'+dkdbody,}
         $.post(url, async (err, resp, data) => {
           try {
              //$.log(dkdbody)
@@ -463,13 +465,30 @@ if(result.status_code == 10020){
     })
   }
 
-
+function dkddjs(timeout = 0) {
+    return new Promise((resolve) => {
+  let url = {
+          url : 'http://dkd-api.dysdk.com/video/extra_time',
+          headers : JSON.parse($.getdata('dkdhd')),
+          body : dkdbody,}
+        $.post(url, async (err, resp, data) => {
+          try {
+             //$.log(dkdbody)
+      const result = JSON.parse(data)
+          } catch (e) {
+            //$.logErr(e, resp);
+          } finally {
+            resolve()
+          }
+      },timeout)
+    })
+  }
   function dkdz(timeout = 0) {
     return new Promise((resolve) => {
   let url = {
           url : 'http://dkd-api.dysdk.com/comment/video_like?'+dkdbody+'&type=1&video_id=8263',
-          headers : JSON.parse(dkdhd),
-          body : ''}
+          headers : JSON.parse($.getdata('dkdhd')),
+          body : '',}
         $.post(url, async (err, resp, data) => {
           try {
             
@@ -491,7 +510,7 @@ let str = dkdtxhd.match(/headerInfo":"\w+/)+''
 let url = {
         url : 'http://dkd-api.dysdk.com/money/withdraw_do?'+dkdbody+'&headerInfo='+str.replace('headerInfo":"',""),
         headers : JSON.parse($.getdata('dkdtxhd')),
-        body : dkdtxbody}
+        body : dkdtxbody,}
       $.post(url, async (err, resp, data) => {
         try {
          //$.log(str.replace('headerInfo":"',""))
@@ -515,15 +534,10 @@ if(result.status_code == 10020){
 //多看点签到
 function dkdqd(timeout = 0) {
   return new Promise((resolve) => {
-  /*  setTimeout( ()=>{
-      if (typeof $.getdata('dkdurl') === "undefined") {
-        $.msg($.name,"",'请先获取多看点Cookie!😓',)
-        return
-      }*/
 let url = {
         url : 'http://dkd-api.dysdk.com/task/sign',
-        headers : JSON.parse(dkdhd),
-        body : 'adType=2&' + dkdbody}
+        headers : JSON.parse($.getdata('dkdhd')),
+        body : 'adType=2&' + dkdbody,}
       $.post(url, async (err, resp, data) => {
         try {
            //$.log(dkdbody)
@@ -536,15 +550,13 @@ if(result.status_code == 10020){
 
 }
 
-
         } catch (e) {
           //$.logErr(e, resp);
         } finally {
           resolve()
         }
-      })
     },timeout)
-  //})
+  })
 }
 
 //多看点用户信息     
@@ -552,8 +564,8 @@ function dkdxx(timeout = 0) {
   return new Promise((resolve) => {
 let url = {
         url : 'http://dkd-api.dysdk.com/user/index',
-        headers : JSON.parse(dkdhd),
-        body : dkdbody}
+        headers : JSON.parse($.getdata('dkdhd')),
+        body : dkdbody,}
       $.post(url, async (err, resp, data) => {
         try {
            //$.log(dkdbody)
