@@ -58,11 +58,12 @@ hostname = ymz.iphonezhuan.com
 
 */
 const $ = new Env('羊毛赚');
-const ymzurlArr = [],ymzhdArr=[]
+//const ymzurlArr = []
+const ymzhdArr=[]
 //const ymzurl1Arr = [],ymzhd1Arr=[]
 const ymzbodyArr = [],ymzbody1Arr=[]
 //const ymzbody2Arr=[]
-let ymzurl = $.getdata('ymzurl')
+//let ymzurl = $.getdata('ymzurl')
 let ymzhd = $.getdata('ymzhd')
 //let ymzurl1 = $.getdata('ymzurl1')
 //let ymzhd1 = $.getdata('ymzhd1')
@@ -72,12 +73,12 @@ let ymzbody1 = $.getdata('ymzbody1')
 
 if ($.isNode()) {
 
- if (process.env.YMZ_URL && process.env.YMZ_URL.indexOf('\n') > -1) {
+ /*if (process.env.YMZ_URL && process.env.YMZ_URL.indexOf('\n') > -1) {
    ymzurl = process.env.YMZ_URL.split('\n');
    console.log(`您选择的是用换行隔开\n`)
   } else {
    ymzurl = process.env.YMZ_URLL.split()
-  }; 
+  }; */
 if (process.env.YMZ_HD && process.env.YMZ_HD.split('\n').length > 0) {
    ymzhd = process.env.YMZ_HD.split('\n');
   } else  {
@@ -94,11 +95,11 @@ if (process.env.YMZ_BODY1 && process.env.YMZ_BODY1.split('\n').length > 0) {
    ymzbody1 = process.env.YMZ_BODY1.split()
   };  
 //video
-  Object.keys(ymzurl).forEach((item) => {
+/*  Object.keys(ymzurl).forEach((item) => {
         if (ymzurl[item]) {
           ymzurlArr.push(ymzurl[item])
         }
-    }); 
+    }); */
    Object.keys(ymzhd).forEach((item) => {
         if (ymzhd[item]) {
           ymzhdArr.push(ymzhd[item])
@@ -118,13 +119,13 @@ if (process.env.YMZ_BODY1 && process.env.YMZ_BODY1.split('\n').length > 0) {
     console.log(`============ 脚本执行-国际标准时间(UTC)：${new Date().toLocaleString()}  =============\n`)
     console.log(`============ 脚本执行-北京时间(UTC+8)：${new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleString()}  =============\n`)
  } else {
-    ymzurlArr.push($.getdata('ymzurl'))
+   // ymzurlArr.push($.getdata('ymzurl'))
     ymzhdArr.push($.getdata('ymzhd'))
     ymzbodyArr.push($.getdata('ymzbody'))
     ymzbody1Arr.push($.getdata('ymzbody1'))
     let accountcount = ($.getval('accountcount') || '1');
  for (let i = 2; i <= accountcount; i++) {
-    ymzurlArr.push($.getdata(`ymzurl${i}`))
+   // ymzurlArr.push($.getdata(`ymzurl${i}`))
     ymzhdArr.push($.getdata(`ymzhd${i}`))
     ymzbodyArr.push($.getdata(`ymzbody${i}`))
     ymzbody1Arr.push($.getdata(`ymzbody1${i}`))
@@ -147,11 +148,18 @@ if (process.env.YMZ_BODY1 && process.env.YMZ_BODY1.split('\n').length > 0) {
     return;
   }
    console.log(`------------- 共${ymzhdArr.length}个账号----------------\n`)
-    for (let i = 0; i < 6; i++) {
+    for (let h = 0; h < ymzhdArr.length; h++) {
+         if (ymzhdArr[h]) {
+      ymzhd = ymzhdArr[h];
+      ymzbody = ymzbodyArr[h];
+      ymzbody1 = ymzbody1Arr[h];
+     for (let i = 0; i < 6; i++) {
       $.index = i + 1
       console.log(`\n羊毛赚开始执行第${i+1}组任务！💦\n等待一分钟开始执行下一组任务`)
     await ymzqd();
-await $.wait(60000);
+    await $.wait(60000);
+            }
+     }
   }
 $.msg("","","羊毛赚任务已全部完成！")
   }
