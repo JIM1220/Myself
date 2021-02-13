@@ -80,28 +80,6 @@ MITM= api.xiaomuyu888.com
 
 */
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 const DD = '走路赚APP';
 const $ = new Env(DD);
 $.idx = ($.idx = ($.getval('zouluSuffix') || '1') - 1) > 0 ? ($.idx + 1 + '') : ''; // 账号扩展字符
@@ -376,6 +354,9 @@ else
             console.log(`\n************ 脚本共${xiaomuyuheaderArr.length}个${$.name}账号  ************\n`);
             console.log(`\n============ 脚本执行时间(TM)：${new Date(new Date().getTime() + 0 * 60 * 60 * 1000).toLocaleString('zh', {hour12: false})}  =============\n`)
         }
+        for (let h = 0; h < 6; h++)
+        console.log(`\n************ 执行第${h+1}轮  ************\n`);
+        {
         for (let i = 0; i < xiaomuyuheaderArr.length; i++)
         {
             if (xiaomuyuheaderArr[i])
@@ -469,6 +450,8 @@ else
             console.log(`开始执行查询账号信息时间:${times}`)
             await jinbi();
             await Msg();
+        }
+        await $.wait(600000);
         }
     }
 })()
