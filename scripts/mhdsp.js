@@ -154,11 +154,11 @@ $.log(mhbody)
 //陌嗨短视频
 function mhqd(timeout = 0) {
   return new Promise((resolve) => {
-    setTimeout( ()=>{
+ /*   setTimeout( ()=>{
       if (typeof $.getdata('mhurl') === "undefined") {
         $.msg($.name,"",'请先获取陌嗨短视频body!😓',)
         $.done()
-      }
+      }*/
 let url = {
         url : 'https://api.hemayoudao.cn/admin-dotask/app/spirit/v1/finish-task',
         headers : JSON.parse($.getdata('mhhd')),
@@ -180,7 +180,7 @@ if(result.code == 1500){
         } finally {
           resolve()
         }
-      })
+ //     })
     },timeout)
   })
 }
