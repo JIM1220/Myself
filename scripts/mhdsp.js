@@ -59,9 +59,52 @@ hostname = api.hemayoudao.cn
 
 */
 const $ = new Env('陌嗨短视频');
+const mhurlArr = [],mhhdArr = [],mhbodyArr=[]
 let mhurl = $.getdata('mhurl')
 let mhhd = $.getdata('mhhd')
 let mhbody = $.getdata('mhbody')
+
+if ($.isNode()) {
+
+if (process.env.MH_HD && process.env.MH_HD.split('\n').length > 0) {
+   mhhd = process.env.MH_HD.split('\n');
+  } else  {
+   mhhd = process.env.MH_HD.split()
+  };
+/*if (process.env.MH_BODY && process.env.MH_BODY.split('\n').length > 0) {
+   mhbody = process.env.MH_BODY.split('\n');
+  } else  {
+   mhbody = process.env.MH_BODY.split()
+  };  */
+
+   Object.keys(mhhd).forEach((item) => {
+        if (mhhd[item]) {
+          mhhdArr.push(mhhd[item])
+        }
+    });
+ /*   Object.keys(mhbody).forEach((item) => {
+        if (mhbody[item]) {
+          mhbodyArr.push(mhbody[item])
+        }
+    });  */
+
+    console.log(`============ 脚本执行-国际标准时间(UTC)：${new Date().toLocaleString()}  =============\n`)
+    console.log(`============ 脚本执行-北京时间(UTC+8)：${new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleString()}  =============\n`)
+ } else {
+   // mhurlArr.push($.getdata('mhurl'))
+    mhhdArr.push($.getdata('mhhd'))
+   // mhbodyArr.push($.getdata('mhbody'))
+    let accountcount = ($.getval('accountcount') || '1');
+ for (let i = 2; i <= accountcount; i++) {
+   // mhurlArr.push($.getdata(`mhurl${i}`))
+    mhhdArr.push($.getdata(`mhhd${i}`))
+  //  mhbodyArr.push($.getdata(`mhbody${i}`))
+  }
+}
+
+
+
+
 
 
 !(async () => {
@@ -69,12 +112,22 @@ let mhbody = $.getdata('mhbody')
     await mhck()
    
   } else {
+  if (!mhhdArr[0]) {
+    $.msg($.name, '【提示】请先获取陌嗨短视频一cookie')
+    return;
+  }
+   console.log(`------------- 共${mhhdArr.length}个账号----------------\n`)
+    for (let h = 0; h < mhhdArr.length; h++) {
+         if (mhhdArr[h]) {
+      mhhd = mhhdArr[h];
     for (let i = 0; i < 6; i++) {
       $.index = i + 1
       console.log(`\n陌嗨短视频第${i+1}次广告视频！💦\n等待30秒开始执行下一次视频`)
     await mhqd();
 await $.wait(30000);
   }
+     }
+  }            
 $.msg("","","陌嗨短视频广告视频已全部完成！")
   }
 })()
