@@ -451,6 +451,7 @@ else
             await jinbi();
             await Msg();
         }
+        console.log(`\n************ 执行第${h+2}轮  ************\n`);
         await $.wait(600000);
         }
     }
