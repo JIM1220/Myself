@@ -55,16 +55,70 @@ hostname = api.sxsjyzm.com
 
 
 */
+
+
 const $ = new Env('芝麻视频晶石收取');
+const zmurlArr = [],zmhdArr = [],zmbodyArr=[]
 let zmurl = $.getdata('zmurl')
 let zmhd = $.getdata('zmhd')
 let zmbody = $.getdata('zmbody')
 var zz = ''
+
+if ($.isNode()) {
+
+if (process.env.ZM_HD && process.env.ZM_HD.split('\n').length > 0) {
+   zmhd = process.env.ZM_HD.split('\n');
+  } else  {
+   zmhd = process.env.ZM_HD.split()
+  };
+if (process.env.ZM_BODY && process.env.ZM_BODY.split('\n').length > 0) {
+   zmbody = process.env.ZM_BODY.split('\n');
+  } else  {
+   zmbody = process.env.ZM_BODY.split()
+  };  
+
+   Object.keys(zmhd).forEach((item) => {
+        if (zmhd[item]) {
+          zmhdArr.push(zmhd[item])
+        }
+    });
+    Object.keys(zmbody).forEach((item) => {
+        if (zmbody[item]) {
+          zmbodyArr.push(zmbody[item])
+        }
+    });  
+
+    console.log(`============ 脚本执行-国际标准时间(UTC)：${new Date().toLocaleString()}  =============\n`)
+    console.log(`============ 脚本执行-北京时间(UTC+8)：${new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleString()}  =============\n`)
+ } else {
+   // zmurlArr.push($.getdata('zmurl'))
+    zmhdArr.push($.getdata('zmhd'))
+    zmbodyArr.push($.getdata('zmbody'))
+    let accountcount = ($.getval('accountcount') || '1');
+ for (let i = 2; i <= accountcount; i++) {
+   // zmurlArr.push($.getdata(`zmurl${i}`))
+    zmhdArr.push($.getdata(`zmhd${i}`))
+    zmbodyArr.push($.getdata(`zmbody${i}`))
+  }
+}
+
+
+
+
 !(async () => {
   if (typeof $request !== "undefined") {
     await zmck()
    
   } else {
+  if (!zmhdArr[0]) {
+    $.msg($.name, '【提示】请先获取芝嫲视频一cookie')
+    return;
+  }
+   console.log(`------------- 共${zmhdArr.length}个账号----------------\n`)
+    for (let h = 0; h < zmhdArr.length; h++) {
+         if (zmhdArr[h]) {
+      zmhd = zmhdArr[h];
+      zmbody = zmbodyArr[h]; 
     await zmum()
 for (let i = 0; i < 30; i++) {
       $.index = i + 1
@@ -73,7 +127,10 @@ for (let i = 0; i < 30; i++) {
 if(zz==1){
 break;
 }
-  }$.msg("","",'芝嫲视频本轮晶石已全部领取完毕，，等待下次成熟!')
+  }
+     }
+  }  
+  $.msg("","",'芝嫲视频本轮晶石已全部领取完毕，，等待下次成熟!')
   }
 })()
   .catch((e) => $.logErr(e))
@@ -99,7 +156,7 @@ function zmum(timeout = 0) {
   return new Promise((resolve) => {
 let url = {
         url : 'https://api.sxsjyzm.com/api2/Shortvideo/endDoTask',
-        headers : JSON.parse($.getdata('zmhd')),
+        headers : JSON.parse(zmhd),
         body : zmbody,}
       $.post(url, async (err, resp, data) => {
         try {
@@ -125,7 +182,7 @@ function zmlq(timeout = 0) {
   return new Promise((resolve) => {
 let url = {
         url : 'https://api.sxsjyzm.com/api2/loot/quickgetloot',
-        headers : JSON.parse($.getdata('zmhd')),
+        headers : JSON.parse(zmhd),
         body : zmbody,}
       $.post(url, async (err, resp, data) => {
         try {
@@ -152,14 +209,14 @@ if(result.code == 1002){
 //芝嫲视频刷新
 function zmsx(timeout = 0) {
   return new Promise((resolve) => {
-    setTimeout( ()=>{
+/*    setTimeout( ()=>{
       if (typeof $.getdata('zmurl') === "undefined") {
         $.msg($.name,"",'请先获取芝嫲视频body!😓',)
         $.done()
-      }
+      }  */
 let url = {
         url : 'https://api.sxsjyzm.com/api2/loot/index',
-        headers : JSON.parse($.getdata('zmhd')),
+        headers : JSON.parse(zmhd),
         body : zmbody,}
       $.post(url, async (err, resp, data) => {
         try {
@@ -180,7 +237,7 @@ await zmlq()
         } finally {
           resolve()
         }
-      })
+//      })
     },timeout)
   })
 }
