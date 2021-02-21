@@ -3,7 +3,7 @@ name: zmsp
 on:
   workflow_dispatch:
   schedule:
-     - cron: '0 */1 * * *'
+     - cron: '*/15 * * * *'
   watch:
     types: started
 jobs:
