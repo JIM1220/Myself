@@ -24,7 +24,7 @@ jobs:
           npm install
           npm install cron
           npm install request
-          curl ipinfo.json
+          curl ipinfo.io/json
       
       - name: '【书旗小说】'
         run: |
