@@ -13,7 +13,7 @@ jobs:
       
       - name: Checkout
         run: |
-          git clone   https://github.com/QingAnLe/YiYu.git ~/js
+          git clone   https://github.com/jake3737/Myself.git ~/js
       - name: Use Node.js 14.x
         uses: actions/setup-node@v1
         with:
@@ -29,7 +29,7 @@ jobs:
       - name: '【书旗小说】'
         run: |
           cd ~/js   
-          node Task/sqxs.js
+          #node Task/sqxs.js
       - name: '【羊毛赚】'
         run: |
           cd ~/js   
