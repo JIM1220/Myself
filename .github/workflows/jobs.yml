@@ -33,5 +33,5 @@ jobs:
       - name: '【羊毛赚】'
         run: |
           cd ~/js   
-          node Task/ymz.js
+          node ymz.js
  
