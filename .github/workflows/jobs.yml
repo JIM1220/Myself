@@ -29,9 +29,9 @@ jobs:
       - name: '【书旗小说】'
         run: |
           cd ~/js   
-          node Task/sqxs.js
+          #node sqxs.js
       - name: '【羊毛赚】'
         run: |
           cd ~/js   
-          node Task/ymz.js
+          node ymz.js
  
