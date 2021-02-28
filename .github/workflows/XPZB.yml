@@ -13,7 +13,7 @@ jobs:
     env:
         XP_iboxpayHEADER: ${{ secrets.XP_iboxpayHEADER }}
         XP_refreshTOKEN: ${{ secrets.XP_refreshTOKEN }}
-        #XP_CASH: ${{ secrets.XP_CASH }} 
+        XP_CASH: ${{ secrets.XP_CASH }} 
         TZ: Asia/shanghai
     steps:
       - name: Checkout
