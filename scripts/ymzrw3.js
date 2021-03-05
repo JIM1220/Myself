@@ -1,163 +1,53 @@
+
+
+
 /*
-10003030
-脚本名称：羊毛赚nodejs版本
-[task_local]
-#羊毛赚
-15 10 * * * https://raw.githubusercontent.com/age174/-/main/ymz.js, tag=羊毛赚, img-url=https://s3.ax1x.com/2021/02/06/yYzYWR.png, enabled=true
-[rewrite_local]
-http://ymz.iphonezhuan.com/addaction url script-request-body ymzrw.js
-http://ymz.iphonezhuan.com/gettask url script-request-body ymzrw.js
-[MITM]
-hostname = ymz.iphonezhuan.com
+---【使用必看】---
+
+https://api.weixin.qq.com/sns/userinfo* url script-response-body ymzrw3.js
+
+常见问题:
+
+1.登陆提示"此设备已经登录过了"
+表示你的账号在别的手机登陆过，需要过24小时才能在本机登录;
+
+
+1.登陆提示"此ip登录次数过多"
+改用数据流量，切换飞行模式来更改登录ip地址;
+
+2.登陆提示"此设备已经登录过了"
+iphone打开 设置-隐私-跟踪， 关闭打开一下"羊毛英汉词典"开关按钮;
+
+
  */
-const $ = new Env('羊毛赚');
-
-adtimes = [];
-vediotimes = [];
-result = [];
-!(async() => {
-    await all();
-
-})()
-.catch((e) => $.logErr(e))
-.finally(() => $.done())
-
-async function all() {
-
-    let ymzck = require('./ymzck.json');
-    UserIDsArr = ymzck.UserIDs.split('&');
-	
-	
-    for (let i = 1; i <= UserIDsArr.length; i++) {
-        result[i] = 200;
-        adtimes[i] = 0;
-    }
-    adwatch = 1; //广告触发器
-    while (adwatch) {
-        adwatch = 0;
-        for (let i = 1; i <= UserIDsArr.length; i++) {
-            watchadckArr = ymzck[`watchadck${i}`].split('&&');
-            if (result[i] == 200) {
-                result[i] = await watchad(i);
-                if (result[i] == 200)
-                    adwatch = 1;
-            }
-        }
-        console.log('\n即将观看下一个广告，请等待30秒...\n');
-        await $.wait(30000);
-    }
-    for (let i = 1; i <= UserIDsArr.length; i++) {
-        result[i] = 200;
-        vediotimes[i] = 0;
-    }
-    console.log('广告观看结束，即将观看视频，请等待30秒...\n');
-    await $.wait(30000);
-    vediowatch = 1; //视频触发器
-    while (vediowatch) {
-        vediowatch = 0;
-        for (let i = 1; i <= UserIDsArr.length; i++) {
-            watchvediockArr = ymzck[`watchvediock${i}`].split('&&');
-            if (result[i] == 200) {
-                result[i] = await watchvedio(i);
-                if (result[i] == 200)
-                    vediowatch = 1;
-            }
-        }
-        console.log('\n即将观看下一个视频，请等待30秒...\n');
-        await $.wait(30000);
-    }
-
-		console.log('视频观看结束，任务执行完毕\n');
-
-    for (let i = 1; i <= UserIDsArr.length; i++) {
-        moneybody = `channelID=2&uid=${UserIDsArr[i-1]-10000000}&ver=104`,
-        await moneyinfo(i);
-    }
-
+function randomn(n) {
+  let res = ''
+  for (; res.length < n; res += Math.random().toString(36).substr(2).toUpperCase()) {}
+  return res.substr(0, n)
 }
+const $ = new Env('羊毛赚登录重写')
 
-//羊毛赚广告
-function watchad(i) {
-    return new Promise((resolve) => {
+    if ($response) {
+        console.log("登录结果替换");
 
-        let url = {
-            url: 'http://ymz.iphonezhuan.com/addaction',
-            headers: JSON.parse(watchadckArr[1]),
-            body: watchadckArr[0],
+        let newbody = {
+            "openid": "o60A45pOrd3m6BEmhhWit0g6SFo9",
+            "nickname": "项羽15",
+            "sex": 0,
+            "language": "zh_CN",
+            "city": "",
+            "province": "",
+            "country": "",
+            "headimgurl": "https://thirdwx.qlogo.cn/mmopen/vi_32/CXibfhNFRQHMribZd3MPDsZ5Knwv9krBd62fgLWX7oicSHbuvbMv49RhhCwY0e2UWfrKzFGA6WPbmqR3QdPlickzFw/132",
+            "privilege": [],
+            "unionid": "of0QytwK083nmSqsNSC7GyNOjZ_d"
         }
-        $.post(url, async(err, resp, data) => {
-            try {
-                const result = JSON.parse(data)
-                    if (result.statuscode == 200) {
-                        console.log(`【羊毛赚${UserIDsArr[i-1]}】:观看广告${adtimes[i]+1}成功 ` + result.msg);
-                        adtimes[i]++;
-                    }
-                    if (result.statuscode == 400 || result.statuscode == 410)
-                        console.log(`【羊毛赚${UserIDsArr[i-1]}】:观看广告${adtimes[i]+1}失败 ` + result.msg);
-
-                    resolve(result.statuscode);
-            } catch (e) {}
-            finally {
-                resolve();
-            }
-        })
-    })
-}
-
-//羊毛赚视频
-function watchvedio(i) {
-    return new Promise((resolve) => {
-        let url = {
-            url: 'http://ymz.iphonezhuan.com/addaction',
-            headers: JSON.parse(watchvediockArr[1]),
-            body: watchvediockArr[0],
-        }
-        $.post(url, async(err, resp, data) => {
-            try {
-
-                const result = JSON.parse(data)
-
-                    if (result.statuscode == 200) {
-                        console.log(`【羊毛赚${UserIDsArr[i-1]}】:观看视频${vediotimes[i]+1}成功 ` + result.msg);
-                        vediotimes[i]++;
-
-                    }
-
-                    if (result.statuscode == 400 || result.statuscode == 410)
-                        console.log(`【羊毛赚${UserIDsArr[i-1]}】:观看视频${vediotimes[i]+1}失败 ` + result.msg);
-                    resolve(result.statuscode);
-
-            } catch (e) {}
-            finally {
-                resolve();
-            }
-        })
-    })
-}
-//余额信息
-function moneyinfo(i) {
-    return new Promise((resolve) => {
-        let url = {
-            url: 'http://ymz.iphonezhuan.com/gettask',
-            headers: {},
-            body: moneybody,
-        }
-        $.post(url, async(err, resp, data) => {
-            try {
-
-                const result = JSON.parse(data)
-
-                    if (result.statuscode == 200) {
-                        console.log(`【${UserIDsArr[i-1]}】:账户余额 ` + result.integral / 100 + '元');
-                    }
-
-            } catch (e) {}
-            finally {
-                resolve();
-            }
-        })
-    })
-}
+		newbody.openid = randomn(32);
+		newbody.unionid = randomn(28);
+        $.done({
+            body: JSON.stringify(newbody)
+        });
+    }
 
 function Env(t, e) {
     class s {
@@ -196,7 +86,7 @@ function Env(t, e) {
             this.logSeparator = "\n",
             this.startTime = (new Date).getTime(),
             Object.assign(this, e),
-            this.log(`\n${this.name}\u811a\u672c,\u5f00\u59cb\u6267\u884c:`)
+            this.log("", `\ud83d\udd14${this.name}, \u5f00\u59cb!`)
         }
         isNode() {
             return "undefined" != typeof module && !!module.exports
@@ -385,7 +275,7 @@ function Env(t, e) {
                     try {
                         if (t.headers["set-cookie"]) {
                             const s = t.headers["set-cookie"].map(this.cktough.Cookie.parse).toString();
-                            this.ckjar.setCookieSync(s, null),
+                            s && this.ckjar.setCookieSync(s, null),
                             e.cookieJar = this.ckjar
                         }
                     } catch (t) {
@@ -517,13 +407,14 @@ function Env(t, e) {
                     }
                 }
             };
-            this.isMute || (this.isSurge() || this.isLoon() ? $notification.post(e, s, i, o(r)) : this.isQuanX() && $notify(e, s, i, o(r)));
-            let h = ["", "==============\ud83d\udce3\u7cfb\u7edf\u901a\u77e5\ud83d\udce3=============="];
-            h.push(e),
-            s && h.push(s),
-            i && h.push(i),
-            console.log(h.join("\n")),
-            this.logs = this.logs.concat(h)
+            if (this.isMute || (this.isSurge() || this.isLoon() ? $notification.post(e, s, i, o(r)) : this.isQuanX() && $notify(e, s, i, o(r))), !this.isMuteLog) {
+                let t = ["", "==============\ud83d\udce3\u7cfb\u7edf\u901a\u77e5\ud83d\udce3=============="];
+                t.push(e),
+                s && t.push(s),
+                i && t.push(i),
+                console.log(t.join("\n")),
+                this.logs = this.logs.concat(t)
+            }
         }
         log(...t) {
             t.length > 0 && (this.logs = [...this.logs, ...t]),
@@ -539,7 +430,7 @@ function Env(t, e) {
         done(t = {}) {
             const e = (new Date).getTime(),
             s = (e - this.startTime) / 1e3;
-            this.log("", `${this.name}\u811a\u672c, \u6267\u884c\u7ed3\u675f! \u7528\u65f6${s}\u79d2`),
+            this.log("", `\ud83d\udd14${this.name}, \u7ed3\u675f! \ud83d\udd5b ${s} \u79d2`),
             this.log(),
             (this.isSurge() || this.isQuanX() || this.isLoon()) && $done(t)
         }
