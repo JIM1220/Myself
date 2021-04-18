@@ -16,7 +16,7 @@ jobs:
     steps:
       - name: Checkout
         run: |
-          git clone https://github.com/xbt370/Ac-JS-Script.git ~/Ac-JS-Script
+          git clone https://github.com/kongjianweimei/Myself.git 
       - name: Use Node.js 12.x
         uses: actions/setup-node@v1
         with:
