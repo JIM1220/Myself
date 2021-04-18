@@ -15,17 +15,14 @@ jobs:
         YQNB_yqnbBODY: ${{ secrets.YQNB_yqnbBODY }}
     steps:
       - name: Checkout
-        run: |
-          git clone https://github.com/kongjianweimei/Myself.git 
+        uses: actions/checkout@v1
+
       - name: Use Node.js 12.x
         uses: actions/setup-node@v1
         with:
           node-version: 12.x
       - name: npm install
-        if: env.YQNB_yqnbHEADER
         run: |
-          cd ~/Ac-JS-Script
-          git checkout main
           npm install
       - name: '运行 【易趣牛帮】'
         if: env.YQNB_yqnbHEADER
