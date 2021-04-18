@@ -1,44 +1,73 @@
-﻿name: 简单
+name: 简单
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: '*/45 * * * *'
+     - cron: '6 * * * *'
   watch:
     types: started
-  repository_dispatch:
-    types: ranlv
 jobs:
   build:
-
     runs-on: ubuntu-latest
     if: github.event.repository.owner.id == github.event.sender.id
+    env:
+        JDTQ_jdtquserBODY: ${{ secrets.JDTQ_jdtquserBODY }}
+        JDTQ_jdtqcoinBODY: ${{ secrets.JDTQ_jdtqcoinBODY }}
+        JDTQ_jdtqqpBODY: ${{ secrets.JDTQ_jdtqqpBODY }}
+        JDTQ_jdtqqp1BODY: ${{ secrets.JDTQ_jdtqqp1BODY }}
+        JDTQ_jdtqqp1fbBODY: ${{ secrets.JDTQ_jdtqqp1fbBODY }}
+        JDTQ_jdtqqp2BODY: ${{ secrets.JDTQ_jdtqqp2BODY }}
+        JDTQ_jdtqqp2fbBODY: ${{ secrets.JDTQ_jdtqqp2fbBODY }}
+        JDTQ_jdtqqp3BODY: ${{ secrets.JDTQ_jdtqqp3BODY }}
+        JDTQ_jdtqqp3fbBODY: ${{ secrets.JDTQ_jdtqqp3fbBODY }}
+        JDTQ_jdtqqp4BODY: ${{ secrets.JDTQ_jdtqqp4BODY }}
+        JDTQ_jdtqcjyBODY: ${{ secrets.JDTQ_jdtqcjyBODY }}
+        JDTQ_jdtqcjBODY: ${{ secrets.JDTQ_jdtqcjBODY }}
+        JDTQ_jdtqcjcsBODY: ${{ secrets.JDTQ_jdtqcjcsBODY }}
+        JDTQ_jdtqrwBODY: ${{ secrets.JDTQ_jdtqrwBODY }}
+        JDTQ_jdtqspBODY: ${{ secrets.JDTQ_jdtqspBODY }}
+        JDTQ_jdtqqdBODY: ${{ secrets.JDTQ_jdtqqdBODY }}
+        JDTQ_jdtqqdfbBODY: ${{ secrets.JDTQ_jdtqqdfbBODY }}
+        JDTQ_jdtqqdwcBODY: ${{ secrets.JDTQ_jdtqqdwcBODY }}
+        JDTQ_jdtqqdwcfbBODY: ${{ secrets.JDTQ_jdtqqdwcfbBODY }}
+        JDTQ_jdtqtqBODY: ${{ secrets.JDTQ_jdtqtqBODY }}
+        JDTQ_jdtqtqwcBODY: ${{ secrets.JDTQ_jdtqtqwcBODY }}
+        JDTQ_jdtqtqwcfbBODY: ${{ secrets.JDTQ_jdtqtqwcfbBODY }}
+        JDTQ_jdtqxfwcBODY: ${{ secrets.JDTQ_jdtqxfwcBODY }}
+        JDTQ_jdtqxfwcfbBODY: ${{ secrets.JDTQ_jdtqxfwcfbBODY }}
+        JDTQ_jdtqcfyBODY: ${{ secrets.JDTQ_jdtqcfyBODY }}
+        JDTQ_jdtqcf5BODY: ${{ secrets.JDTQ_jdtqcf5BODY }}
+        JDTQ_jdtqcf5fbBODY: ${{ secrets.JDTQ_jdtqcf5fbBODY }}
+        JDTQ_jdtqjcyBODY: ${{ secrets.JDTQ_jdtqjcyBODY }}
+        JDTQ_jdtqjcaBODY: ${{ secrets.JDTQ_jdtqjcaBODY }}
+        JDTQ_jdtqspwcBODY: ${{ secrets.JDTQ_jdtqspwcBODY }}
+        JDTQ_jdtqspwcfbBODY: ${{ secrets.JDTQ_jdtqspwcfbBODY }}
+        JDTQ_jdtqcf1BODY: ${{ secrets.JDTQ_jdtqcf1BODY }}
+        JDTQ_jdtqcf1fbBODY: ${{ secrets.JDTQ_jdtqcf1fbBODY }}
+        JDTQ_jdtqcf2BODY: ${{ secrets.JDTQ_jdtqcf2BODY }}
+        JDTQ_jdtqcf2fbBODY: ${{ secrets.JDTQ_jdtqcf2fbBODY }}
+        JDTQ_jdtqcf3BODY: ${{ secrets.JDTQ_jdtqcf3BODY }}
+        JDTQ_jdtqcf3fbBODY: ${{ secrets.JDTQ_jdtqcf3fbBODY }}
+        JDTQ_jdtqcf4BODY: ${{ secrets.JDTQ_jdtqcf4BODY }}
+        JDTQ_jdtqcf4fbBODY: ${{ secrets.JDTQ_jdtqcf4fbBODY }}
+        JDTQ_jdtqjcbBODY: ${{ secrets.JDTQ_jdtqjcbBODY }}
+        JDTQ_jdtqjclqBODY: ${{ secrets.JDTQ_jdtqjclqBODY }}
+        TZ: Asia/shanghai
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v1
 
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Use Node.js 12.x
         uses: actions/setup-node@v1
         with:
-          node-version: ${{ matrix.node-version }}
-      - name: Cache node_modules
-        uses: actions/cache@v2 # 使用 GitHub 官方缓存 Action。
-        env:
-          cache-name: cache-node-modules
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('package-lock.json') }} # 使用 package-lock.json 的 Hash 作为缓存的 key。也可以使用 package.json 代替
+          node-version: 12.x
       - name: npm install
         run: |
           npm install
       - name: '运行 【简单】'
+        if: env.JDTQ_jdtquserBODY
         run: |
           node Task/jdtq.js
         env:
-          #RLURL: ${{ secrets.RLURL }}
-          #RLHEADER: ${{ secrets.RLHEADER }}
-          PUSH_KEY: ${{ secrets.PUSH_KEY }}
-          BARK_SOUND: ${{ secrets.BARK_SOUND }}
-          BARK_PUSH: ${{ secrets.BARK_PUSH }}
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
           TG_USER_ID: ${{ secrets.TG_USER_ID }}
