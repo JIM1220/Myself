@@ -33,11 +33,10 @@ jobs:
           npm install
       - name: '运行 【易趣牛帮】'
         if: env.YQNB_yqnbHEADER
-        run: |
-          cd ~/wgwy
+        run: |      
           node Task/yqnb.js
         env:
-          
+
           PUSH_KEY: ${{ secrets.PUSH_KEY }}
           BARK_PUSH: ${{ secrets.BARK_PUSH }}
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
@@ -45,5 +44,3 @@ jobs:
           BARK_SOUND: ${{ secrets.BARK_SOUND }}
           DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
           DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
-
-    
